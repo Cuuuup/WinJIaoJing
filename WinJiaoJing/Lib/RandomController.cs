@@ -21,7 +21,7 @@ public class RandomController
     public string[] ControllerRandomExtract(Random rand)
     {
         List<string> result = new List<string>();
-        if (rand == null)
+        if (rand != null)
         {
             //临时变量
 
