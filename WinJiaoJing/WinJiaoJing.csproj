@@ -1,0 +1,716 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1647DAE8-FBF9-40D2-9C24-2276CF81CEF5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WinJiaoJing</RootNamespace>
+    <AssemblyName>WinJiaoJing</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\admin\Desktop\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>yiyun.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>753E8C9926E88AAFB179957250A734AD738904E6</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>WinJiaoJing_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.v15.2.Core, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.Charts.v15.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.CodeParser.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.CodeParser.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.Data.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.DataAccess.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v15.2.UI, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.DataAccess.v15.2.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Office.v15.2.Core, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.Office.v15.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v15.2.Core, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.Pdf.v15.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v15.2.Drawing, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.Pdf.v15.2.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.PivotGrid.v15.2.Core, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.PivotGrid.v15.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v15.2.Core, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.Printing.v15.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v15.2.Core, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.RichEdit.v15.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Sparkline.v15.2.Core, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.Sparkline.v15.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.Utils.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v15.2.UI, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.Utils.v15.2.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.Xpo.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraBars.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraCharts.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v15.2.Extensions, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraCharts.v15.2.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v15.2.Wizard, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraCharts.v15.2.Wizard.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraEditors.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGauges.v15.2.Core, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraGauges.v15.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraGrid.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraNavBar.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPivotGrid.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraPivotGrid.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraPrinting.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraReports.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v15.2.Extensions, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraReports.v15.2.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraRichEdit.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraScheduler.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v15.2.Core, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraScheduler.v15.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v15.2.Reporting, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraScheduler.v15.2.Reporting.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v15.2.Reporting.Extensions, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraScheduler.v15.2.Reporting.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraTreeList.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v15.2, Version=15.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevExpress.XtraVerticalGrid.v15.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Build" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WinJiaoJing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\WinJiaoJing.exe</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnJian\FrmTwo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnJian\FrmTwo.Designer.cs">
+      <DependentUpon>FrmTwo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnJian\FrmBaoFeiEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnJian\FrmBaoFeiEdit.Designer.cs">
+      <DependentUpon>FrmBaoFeiEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnJian\FrmAnQing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnJian\FrmAnQing.Designer.cs">
+      <DependentUpon>FrmAnQing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnJian\FrmAnQingXiangQingList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnJian\FrmAnQingXiangQingList.Designer.cs">
+      <DependentUpon>FrmAnQingXiangQingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnJian\FrmBaoFeiList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnJian\FrmBaoFeiList.Designer.cs">
+      <DependentUpon>FrmBaoFeiList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnJian\FrmPrintAnQing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnJian\FrmPrintAnQing.Designer.cs">
+      <DependentUpon>FrmPrintAnQing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\RandomController.cs" />
+    <Compile Include="PrintRibbonControllerResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintRibbonControllerResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Time\Times.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Time\Times.Designer.cs">
+      <DependentUpon>Times.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TJ\FrmTJXQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TJ\FrmTJXQ.Designer.cs">
+      <DependentUpon>FrmTJXQ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TJ\FrmTJDie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TJ\FrmTJDie.designer.cs">
+      <DependentUpon>FrmTJDie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XiangMu\FrmCarShuXing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XiangMu\FrmCarShuXing.Designer.cs">
+      <DependentUpon>FrmCarShuXing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GongSi\FrmGongSiEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GongSi\FrmGongSiEdit.Designer.cs">
+      <DependentUpon>FrmGongSiEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MuBan\FrmMuBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MuBan\FrmMuBan.Designer.cs">
+      <DependentUpon>FrmMuBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MuBan\FrmMuBanEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MuBan\FrmMuBanEdit.Designer.cs">
+      <DependentUpon>FrmMuBanEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TJ\FrmTJCount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TJ\FrmTJCount.designer.cs">
+      <DependentUpon>FrmTJCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TJ\FrmTJtop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TJ\FrmTJtop.designer.cs">
+      <DependentUpon>FrmTJtop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GongSi\FrmGongSi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GongSi\FrmGongSi.Designer.cs">
+      <DependentUpon>FrmGongSi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XiangMu\FrmXiangMu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XiangMu\FrmXiangMu.Designer.cs">
+      <DependentUpon>FrmXiangMu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XiangMu\FrmXiangMuEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XiangMu\FrmXiangMuEdit.Designer.cs">
+      <DependentUpon>FrmXiangMuEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAbout.designer.cs">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\CommonInfo.cs" />
+    <Compile Include="Lib\SqlHelper.cs" />
+    <Compile Include="Bao\FrmBao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bao\FrmBao.Designer.cs">
+      <DependentUpon>FrmBao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bao\FrmBaoEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bao\FrmBaoEdit.Designer.cs">
+      <DependentUpon>FrmBaoEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Limit\FrmDept.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Limit\FrmDept.Designer.cs">
+      <DependentUpon>FrmDept.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Limit\FrmDeptEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Limit\FrmDeptEdit.Designer.cs">
+      <DependentUpon>FrmDeptEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Limit\FrmOper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Limit\FrmOper.designer.cs">
+      <DependentUpon>FrmOper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Limit\FrmOperEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Limit\FrmOperEdit.Designer.cs">
+      <DependentUpon>FrmOperEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Limit\FrmRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Limit\FrmRole.Designer.cs">
+      <DependentUpon>FrmRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Limit\FrmRoleEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Limit\FrmRoleEdit.Designer.cs">
+      <DependentUpon>FrmRoleEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Limit\FrmRoleQxEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Limit\FrmRoleQxEdit.Designer.cs">
+      <DependentUpon>FrmRoleQxEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\FrmOperPwdEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="System\FrmOperPwdEdit.Designer.cs">
+      <DependentUpon>FrmOperPwdEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="old\FrmYaoHaoEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="old\FrmYaoHaoEdit.Designer.cs">
+      <DependentUpon>FrmYaoHaoEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="old\FrmYaoHaoList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="old\FrmYaoHaoList.Designer.cs">
+      <DependentUpon>FrmYaoHaoList.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AnJian\FrmTwo.resx">
+      <DependentUpon>FrmTwo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnJian\FrmBaoFeiEdit.resx">
+      <DependentUpon>FrmBaoFeiEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnJian\FrmAnQing.resx">
+      <DependentUpon>FrmAnQing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnJian\FrmAnQingXiangQingList.resx">
+      <DependentUpon>FrmAnQingXiangQingList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnJian\FrmBaoFeiList.resx">
+      <DependentUpon>FrmBaoFeiList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnJian\FrmPrintAnQing.resx">
+      <DependentUpon>FrmPrintAnQing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintRibbonControllerResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PrintRibbonControllerResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Print\AnQingCount.repx" />
+    <None Include="Print\AnQingJD.repx" />
+    <None Include="Print\AnQingXX.repx" />
+    <None Include="Print\AQCount.prnx" />
+    <None Include="Print\DieCount.repx" />
+    <None Include="Print\RE_AnQingJD.repx" />
+    <None Include="Print\TongJiCount.repx" />
+    <None Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Time\Times.resx">
+      <DependentUpon>Times.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TJ\FrmTJXQ.resx">
+      <DependentUpon>FrmTJXQ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TJ\FrmTJDie.resx">
+      <DependentUpon>FrmTJDie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XiangMu\FrmCarShuXing.resx">
+      <DependentUpon>FrmCarShuXing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GongSi\FrmGongSiEdit.resx">
+      <DependentUpon>FrmGongSiEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MuBan\FrmMuBan.resx">
+      <DependentUpon>FrmMuBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MuBan\FrmMuBanEdit.resx">
+      <DependentUpon>FrmMuBanEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TJ\FrmTJCount.resx">
+      <DependentUpon>FrmTJCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TJ\FrmTJtop.resx">
+      <DependentUpon>FrmTJtop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GongSi\FrmGongSi.resx">
+      <DependentUpon>FrmGongSi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XiangMu\FrmXiangMu.resx">
+      <DependentUpon>FrmXiangMu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XiangMu\FrmXiangMuEdit.resx">
+      <DependentUpon>FrmXiangMuEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAbout.resx">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bao\FrmBao.resx">
+      <DependentUpon>FrmBao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bao\FrmBaoEdit.resx">
+      <DependentUpon>FrmBaoEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Limit\FrmDept.resx">
+      <DependentUpon>FrmDept.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Limit\FrmDeptEdit.resx">
+      <DependentUpon>FrmDeptEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Limit\FrmOper.resx">
+      <DependentUpon>FrmOper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Limit\FrmOperEdit.resx">
+      <DependentUpon>FrmOperEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Limit\FrmRole.resx">
+      <DependentUpon>FrmRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Limit\FrmRoleEdit.resx">
+      <DependentUpon>FrmRoleEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Limit\FrmRoleQxEdit.resx">
+      <DependentUpon>FrmRoleQxEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="System\FrmOperPwdEdit.resx">
+      <DependentUpon>FrmOperPwdEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="old\FrmYaoHaoEdit.resx">
+      <DependentUpon>FrmYaoHaoEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="old\FrmYaoHaoList.resx">
+      <DependentUpon>FrmYaoHaoList.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Resources\tp.psd" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p保存.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p查询.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p打印.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p放弃.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p关闭.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p取消.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p确定.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p删除.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p审核.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p新建.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p修改.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tp.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tp1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tubiao.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tubiao.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tubiao123.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\保存.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\副本 tp.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\关闭.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\弃审.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\清空.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\删除.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\审核.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\添加.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\图标2%281%29.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\修改.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mainbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tpLogin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoginB.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\timg.gif" />
+    <Content Include="Resources\yiyun.ico" />
+    <Content Include="yiyun.ico" />
+    <None Include="Resources\菜单管理%282%29.png" />
+    <None Include="Resources\菜单管理%281%29.png" />
+    <None Include="Resources\管理.png" />
+    <None Include="Resources\管理%282%29.png" />
+    <None Include="Resources\管理%281%29.png" />
+    <None Include="Resources\分类管理.png" />
+    <None Include="Resources\单.png" />
+    <None Include="Resources\单%281%29.png" />
+    <None Include="Resources\菜单管理.png" />
+    <None Include="Resources\yiyun3.ico" />
+    <None Include="Resources\yiyun2.ico" />
+    <None Include="Resources\yiyun1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
