@@ -94,11 +94,6 @@ namespace WinJiaoJing
         {
 
 
-
-
-
-
-
         }
 
         private void grd_DoubleClick(object sender, EventArgs e)

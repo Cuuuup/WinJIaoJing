@@ -144,9 +144,9 @@ namespace WinJiaoJing
                 DataTable tb2= (DataTable)grd.DataSource;
 
                 tb.TableName = "dt1n";
-                ds.Tables.Add(tb.Copy());
-                tb2.TableName = "dt2n";
                 ds.Tables.Add(tb2.Copy());
+                tb2.TableName = "dt2n";
+                ds.Tables.Add(tb.Copy());
 
                 XtraReport report = new XtraReport();
 
@@ -248,7 +248,7 @@ namespace WinJiaoJing
                 sDialog.FileName = "编号：" + sID + "交通事故尸体检验详情" + ".xls";
             }
 
-                if (sDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (sDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 DevExpress.XtraPrinting.XlsExportOptions options = new DevExpress.XtraPrinting.XlsExportOptions();
                 grd.ExportToXls(sDialog.FileName, options);
