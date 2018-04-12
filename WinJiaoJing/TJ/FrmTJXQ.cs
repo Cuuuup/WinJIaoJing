@@ -25,11 +25,9 @@ namespace WinJiaoJing
             InitializeComponent();
         }
 
-      
-       
-
         private void FrmAnQingXiangQingList_Load(object sender, EventArgs e)
         {
+
             string sError = "";
             string strSql = $"select '全部' as TypeName,-1 as TypeID union all select Bao_desc as TypeName,BaoType_Id as TypeID from T_AnQingXiang xq join T_BaoType bt on xq.BaoType_Id=bt.Bao_TypeId  where AnQingId={sID} group by baoType_Id,Bao_desc  ";
             DataTable dt = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);

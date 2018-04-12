@@ -52,7 +52,7 @@ namespace WinJiaoJing
                 string sRoleID = Program.sRoleID;
                 string strSql = "SELECT *,TQx_Menu.TreeNodeName FROM TQx_RoleQx left join TQx_Menu on TQx_Menu.MenuID=TQx_RoleQx.MenuID  WHERE IsQx=1 and TQx_Menu.TreeNodeName<>'' and  RoleID='" + sRoleID + "' order by TQx_Menu.SortID ";
                 DataTable dtQx = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);
-
+                
                 if (Program.sOperID.Trim() != "admin")
                 {
                     LoadTreeViewQx(treeView1.Nodes[0], dtQx.DefaultView, CommonInfo.CLng(treeView1.Nodes[0].Tag));
