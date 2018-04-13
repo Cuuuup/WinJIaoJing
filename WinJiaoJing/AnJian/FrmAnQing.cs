@@ -67,7 +67,7 @@ namespace WinJiaoJing
 
             string sError = "";
             string strSql = "DELETE FROM T_AnQingXiang WHERE AnQingId=" + this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingNo"].ToString();
-            string strSql1 = "DELETE FROM T_AnQing WHERE AnQingNo=" + this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingNo"].ToString();
+            string strSql1 = "DELETE FROM T_AnQing WHERE AnQingID=" + this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingID"].ToString();
             SqlHelper.ExecuteNonQuery(CommandType.Text, strSql, null, out sError);
             SqlHelper.ExecuteNonQuery(CommandType.Text, strSql1, null, out sError);
 

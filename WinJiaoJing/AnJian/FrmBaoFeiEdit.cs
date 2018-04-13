@@ -235,22 +235,29 @@ namespace WinJiaoJing
 
 
 
+
                 //根据行号获取相应行的数据;   
                 foreach (int item in this.gridView1.GetSelectedRows())
                 {
 
-                    if (Convert.ToInt32(this.gridView1.GetDataRow(item)[2]) <= 13)
+                    strSql = new StringBuilder();
+                    strSql.Append("select BaoTypeId from T_XiangMu");
+                    strSql.Append("  where XiangMuNo=@Xno");
+                    SqlParameter[] parametersNosum = {
+                        new SqlParameter("@Xno", SqlDbType.Int) };
+                    parametersNosum[0].Value = Convert.ToInt32(this.gridView1.GetDataRow(item)[2]);
+
+                    SqlDataReader redsum = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parametersNosum, out sError);
+
+                    while (redsum.Read())
                     {
-                        sum = 1;
+                        //获取指定值数量
+                        sum = (int)redsum[0];
+
                     }
-                    if (Convert.ToInt32(this.gridView1.GetDataRow(item)[2]) == 14)
-                    {
-                        sum = 2;
-                    }
-                    if (Convert.ToInt32(this.gridView1.GetDataRow(item)[2]) >= 16 && Convert.ToInt32(this.gridView1.GetDataRow(item)[2]) <= 20)
-                    {
-                        sum = 3;
-                    }
+
+                    redsum.Close();
+                   
 
                     if (sum == -1)
                     {

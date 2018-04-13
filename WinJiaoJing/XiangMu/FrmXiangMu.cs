@@ -26,7 +26,8 @@ namespace WinJiaoJing
         {
             FrmXiangMuEdit frm = new FrmXiangMuEdit(this.gv.GetDataRow(this.gv.FocusedRowHandle)["XiangMuID"].ToString());
             frm.ShowDialog();
-            this.btnSel_Click(null, null);
+            this.btnSel_Click(null, null);        
+            
         }
 
         private void toolDel_Click(object sender, EventArgs e)
