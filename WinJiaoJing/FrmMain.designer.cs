@@ -146,7 +146,7 @@
             this.bar1.BarName = "Tools";
             this.bar1.DockCol = 0;
             this.bar1.DockRow = 0;
-            this.bar1.FloatLocation = new System.Drawing.Point(1175, 141);
+            this.bar1.FloatLocation = new System.Drawing.Point(1401, 172);
             this.bar1.FloatSize = new System.Drawing.Size(46, 31);
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});

@@ -41,17 +41,26 @@ namespace WinJiaoJing
         {
 
             string sCon = "";
+            string ssCon = "";
+            if (CommonInfo.CLng(this.cmbDeptID.EditValue) == -1)
+            {
+                ssCon += "aq.BaoSum";
+            }
             if (CommonInfo.CLng(this.cmbDeptID.EditValue) == 1)
             {
                 sCon += "  and ax.BaoType_Id=1 ";
+
+                ssCon += "aq.BaOSumA";
             }
             if (CommonInfo.CLng(this.cmbDeptID.EditValue) == 2)
             {
                 sCon += "  and ax.BaoType_Id=2 ";
+                ssCon += "aq.BaOSumB";
             }
             if (CommonInfo.CLng(this.cmbDeptID.EditValue) == 3)
             {
                 sCon += "  and ax.BaoType_Id=3 ";
+                ssCon += "aq.BaOSumD";
             }
 
 
@@ -59,18 +68,20 @@ namespace WinJiaoJing
             string sError = "";
             StringBuilder strSql1 = new StringBuilder();
             strSql1 = new StringBuilder();
-            strSql1.Append(" select AnQingXiang_ID,XiangBaoJia,AnQingId,Bao_Desc,XiangMuName,XiangMuSum,XiangMuCount,GongSiName from T_AnQingXiang ax ");
+            strSql1.Append(" select AnQingXiang_ID,XiangBaoJia,ax.AnQingId,Bao_Desc,XiangMuName,XiangMuSum,XiangMuCount,GongSiName," + ssCon + "  from T_AnQingXiang ax ");
             strSql1.Append(" join T_XiangMu xm on ax.XiangMuId=xm.XiangMuID");
             strSql1.Append(" join T_BaoType bt on ax.BaoType_Id=bt.Bao_TypeId");
             strSql1.Append(" join T_GongSi gs on ax.GongSiID=gs.GongSiId");
-            strSql1.Append(" where AnQingId=" + sID + sCon + " order by xm.XiangMuID");
+            strSql1.Append(" join T_AnQing aq on ax.AnQingId=aq.AnQingNo");
+            strSql1.Append(" where ax.AnQingId=" + sID + sCon + " order by xm.XiangMuID");
 
             DataTable dt = SqlHelper.RunQuery(CommandType.Text, strSql1.ToString(), null, out sError);
 
-           
-
             this.grd.DataSource = dt;
-            this.txtBao.Text = gridColumn4.SummaryText.Trim();
+            if ((int)dt.Rows[0][8]>0)
+                this.txtBao.Text = dt.Rows[0][8].ToString();
+            else 
+                this.txtBao.Text = gridColumn4.SummaryText.Trim();
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
