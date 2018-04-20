@@ -28,11 +28,13 @@ namespace WinJiaoJing
         {
             
             string sError = "";
-            string strSql = "select AnQingNo,AnQingDiDian,AnQingDesc,AnQingDate,AnQingDieCount from T_AnQing  where 1=1  " + sCon + " order by AnQingNo";
+            string strSql = "select AnQingNo,AnQingDiDian,AnQingDesc,AnQingDate,AnQingDieCount,State from T_AnQing  where 1=1  " + sCon + " order by AnQingNo";
             DataTable dt = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);
 
             this.grd.DataSource = dt;
         }
+
+       
         /// <summary>
         /// 查询
         /// </summary>
@@ -43,8 +45,31 @@ namespace WinJiaoJing
            
             string sError = "";
             string sCon = "";
-           
-          
+
+            if (ckd.Checked==true)
+            {
+                sCon += $" and AnQingDiZhi='{this.comDidIan.Text}'  ";
+            }
+            if (ckt.Checked==true)
+            {
+                if (this.txtDateSS.Text.Trim() == "")
+                {
+                    MessageBox.Show("时间段不允许为空");
+                    return;
+                }
+
+                if (this.txtT3.Text.Trim() == "")
+                {
+                    MessageBox.Show("时间段不允许为空");
+                    return;
+                }
+
+                sCon += $"  and AnQingDateSS>='{this.txtDateSS.Text.Trim()}' and AnQingDateSS<='{this.txtT3.Text.Trim()}'  ";
+
+
+
+            }
+            
             if (CommonInfo.CObjectToStr(this.dateEdit1.EditValue).Trim() != "")
             {
                 sCon += " and AnQingDate>='" + CommonInfo.CDate(this.dateEdit1.EditValue).ToString("yyyy-MM-dd") + " 00:00:00' ";
@@ -64,10 +89,17 @@ namespace WinJiaoJing
             
         }
         private void FrmCarTaiZhuang_Load(object sender, EventArgs e)
-        {        
+        {
+            string sError = "";
             this.dateEdit1.EditValue = DateTime.Now.ToString("yyyy-MM-01");
             this.dateEdit2.EditValue = CommonInfo.CDate(DateTime.Now.ToString("yyyy-MM-01")).AddMonths(1).AddDays(-1).ToString("yyyy-MM-dd");
            
+            //地址分类 
+            DataTable dt3 = SqlHelper.RunQuery(CommandType.Text, "select * from T_DiZHi", null, out sError);
+            comDidIan.DisplayMember = "DiZhiDesc";
+            comDidIan.ValueMember = "DiZhiID";
+            comDidIan.DataSource = dt3;
+            comDidIan.SelectedValue = "1";
         }
 
         private void groupControl1_Paint(object sender, PaintEventArgs e)
@@ -81,7 +113,10 @@ namespace WinJiaoJing
             {
                 return;
             }
-           
+
+            FrmTJXQ jxq = new FrmTJXQ(this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingNo"].ToString(), this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString());
+            jxq.ShowDialog();
+
         }
         /// <summary>
         /// 导出表
@@ -143,6 +178,38 @@ namespace WinJiaoJing
 
             }
             catch { }
+        }
+
+        private void ckd_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.ckd.Checked == true)
+            {
+                this.comDidIan.Enabled = true;
+            }
+            else
+            {
+                this.comDidIan.Enabled = false;
+            }
+        }
+
+        private void ckt_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.ckt.Checked == true)
+            {
+                this.txtDateSS.Enabled = true;
+                this.txtT3.Enabled = true;
+               
+            }
+            else
+            {
+                this.txtDateSS.Enabled = false;
+                this.txtT3.Enabled = false;
+            }
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

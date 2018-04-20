@@ -38,7 +38,8 @@ namespace WinJiaoJing
                     this.txtOperID.Text = dt.Rows[0]["GongSiName"].ToString();
                     this.cmbDeptID.EditValue = dt.Rows[0]["BaoTypeNo"];
                     this.txtRandom.Text = dt.Rows[0]["random"].ToString();
-                    this.txtPY.Text = dt.Rows[0]["PyCount"].ToString();    
+                    this.txtPY.Text = dt.Rows[0]["PyCount"].ToString();
+                    this.txtTow.Text = dt.Rows[0]["towRandom"].ToString();    
 
                 }
             }
@@ -46,34 +47,37 @@ namespace WinJiaoJing
         private void toolSave_Click(object sender, EventArgs e)
         {
             string sError = "";
-            string ID, GongSiName, OperName, DeptID, DeptName, random, PyCount;
+            string ID, GongSiName, OperName, DeptID, DeptName, random, PyCount,Tow;
             ID=sID;
             GongSiName = this.txtOperID.Text.Trim();      
             DeptID=this.cmbDeptID.EditValue.ToString();
             DeptName=this.cmbDeptID.Text.Trim();
             random = this.txtRandom.Text.Trim();
             PyCount = this.txtPY.Text.Trim();
+            Tow = this.txtTow.Text.Trim();
 
             StringBuilder strSql = new StringBuilder();
             if (sID.Trim() == "")
             {
                 strSql = new StringBuilder();
                 strSql.Append("insert into T_gongsi(");
-                strSql.Append("GongSiName,BaoTypeNo,random,PyCount)");
+                strSql.Append("GongSiName,BaoTypeNo,random,PyCount,towRandom)");
                 strSql.Append(" values (");
-                strSql.Append("@GongSiName,@DeptID,@random,@PyCount)");
+                strSql.Append("@GongSiName,@DeptID,@random,@PyCount,@towRandom)");
                 strSql.Append(";select @@IDENTITY");
                 SqlParameter[] parameters = {
                     new SqlParameter("@GongSiName", SqlDbType.VarChar,60),
                     new SqlParameter("@DeptID", SqlDbType.Int),
                     new SqlParameter("@random",SqlDbType.Int),
-                    new SqlParameter("@PyCount",SqlDbType.Int)
+                    new SqlParameter("@PyCount",SqlDbType.Int),
+                    new SqlParameter("@towRandom",SqlDbType.Int)
                 };
                     
                 parameters[0].Value = GongSiName;
                 parameters[1].Value = DeptID;
                 parameters[2].Value = random;
-                parameters[3].Value = PyCount;   
+                parameters[3].Value = PyCount;
+                parameters[4].Value = Tow;
                 SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters, out sError);
                 if(sError.Trim()!="")
                 {
@@ -89,19 +93,22 @@ namespace WinJiaoJing
                 strSql.Append("GongSiName=@GongSiName,");
                 strSql.Append("BaoTypeNo=@BaoTypeId,");
                 strSql.Append("random=@random,");
-                strSql.Append("PyCount=@PyCount");
+                strSql.Append("PyCount=@PyCount,");
+                strSql.Append("towRandom=@towRandom");
                 strSql.Append(" where GongSiId=@GongSiId");
                 SqlParameter[] parameters = {
 					new SqlParameter("@GongSiName", SqlDbType.VarChar,50),
 					new SqlParameter("@BaoTypeId", SqlDbType.Int),
                      new SqlParameter("@random",SqlDbType.Int),
                      new SqlParameter("@PyCount",SqlDbType.Int),
+                     new SqlParameter("@towRandom",SqlDbType.Int),
                 new SqlParameter("@GongSiId", SqlDbType.BigInt,8)};
                 parameters[0].Value = GongSiName;
                 parameters[1].Value = DeptID;
                 parameters[2].Value = random;
                 parameters[3].Value = PyCount;
-                parameters[4].Value = sID;
+                parameters[4].Value =Tow;
+                parameters[5].Value = sID;
             
                 SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters, out sError);
                 if (sError.Trim() != "")

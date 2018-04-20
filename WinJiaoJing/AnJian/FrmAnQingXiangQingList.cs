@@ -55,7 +55,7 @@ namespace WinJiaoJing
             string sError = "";
             StringBuilder strSql1 = new StringBuilder();
             strSql1 = new StringBuilder();
-            strSql1.Append(" select AnQingXiang_ID,AnQingId,Bao_Desc,XiangMuName,XiangMuSum,XiangMuCount,GongSiName from T_AnQingXiang ax ");
+            strSql1.Append(" select AnQingXiang_ID,AnQingId,XiangMuNo,Bao_Desc,XiangMuName,XiangBaoJia,GongSiName from T_AnQingXiang ax ");
             strSql1.Append(" join T_XiangMu xm on ax.XiangMuId=xm.XiangMuID");
             strSql1.Append(" join T_BaoType bt on ax.BaoType_Id=bt.Bao_TypeId");
             strSql1.Append(" join T_GongSi gs on ax.GongSiID=gs.GongSiId");

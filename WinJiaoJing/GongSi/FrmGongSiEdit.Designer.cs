@@ -46,6 +46,8 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.txtOperID = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.txtTow = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -53,6 +55,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPY.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRandom.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOperID.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTow.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -99,6 +102,8 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.txtTow);
+            this.groupControl1.Controls.Add(this.labelControl4);
             this.groupControl1.Controls.Add(this.label3);
             this.groupControl1.Controls.Add(this.label2);
             this.groupControl1.Controls.Add(this.label1);
@@ -113,14 +118,14 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 26);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(513, 265);
+            this.groupControl1.Size = new System.Drawing.Size(513, 321);
             this.groupControl1.TabIndex = 2;
             this.groupControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl1_Paint);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 242);
+            this.label3.Location = new System.Drawing.Point(7, 284);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(372, 14);
             this.label3.TabIndex = 15;
@@ -137,7 +142,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 188);
+            this.label1.Location = new System.Drawing.Point(8, 233);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(410, 14);
             this.label1.TabIndex = 13;
@@ -146,7 +151,7 @@
             // cmbDeptID
             // 
             this.cmbDeptID.EditValue = "";
-            this.cmbDeptID.Location = new System.Drawing.Point(86, 47);
+            this.cmbDeptID.Location = new System.Drawing.Point(120, 46);
             this.cmbDeptID.Name = "cmbDeptID";
             this.cmbDeptID.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -161,7 +166,7 @@
             // labelControl7
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
-            this.labelControl7.Location = new System.Drawing.Point(25, 50);
+            this.labelControl7.Location = new System.Drawing.Point(54, 46);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(60, 16);
             this.labelControl7.TabIndex = 12;
@@ -169,7 +174,7 @@
             // 
             // txtPY
             // 
-            this.txtPY.Location = new System.Drawing.Point(86, 210);
+            this.txtPY.Location = new System.Drawing.Point(120, 258);
             this.txtPY.Name = "txtPY";
             this.txtPY.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtPY.Size = new System.Drawing.Size(175, 20);
@@ -178,7 +183,7 @@
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
-            this.labelControl3.Location = new System.Drawing.Point(11, 212);
+            this.labelControl3.Location = new System.Drawing.Point(39, 260);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(75, 16);
             this.labelControl3.TabIndex = 0;
@@ -186,7 +191,7 @@
             // 
             // txtRandom
             // 
-            this.txtRandom.Location = new System.Drawing.Point(86, 158);
+            this.txtRandom.Location = new System.Drawing.Point(120, 152);
             this.txtRandom.Name = "txtRandom";
             this.txtRandom.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtRandom.Size = new System.Drawing.Size(175, 20);
@@ -195,7 +200,7 @@
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
-            this.labelControl2.Location = new System.Drawing.Point(11, 160);
+            this.labelControl2.Location = new System.Drawing.Point(45, 154);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(75, 16);
             this.labelControl2.TabIndex = 0;
@@ -203,7 +208,7 @@
             // 
             // txtOperID
             // 
-            this.txtOperID.Location = new System.Drawing.Point(86, 103);
+            this.txtOperID.Location = new System.Drawing.Point(120, 99);
             this.txtOperID.Name = "txtOperID";
             this.txtOperID.Size = new System.Drawing.Size(359, 20);
             this.txtOperID.TabIndex = 0;
@@ -211,17 +216,34 @@
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
-            this.labelControl1.Location = new System.Drawing.Point(10, 104);
+            this.labelControl1.Location = new System.Drawing.Point(45, 99);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(75, 16);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "公司名称：";
             // 
+            // txtTow
+            // 
+            this.txtTow.Location = new System.Drawing.Point(120, 205);
+            this.txtTow.Name = "txtTow";
+            this.txtTow.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtTow.Size = new System.Drawing.Size(175, 20);
+            this.txtTow.TabIndex = 16;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
+            this.labelControl4.Location = new System.Drawing.Point(5, 206);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(115, 16);
+            this.labelControl4.TabIndex = 17;
+            this.labelControl4.Text = "(二次)奖池数量：";
+            // 
             // FrmGongSiEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(513, 291);
+            this.ClientSize = new System.Drawing.Size(513, 347);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.toolStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -240,6 +262,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPY.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRandom.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOperID.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTow.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,5 +287,7 @@
         private DevExpress.XtraEditors.TextEdit txtPY;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private System.Windows.Forms.Label label3;
+        private DevExpress.XtraEditors.TextEdit txtTow;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
     }
 }

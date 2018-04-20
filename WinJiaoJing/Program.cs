@@ -19,7 +19,7 @@ namespace WinJiaoJing
         public static int iErBaoTiXingDay = 1;
         public static int iNianJianTiXingDay = 1;
         public static DataTable dtQx;
-        public static string sVersion = "V2015.9.9";
+        public static string sVersion = "V2018.4.20";
 
         /// <summary>
         /// 应用程序的主入口点。

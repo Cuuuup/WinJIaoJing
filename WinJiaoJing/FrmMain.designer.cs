@@ -60,6 +60,7 @@
             this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
@@ -136,9 +137,10 @@
             this.barButtonItem14,
             this.barButtonItem15,
             this.barButtonItem16,
-            this.barButtonItem17});
+            this.barButtonItem17,
+            this.barButtonItem18});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 26;
+            this.barManager1.MaxItemId = 27;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -146,7 +148,7 @@
             this.bar1.BarName = "Tools";
             this.bar1.DockCol = 0;
             this.bar1.DockRow = 0;
-            this.bar1.FloatLocation = new System.Drawing.Point(1401, 172);
+            this.bar1.FloatLocation = new System.Drawing.Point(1473, 72);
             this.bar1.FloatSize = new System.Drawing.Size(46, 31);
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
@@ -253,7 +255,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem13),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem14),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem15),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem16)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem16),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem18)});
             this.brahw.Name = "brahw";
             // 
             // barButtonItem13
@@ -287,6 +290,14 @@
             this.barButtonItem16.Name = "barButtonItem16";
             this.barButtonItem16.Tag = "信息维护|案件详情母版维护";
             this.barButtonItem16.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            // 
+            // barButtonItem18
+            // 
+            this.barButtonItem18.Caption = "案发地点维护";
+            this.barButtonItem18.Id = 26;
+            this.barButtonItem18.Name = "barButtonItem18";
+            this.barButtonItem18.Tag = "信息维护|案发地点维护";
+            this.barButtonItem18.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // barSubItem3
             // 
@@ -579,6 +590,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem15;
         private DevExpress.XtraBars.BarButtonItem barButtonItem16;
         private DevExpress.XtraBars.BarButtonItem barButtonItem17;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem18;
     }
 }
 

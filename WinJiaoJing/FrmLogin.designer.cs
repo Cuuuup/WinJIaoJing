@@ -159,7 +159,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(375, 286);
+            this.ClientSize = new System.Drawing.Size(375, 281);
             this.Controls.Add(this.lookUpEdit2);
             this.Controls.Add(this.labelControl46);
             this.Controls.Add(this.cmbDeptID);

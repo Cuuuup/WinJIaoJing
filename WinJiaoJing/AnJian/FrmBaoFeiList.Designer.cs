@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBaoFeiList));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.checkEdit5 = new DevExpress.XtraEditors.CheckEdit();
+            this.checkEdit4 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
@@ -45,6 +47,7 @@
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.grd = new DevExpress.XtraGrid.GridControl();
             this.gv = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -57,6 +60,7 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.toolAdd = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -71,10 +75,12 @@
             this.toolClose = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolTwo = new System.Windows.Forms.ToolStripButton();
+            this.toolDel = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit5.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
@@ -108,6 +114,8 @@
             this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 9.5F);
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
             this.groupControl1.CaptionLocation = DevExpress.Utils.Locations.Top;
+            this.groupControl1.Controls.Add(this.checkEdit5);
+            this.groupControl1.Controls.Add(this.checkEdit4);
             this.groupControl1.Controls.Add(this.checkEdit3);
             this.groupControl1.Controls.Add(this.checkEdit2);
             this.groupControl1.Controls.Add(this.checkEdit1);
@@ -121,42 +129,64 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 26);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(727, 101);
+            this.groupControl1.Size = new System.Drawing.Size(723, 101);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "查询条件";
             // 
+            // checkEdit5
+            // 
+            this.checkEdit5.Location = new System.Drawing.Point(191, 70);
+            this.checkEdit5.Name = "checkEdit5";
+            this.checkEdit5.Properties.Caption = "已结算";
+            this.checkEdit5.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
+            this.checkEdit5.Properties.RadioGroupIndex = 1;
+            this.checkEdit5.Size = new System.Drawing.Size(58, 19);
+            this.checkEdit5.TabIndex = 10;
+            this.checkEdit5.TabStop = false;
+            // 
+            // checkEdit4
+            // 
+            this.checkEdit4.Location = new System.Drawing.Point(255, 70);
+            this.checkEdit4.Name = "checkEdit4";
+            this.checkEdit4.Properties.Caption = "已作废";
+            this.checkEdit4.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
+            this.checkEdit4.Properties.RadioGroupIndex = 1;
+            this.checkEdit4.Size = new System.Drawing.Size(62, 19);
+            this.checkEdit4.TabIndex = 9;
+            this.checkEdit4.TabStop = false;
+            // 
             // checkEdit3
             // 
-            this.checkEdit3.EditValue = true;
             this.checkEdit3.Location = new System.Drawing.Point(12, 70);
             this.checkEdit3.Name = "checkEdit3";
             this.checkEdit3.Properties.Caption = "全选";
             this.checkEdit3.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
             this.checkEdit3.Properties.RadioGroupIndex = 1;
-            this.checkEdit3.Size = new System.Drawing.Size(75, 19);
+            this.checkEdit3.Size = new System.Drawing.Size(47, 19);
             this.checkEdit3.TabIndex = 8;
+            this.checkEdit3.TabStop = false;
             // 
             // checkEdit2
             // 
-            this.checkEdit2.Location = new System.Drawing.Point(87, 70);
+            this.checkEdit2.Location = new System.Drawing.Point(65, 70);
             this.checkEdit2.Name = "checkEdit2";
-            this.checkEdit2.Properties.Caption = "已提交";
+            this.checkEdit2.Properties.Caption = "进行中";
             this.checkEdit2.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
             this.checkEdit2.Properties.RadioGroupIndex = 1;
-            this.checkEdit2.Size = new System.Drawing.Size(75, 19);
+            this.checkEdit2.Size = new System.Drawing.Size(55, 19);
             this.checkEdit2.TabIndex = 7;
             this.checkEdit2.TabStop = false;
             // 
             // checkEdit1
             // 
-            this.checkEdit1.Location = new System.Drawing.Point(162, 70);
+            this.checkEdit1.EditValue = true;
+            this.checkEdit1.Location = new System.Drawing.Point(126, 70);
             this.checkEdit1.Name = "checkEdit1";
             this.checkEdit1.Properties.Caption = "未提交";
             this.checkEdit1.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
             this.checkEdit1.Properties.RadioGroupIndex = 1;
-            this.checkEdit1.Size = new System.Drawing.Size(75, 19);
+            this.checkEdit1.Size = new System.Drawing.Size(59, 19);
             this.checkEdit1.TabIndex = 7;
-            this.checkEdit1.TabStop = false;
             // 
             // dtpDateEnd
             // 
@@ -232,7 +262,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 127);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(727, 341);
+            this.groupControl2.Size = new System.Drawing.Size(723, 341);
             this.groupControl2.TabIndex = 2;
             this.groupControl2.Text = "详细信息";
             // 
@@ -244,7 +274,7 @@
             this.grd.Name = "grd";
             this.grd.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemDateEdit1});
-            this.grd.Size = new System.Drawing.Size(723, 316);
+            this.grd.Size = new System.Drawing.Size(719, 316);
             this.grd.TabIndex = 0;
             this.grd.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv});
@@ -252,7 +282,12 @@
             // 
             // gv
             // 
+            this.gv.Appearance.FocusedRow.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.gv.Appearance.FocusedRow.ForeColor = System.Drawing.Color.White;
+            this.gv.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gv.Appearance.FocusedRow.Options.UseForeColor = true;
             this.gv.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn12,
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn8,
@@ -264,13 +299,27 @@
             this.gridColumn3,
             this.gridColumn1,
             this.gridColumn2,
-            this.gridColumn11});
+            this.gridColumn11,
+            this.gridColumn13});
             this.gv.GridControl = this.grd;
             this.gv.Name = "gv";
             this.gv.OptionsView.ColumnAutoWidth = false;
             this.gv.OptionsView.ShowFooter = true;
             this.gv.OptionsView.ShowGroupPanel = false;
             this.gv.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gv_RowStyle);
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.5F);
+            this.gridColumn12.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn12.Caption = "状态";
+            this.gridColumn12.FieldName = "State";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.OptionsColumn.AllowEdit = false;
+            this.gridColumn12.OptionsColumn.AllowFocus = false;
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 0;
+            this.gridColumn12.Width = 74;
             // 
             // gridColumn4
             // 
@@ -283,7 +332,7 @@
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.OptionsColumn.AllowFocus = false;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 0;
+            this.gridColumn4.VisibleIndex = 1;
             this.gridColumn4.Width = 64;
             // 
             // gridColumn5
@@ -297,7 +346,7 @@
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.OptionsColumn.AllowFocus = false;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 1;
+            this.gridColumn5.VisibleIndex = 2;
             this.gridColumn5.Width = 74;
             // 
             // gridColumn8
@@ -311,7 +360,7 @@
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.OptionsColumn.AllowFocus = false;
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 2;
+            this.gridColumn8.VisibleIndex = 3;
             this.gridColumn8.Width = 74;
             // 
             // gridColumn9
@@ -355,8 +404,8 @@
             this.gridColumn18.OptionsColumn.AllowEdit = false;
             this.gridColumn18.OptionsColumn.AllowFocus = false;
             this.gridColumn18.Visible = true;
-            this.gridColumn18.VisibleIndex = 3;
-            this.gridColumn18.Width = 444;
+            this.gridColumn18.VisibleIndex = 7;
+            this.gridColumn18.Width = 544;
             // 
             // gridColumn6
             // 
@@ -385,8 +434,8 @@
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.OptionsColumn.AllowFocus = false;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 7;
-            this.gridColumn7.Width = 74;
+            this.gridColumn7.VisibleIndex = 8;
+            this.gridColumn7.Width = 84;
             // 
             // gridColumn3
             // 
@@ -413,8 +462,8 @@
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.OptionsColumn.AllowFocus = false;
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 8;
-            this.gridColumn1.Width = 244;
+            this.gridColumn1.VisibleIndex = 9;
+            this.gridColumn1.Width = 276;
             // 
             // gridColumn2
             // 
@@ -427,6 +476,12 @@
             this.gridColumn11.Caption = "二次鉴定";
             this.gridColumn11.FieldName = "AnQingTwo";
             this.gridColumn11.Name = "gridColumn11";
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "审核时间";
+            this.gridColumn13.FieldName = "insDate";
+            this.gridColumn13.Name = "gridColumn13";
             // 
             // repositoryItemDateEdit1
             // 
@@ -535,24 +590,24 @@
             this.toolStripSeparator3,
             this.tooltijiao,
             this.toolStripSeparator5,
-            this.toolTwo,
+            this.toolDel,
             this.toolStripSeparator6,
             this.toolClose,
             this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(727, 26);
+            this.toolStrip1.Size = new System.Drawing.Size(723, 26);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolTwo
+            // toolDel
             // 
-            this.toolTwo.Image = ((System.Drawing.Image)(resources.GetObject("toolTwo.Image")));
-            this.toolTwo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolTwo.Name = "toolTwo";
-            this.toolTwo.Size = new System.Drawing.Size(81, 23);
-            this.toolTwo.Text = "二次鉴定";
-            this.toolTwo.Click += new System.EventHandler(this.toolTwo_Click);
+            this.toolDel.Image = ((System.Drawing.Image)(resources.GetObject("toolDel.Image")));
+            this.toolDel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolDel.Name = "toolDel";
+            this.toolDel.Size = new System.Drawing.Size(55, 23);
+            this.toolDel.Text = "作废";
+            this.toolDel.Click += new System.EventHandler(this.toolTwo_Click);
             // 
             // toolStripSeparator6
             // 
@@ -563,15 +618,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(727, 468);
+            this.ClientSize = new System.Drawing.Size(723, 468);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "FrmBaoFeiList";
             this.Text = "案情管理";
+            this.Load += new System.EventHandler(this.FrmBaoFeiList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit5.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
@@ -634,8 +692,12 @@
         private System.Windows.Forms.ToolStripButton toolClose;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolTwo;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private System.Windows.Forms.ToolStripButton toolDel;
+        private DevExpress.XtraEditors.CheckEdit checkEdit4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraEditors.CheckEdit checkEdit5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
     }
 }

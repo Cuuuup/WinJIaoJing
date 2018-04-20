@@ -36,19 +36,56 @@ namespace WinJiaoJing
                     this.treeView1.Nodes[3].Expand();
                 }
                 catch { }
+               
+
                 Form1 childForm = new Form1();
                 childForm.MdiParent = this;
                 childForm.Text = "我的桌面";
                 childForm.Show();
+
+
+                string sError = "";
+                string sql = $"select AnQingDate,insDate from T_AnQing where DeftName='{ Program.sDeptName}' and OperName='{Program.sOperName}' and State='进行中'";
+
+                string sumdate= "";
+                string _sumdate = "";
+                DataTable tbDate = SqlHelper.RunQuery(CommandType.Text, sql, null,out sError);
+                if (tbDate.Rows.Count!=0)
+                {
+                    int cha = 0;
+                    for (int i = 0; i < tbDate.Rows.Count; i++)
+                    {
+                        cha = CommonInfo.DateDiff(Convert.ToDateTime(tbDate.Rows[i]["insDate"]), DateTime.Now);
+
+                        
+                        if (cha >= 20)
+                        {
+
+                            sumdate=Convert.ToDateTime(tbDate.Rows[i]["AnQingDate"]).ToString("M月");
+
+                            if (sumdate!=_sumdate)
+                            {
+                                MessageBox.Show(sumdate+"有正在进行中的检测项以超过20天,请尽快处理！","警告",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                                _sumdate = sumdate;
+                            }   
+                         
+                        }
+
+                    }
+                   
+                }
+
                 if (Program.sRoleID == "003")
                 {
                     FrmBaoFeiEdit bf = new FrmBaoFeiEdit();
                     bf.ShowDialog();
                 }
+
+
                                
 
                 //菜单权限读取
-                string sError = "";
+                
                 string sRoleID = Program.sRoleID;
                 string strSql = "SELECT *,TQx_Menu.TreeNodeName FROM TQx_RoleQx left join TQx_Menu on TQx_Menu.MenuID=TQx_RoleQx.MenuID  WHERE IsQx=1 and TQx_Menu.TreeNodeName<>'' and  RoleID='" + sRoleID + "' order by TQx_Menu.SortID ";
                 DataTable dtQx = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);
@@ -69,13 +106,14 @@ namespace WinJiaoJing
             try
             {
                 string sError = "";
-                string strSql = "select * from T_Sys where 1=1 order by ID desc";
+                string strSql = "select * from T_BanBen where 1=1";
                 DataTable dtInit = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);
 
-                barButtonItem9.Caption = dtInit.Rows[0]["Demo"].ToString();// "唐运集团：0315-5016071，技术部电话：4006-315-167";
-                if (dtInit.Rows[0]["Version"].ToString().Trim() != "100" && dtInit.Rows[0]["Version"].ToString().Trim() != Program.sVersion)
+                barButtonItem9.Caption = dtInit.Rows[0]["BanBenDesc"].ToString();
+                if (dtInit.Rows[0]["BanBenDesc"].ToString().Trim() != Program.sVersion)
                 {
-                    MessageBox.Show("您的当前版本不是最新版本，请更新到最新版本[" + dtInit.Rows[0]["Version"].ToString().Trim() + "]！", "提示");
+                    MessageBox.Show("您的当前版本不是最新版本，请更新到最新版本[" + dtInit.Rows[0]["BanBenDesc"].ToString().Trim() + "]！", "提示");
+                    this.Close();
                 }
             }
             catch { barButtonItem9.Caption = "       "; }
@@ -262,6 +300,14 @@ namespace WinJiaoJing
                             FrmMuBan.MdiParent = this;
                             FrmMuBan.Text = "案件详情母版维护";
                             FrmMuBan.Show();
+                            break;
+                        case "案发地点维护":
+                            if (IsExistsForm("案发地点维护"))
+                                return;
+                            FrmDiDian FrmDiDian = new FrmDiDian();
+                            FrmDiDian.MdiParent = this;
+                            FrmDiDian.Text = "案发地点维护";
+                            FrmDiDian.Show();
                             break;
 
                     }

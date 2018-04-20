@@ -256,6 +256,18 @@
     <Compile Include="AnJian\FrmPrintAnQing.Designer.cs">
       <DependentUpon>FrmPrintAnQing.cs</DependentUpon>
     </Compile>
+    <Compile Include="DiDian\FrmDiDian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiDian\FrmDiDian.Designer.cs">
+      <DependentUpon>FrmDiDian.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiDian\FrmDiDianEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiDian\FrmDiDianEdit.Designer.cs">
+      <DependentUpon>FrmDiDianEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lib\RandomController.cs" />
     <Compile Include="PrintRibbonControllerResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -451,6 +463,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AnJian\FrmPrintAnQing.resx">
       <DependentUpon>FrmPrintAnQing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiDian\FrmDiDian.resx">
+      <DependentUpon>FrmDiDian.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiDian\FrmDiDianEdit.resx">
+      <DependentUpon>FrmDiDianEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintRibbonControllerResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -672,8 +690,16 @@
     <None Include="Resources\LoginB.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\BJ.png" />
+    <Content Include="Resources\JJ主页LOGO.png" />
+    <Content Include="Resources\JJ字体.png" />
+    <Content Include="Resources\JJ登录背景.png" />
+    <Content Include="Resources\JJ背景.png" />
+    <Content Include="Resources\logoB.png" />
     <Content Include="Resources\timg.gif" />
+    <Content Include="Resources\topB.png" />
     <Content Include="Resources\yiyun.ico" />
+    <Content Include="Resources\Z.png" />
     <Content Include="yiyun.ico" />
     <None Include="Resources\菜单管理%282%29.png" />
     <None Include="Resources\菜单管理%281%29.png" />

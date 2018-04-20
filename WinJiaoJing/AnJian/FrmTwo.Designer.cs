@@ -59,6 +59,10 @@
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.txtAnQingDesc = new DevExpress.XtraEditors.MemoEdit();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.txtDateSS = new DevExpress.XtraEditors.TimeEdit();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.comDidIan = new System.Windows.Forms.ComboBox();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.txtDieCount = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -95,6 +99,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtAnQingDesc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDateSS.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDieCount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
@@ -154,7 +159,7 @@
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
-            this.labelControl3.Location = new System.Drawing.Point(29, 70);
+            this.labelControl3.Location = new System.Drawing.Point(29, 66);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(53, 16);
             this.labelControl3.TabIndex = 13;
@@ -163,7 +168,7 @@
             // txtDiDian
             // 
             this.txtDiDian.EnterMoveNextControl = true;
-            this.txtDiDian.Location = new System.Drawing.Point(81, 68);
+            this.txtDiDian.Location = new System.Drawing.Point(82, 102);
             this.txtDiDian.Name = "txtDiDian";
             this.txtDiDian.Size = new System.Drawing.Size(175, 20);
             this.txtDiDian.TabIndex = 0;
@@ -173,7 +178,7 @@
             // labelControl9
             // 
             this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
-            this.labelControl9.Location = new System.Drawing.Point(265, 72);
+            this.labelControl9.Location = new System.Drawing.Point(265, 67);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(75, 16);
             this.labelControl9.TabIndex = 17;
@@ -228,7 +233,7 @@
             // 
             this.txtDate.EditValue = null;
             this.txtDate.EnterMoveNextControl = true;
-            this.txtDate.Location = new System.Drawing.Point(343, 68);
+            this.txtDate.Location = new System.Drawing.Point(343, 65);
             this.txtDate.Name = "txtDate";
             this.txtDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -335,7 +340,7 @@
             // labelControl16
             // 
             this.labelControl16.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
-            this.labelControl16.Location = new System.Drawing.Point(12, 198);
+            this.labelControl16.Location = new System.Drawing.Point(12, 227);
             this.labelControl16.Name = "labelControl16";
             this.labelControl16.Size = new System.Drawing.Size(75, 16);
             this.labelControl16.TabIndex = 47;
@@ -344,7 +349,7 @@
             // labelControl20
             // 
             this.labelControl20.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
-            this.labelControl20.Location = new System.Drawing.Point(286, 598);
+            this.labelControl20.Location = new System.Drawing.Point(286, 608);
             this.labelControl20.Name = "labelControl20";
             this.labelControl20.Size = new System.Drawing.Size(195, 16);
             this.labelControl20.TabIndex = 51;
@@ -353,14 +358,14 @@
             // txtDemo
             // 
             this.txtDemo.EnterMoveNextControl = true;
-            this.txtDemo.Location = new System.Drawing.Point(483, 596);
+            this.txtDemo.Location = new System.Drawing.Point(483, 606);
             this.txtDemo.Name = "txtDemo";
             this.txtDemo.Size = new System.Drawing.Size(444, 20);
             this.txtDemo.TabIndex = 14;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(277, 632);
+            this.btnSave.Location = new System.Drawing.Point(277, 642);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(80, 30);
             this.btnSave.TabIndex = 52;
@@ -370,7 +375,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(522, 632);
+            this.btnClose.Location = new System.Drawing.Point(524, 642);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(80, 30);
             this.btnClose.TabIndex = 54;
@@ -379,13 +384,17 @@
             // 
             // txtAnQingDesc
             // 
-            this.txtAnQingDesc.Location = new System.Drawing.Point(83, 139);
+            this.txtAnQingDesc.Location = new System.Drawing.Point(83, 168);
             this.txtAnQingDesc.Name = "txtAnQingDesc";
             this.txtAnQingDesc.Size = new System.Drawing.Size(432, 147);
             this.txtAnQingDesc.TabIndex = 12;
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.txtDateSS);
+            this.groupControl1.Controls.Add(this.labelControl8);
+            this.groupControl1.Controls.Add(this.comDidIan);
+            this.groupControl1.Controls.Add(this.labelControl7);
             this.groupControl1.Controls.Add(this.txtDieCount);
             this.groupControl1.Controls.Add(this.labelControl2);
             this.groupControl1.Controls.Add(this.comboBox1);
@@ -412,14 +421,53 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(939, 674);
+            this.groupControl1.Size = new System.Drawing.Size(939, 681);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl1_Paint);
+            // 
+            // txtDateSS
+            // 
+            this.txtDateSS.EditValue = new System.DateTime(2018, 4, 19, 0, 0, 0, 0);
+            this.txtDateSS.Location = new System.Drawing.Point(343, 100);
+            this.txtDateSS.Name = "txtDateSS";
+            this.txtDateSS.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtDateSS.Size = new System.Drawing.Size(175, 20);
+            this.txtDateSS.TabIndex = 65;
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
+            this.labelControl8.Location = new System.Drawing.Point(7, 104);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(75, 16);
+            this.labelControl8.TabIndex = 64;
+            this.labelControl8.Text = "详细地址：";
+            // 
+            // comDidIan
+            // 
+            this.comDidIan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comDidIan.FormattingEnabled = true;
+            this.comDidIan.Items.AddRange(new object[] {
+            "请选择"});
+            this.comDidIan.Location = new System.Drawing.Point(82, 66);
+            this.comDidIan.Name = "comDidIan";
+            this.comDidIan.Size = new System.Drawing.Size(175, 22);
+            this.comDidIan.TabIndex = 63;
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
+            this.labelControl7.Location = new System.Drawing.Point(265, 104);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(75, 16);
+            this.labelControl7.TabIndex = 61;
+            this.labelControl7.Text = "事发时间：";
             // 
             // txtDieCount
             // 
             this.txtDieCount.EnterMoveNextControl = true;
-            this.txtDieCount.Location = new System.Drawing.Point(101, 596);
+            this.txtDieCount.Location = new System.Drawing.Point(101, 606);
             this.txtDieCount.Name = "txtDieCount";
             this.txtDieCount.Properties.Mask.EditMask = "n0";
             this.txtDieCount.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
@@ -429,7 +477,7 @@
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
-            this.labelControl2.Location = new System.Drawing.Point(20, 598);
+            this.labelControl2.Location = new System.Drawing.Point(20, 608);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(75, 16);
             this.labelControl2.TabIndex = 58;
@@ -440,9 +488,9 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "请选择"});
-            this.comboBox1.Location = new System.Drawing.Point(89, 104);
+            this.comboBox1.Location = new System.Drawing.Point(83, 133);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(426, 22);
+            this.comboBox1.Size = new System.Drawing.Size(432, 22);
             this.comboBox1.TabIndex = 56;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -454,7 +502,7 @@
             this.groupControl3.Controls.Add(this.checkButton1);
             this.groupControl3.Controls.Add(this.checkButton2);
             this.groupControl3.Controls.Add(this.checkedListBoxControl2);
-            this.groupControl3.Location = new System.Drawing.Point(12, 312);
+            this.groupControl3.Location = new System.Drawing.Point(12, 322);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.Size = new System.Drawing.Size(913, 264);
             this.groupControl3.TabIndex = 55;
@@ -556,7 +604,7 @@
             this.repositoryItemTextEdit2.AutoHeight = false;
             this.repositoryItemTextEdit2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.repositoryItemTextEdit2.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.repositoryItemTextEdit2.Mask.EditMask = "n1";
+            this.repositoryItemTextEdit2.Mask.EditMask = "d";
             this.repositoryItemTextEdit2.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.repositoryItemTextEdit2.Name = "repositoryItemTextEdit2";
             // 
@@ -619,7 +667,7 @@
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
-            this.labelControl1.Location = new System.Drawing.Point(7, 109);
+            this.labelControl1.Location = new System.Drawing.Point(7, 138);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(75, 16);
             this.labelControl1.TabIndex = 47;
@@ -648,7 +696,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(939, 674);
+            this.ClientSize = new System.Drawing.Size(939, 681);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.toolStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -675,6 +723,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDateSS.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDieCount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
@@ -746,5 +795,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private System.Windows.Forms.ComboBox comDidIan;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.TimeEdit txtDateSS;
     }
 }

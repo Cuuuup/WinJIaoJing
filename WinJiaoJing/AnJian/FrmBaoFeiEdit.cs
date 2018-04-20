@@ -16,7 +16,7 @@ namespace WinJiaoJing
     public partial class FrmBaoFeiEdit : Form
     {
         public string sID = "";
-        public int isOK = -1;
+        public string State = "";
         public FrmBaoFeiEdit()
         {
             InitializeComponent();
@@ -28,10 +28,10 @@ namespace WinJiaoJing
             sID = _ID;
             InitializeComponent();
         }
-        public FrmBaoFeiEdit(string _ID,int _isOK)
+        public FrmBaoFeiEdit(string _ID,string _state)
         {
             sID = _ID;
-            isOK = _isOK;
+            State = _state;
             InitializeComponent();
         }
         private void FrmRoleEdit_Load(object sender, EventArgs e)
@@ -42,22 +42,24 @@ namespace WinJiaoJing
 
             this.txtDieCount.Text = "0";
 
-            if (isOK == 0)
-            {
-                this.groupControl2.Enabled = false;
-                this.groupControl3.Enabled = false;
-            }
 
             //包分类
             DataTable dt1 = SqlHelper.RunQuery(CommandType.Text, "select * from T_BaoType", null, out sError);
             //母版分类
             DataTable dt2 = SqlHelper.RunQuery(CommandType.Text, "select * from T_MuBan", null, out sError);
-
+            //地址分类 
+            DataTable dt3 = SqlHelper.RunQuery(CommandType.Text, "select * from T_DiZHi", null, out sError);
+        
 
             comboBox1.DisplayMember = "MuBanName";   // Text，即显式的文本
             comboBox1.ValueMember = "MuBanId";    // Value，即实际的值
             comboBox1.DataSource = dt2;
             comboBox1.SelectedValue = "0";
+
+            comDidIan.DisplayMember = "DiZhiDesc";
+            comDidIan.ValueMember = "DiZhiID";
+            comDidIan.DataSource = dt3;
+            comDidIan.SelectedValue = "1";
 
 
             //清空项
@@ -81,13 +83,20 @@ namespace WinJiaoJing
             //项目有编号 修改的情况下 显示数据
             if (sID.Trim() != "")
             {
-                this.groupControl2.Enabled = false;
+
+                if (State=="进行中")
+                {
+                    this.groupControl2.Enabled = false;
+                    this.groupControl3.Enabled = false;
+                }
+
                 sError = "";
                 strSql = "SELECT * FROM T_AnQing WHERE AnQingID=" + sID;
 
                 DataTable dt = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);
                 if (dt.Rows.Count > 0)
                 {
+                    this.comDidIan.Text = dt.Rows[0]["AnQingDiZhi"].ToString();
                     this.txt_AnQingID.Text = dt.Rows[0]["AnQingID"].ToString();
                     this.txt_No.Text = dt.Rows[0]["AnQingNo"].ToString();
                     this.txtDiDian.Text = dt.Rows[0]["AnQingDiDian"].ToString();
@@ -97,12 +106,14 @@ namespace WinJiaoJing
                     this.txtAnQingDesc.Text = dt.Rows[0]["AnQingDesc"].ToString();
                     this.txtDate.Text = dt.Rows[0]["AnQingDate"].ToString();
                     this.txtDieCount.Text = dt.Rows[0]["AnQingDieCount"].ToString();
+                    this.txtDateSS.EditValue = dt.Rows[0]["AnQingDateSS"].ToString();
+                    
+                    
                     if (dt.Rows[0]["AnQingTeShuXiang"].ToString() != "")
                     {
                         this.ck_t.Checked = true;
                         this.txt_teshu.Enabled = true;
                         this.txt_teshu.Text = dt.Rows[0]["AnQingTeShuXiang"].ToString();
-
 
                     }
                     //包项 选择按钮赋值
@@ -126,16 +137,11 @@ namespace WinJiaoJing
                     while (red1.Read())
                     {
                         SelectRow(gridView1, this.gridColumn1.FieldName, Convert.ToInt32(red1[0]), out sum);
-                        if (sum == 0)
-                        {
-                            sum = 1;
-                        }
+                       
                         this.gridView1.SetRowCellValue(sum, gridColumn2, red1[1]);
                     }
 
                     red1.Close();
-
-
 
                 }
             }
@@ -151,9 +157,9 @@ namespace WinJiaoJing
 
         private void toolSave_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("确认保存信息是否填写正确？", "提示",MessageBoxButtons.YesNo);
+           
             string sError = "";
-            string ID, NO, DanWei, OpID, DiDian, Date, AnQingDesc, teshu, beizhu, dieConut;
+            string ID, NO, DanWei, OpID, DiDian, Date, AnQingDesc, teshu, beizhu, dieConut,DateSS,DiZhi;
             ID = this.txt_AnQingID.Text.Trim();
             NO = this.txt_No.Text.Trim();
             DanWei = this.txtDanWei.Text.Trim();
@@ -164,44 +170,19 @@ namespace WinJiaoJing
             beizhu = this.txtDemo.Text.Trim();
             teshu = this.txt_teshu.Text.Trim();
             dieConut = this.txtDieCount.Text.Trim();
+            DateSS = this.txtDateSS.EditValue.ToString();
+            DiZhi = this.comDidIan.Text;
+               
 
             StringBuilder strSql = new StringBuilder();
             //新增
             if (ID.Trim() == "")
             {
-
-                strSql = new StringBuilder();
-                strSql.Append("insert into T_AnQing(");
-                strSql.Append("AnQingDiDian,AnQingDesc,AnQingNo,AnQingDate,");
-                strSql.Append(" DeftName,OperName,AnQingTeShuXiang,");
-                strSql.Append(" AnQingBeiZhu,AnQingDieCount,IsOk)");
-                strSql.Append(" values (");
-                strSql.Append("@AnQingDiDian,@AnQingDesc,@AnQingNo,@AnQingDate,");
-                strSql.Append("@DeftName,@OperName,@AnQingTeShuXiang,");
-                strSql.Append("@AnQingBeiZhu,@AnQingDieCount,@IsOk)");
-                strSql.Append(";select @@IDENTITY");
-                SqlParameter[] parameters = {
-                     new SqlParameter("@AnQingDiDian", SqlDbType.VarChar,70),
-                     new SqlParameter("@AnQingDesc", SqlDbType.NVarChar,3000),
-                     new SqlParameter("@AnQingNo", SqlDbType.Int),
-                     new SqlParameter("@AnQingDate", SqlDbType.DateTime),
-                     new SqlParameter("@DeftName", SqlDbType.VarChar,50),
-                     new SqlParameter("@OperName", SqlDbType.VarChar,50),
-                     new SqlParameter("@AnQingTeShuXiang", SqlDbType.VarChar,50),
-                     new SqlParameter("@AnQingBeiZhu", SqlDbType.VarChar,150),
-                     new SqlParameter("@AnQingDieCount", SqlDbType.Int),
-                     new SqlParameter("@IsOk", SqlDbType.Int)};
-
-                parameters[0].Value = DiDian;
-                parameters[1].Value = AnQingDesc;
-                parameters[2].Value = NO;
-                parameters[3].Value = Date;
-                parameters[4].Value = DanWei;
-                parameters[5].Value = OpID;
-                parameters[6].Value = teshu;
-                parameters[7].Value = beizhu;
-                parameters[8].Value = dieConut;
-                parameters[9].Value = 0;
+                DialogResult OK= MessageBox.Show("确认保存信息是否填写正确？", "提示", MessageBoxButtons.YesNo);
+                if (OK==DialogResult.No)
+                {
+                    return;
+                }
 
                 if (this.txtDiDian.Text.Trim() == "")
                 {
@@ -213,33 +194,58 @@ namespace WinJiaoJing
                     MessageBox.Show("请输入案件详情。");
                     return;
                 }
-
-                SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters, out sError);
-
-
                 if (gridView1.SelectedRowsCount <= 0)
                 {
                     MessageBox.Show("请选择鉴定项目 ！");
                     return;
                 }
 
+                strSql = new StringBuilder();
+                strSql.Append("insert into T_AnQing(");
+                strSql.Append("AnQingDiDian,AnQingDesc,AnQingNo,AnQingDate,");
+                strSql.Append(" DeftName,OperName,AnQingTeShuXiang,");
+                strSql.Append(" AnQingBeiZhu,AnQingDieCount,AnQingDateSS,AnQingDiZhi)");
+                strSql.Append(" values (");
+                strSql.Append("@AnQingDiDian,@AnQingDesc,@AnQingNo,@AnQingDate,");
+                strSql.Append("@DeftName,@OperName,@AnQingTeShuXiang,");
+                strSql.Append("@AnQingBeiZhu,@AnQingDieCount,@AnQingDateSS,@AnQingDiZhi)");
+                strSql.Append(";select @@IDENTITY");
+                SqlParameter[] parameters = {
+                     new SqlParameter("@AnQingDiDian", SqlDbType.VarChar,70),
+                     new SqlParameter("@AnQingDesc", SqlDbType.NVarChar,3000),
+                     new SqlParameter("@AnQingNo", SqlDbType.Int),
+                     new SqlParameter("@AnQingDate", SqlDbType.DateTime),
+                     new SqlParameter("@DeftName", SqlDbType.VarChar,50),
+                     new SqlParameter("@OperName", SqlDbType.VarChar,50),
+                     new SqlParameter("@AnQingTeShuXiang", SqlDbType.VarChar,50),
+                     new SqlParameter("@AnQingBeiZhu", SqlDbType.VarChar,150),
+                     new SqlParameter("@AnQingDieCount", SqlDbType.Int),
+                     new SqlParameter("@AnQingDateSS", SqlDbType.Time),
+                     new SqlParameter("@AnQingDiZhi", SqlDbType.VarChar,20)};
+
+                parameters[0].Value = DiDian;
+                parameters[1].Value = AnQingDesc;
+                parameters[2].Value = NO;
+                parameters[3].Value = Date;
+                parameters[4].Value = DanWei;
+                parameters[5].Value = OpID;
+                parameters[6].Value = teshu;
+                parameters[7].Value = beizhu;
+                parameters[8].Value = dieConut;
+                parameters[9].Value = DateSS;
+                parameters[10].Value = DiZhi;
+
+              
+
+                SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters, out sError);
+            
                 // 获取选项
                 int sum = -1;
                 int sum1 = 0;
                 int sum2 = 0;
-                int sumGS = 0;
-                int i = 0;
-                int i1 = 0;
-                int SumCount = -1;
-                int py = -1;
-
-
-
-
                 //根据行号获取相应行的数据;   
                 foreach (int item in this.gridView1.GetSelectedRows())
                 {
-
                     strSql = new StringBuilder();
                     strSql.Append("select BaoTypeId from T_XiangMu");
                     strSql.Append("  where XiangMuNo=@Xno");
@@ -257,209 +263,82 @@ namespace WinJiaoJing
                     }
 
                     redsum.Close();
-                   
+
 
                     if (sum == -1)
                     {
                         MessageBox.Show("请勾选鉴定项目类型。");
                         return;
                     }
-
-                    // MessageBox.Show(sum.ToString());
-                    //判断包类型 一包一次摇奖
-                    if (sum != i1)
+                    if (Convert.ToInt32(this.gridView1.GetDataRow(item)["sum"]) > 1)
                     {
-
-                        strSql = new StringBuilder();
-                        strSql.Append("select SUM(PyCount) from T_GongSi");
-                        strSql.Append("  where BaoTypeNo=@No");
-                        SqlParameter[] parametersNopy = {
-                        new SqlParameter("@No", SqlDbType.Int) };
-                        parametersNopy[0].Value = sum;
-
-                        SqlDataReader redpy = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parametersNopy, out sError);
-
-                        while (redpy.Read())
+                        for (int i = 0; i < Convert.ToInt32(this.gridView1.GetDataRow(item)["sum"]); i++)
                         {
-                            //获取指定值数量
-                            py = (int)redpy[0];
-
-                        }
-                        redpy.Close();
-
-                        if (py > 0)
-                        {
-                            //PY流
                             strSql = new StringBuilder();
-                            strSql.Append("select top 1 GongSiId from T_GongSi");
-                            strSql.Append(" where BaoTypeNo=@BaoTypeID and PyCount<>0  order by newid()");
-                            SqlParameter[] parameters122 = {
-                               new SqlParameter("@BaoTypeID", SqlDbType.Int) };
-                            parameters122[0].Value = sum;
+                            strSql.Append("insert into T_AnQingXiang(");
+                            strSql.Append("AnQingId,BaoType_Id,XiangMuId,XiangBaoJia,XiangMuSum,XiangMuCount,GongSiID)");
+                            strSql.Append(" values (");
+                            strSql.Append("@AnQingId,@BaoType_Id,@XiangMuId,@XiangBaoJia,@XiangMuSum,@XiangMuCount,@GongSiID)");
+                            strSql.Append(";select @@IDENTITY");
+                            SqlParameter[] parameters1 = {
+                             new SqlParameter("@AnQingId", SqlDbType.Int),
+                             new SqlParameter("@BaoType_Id", SqlDbType.Int),
+                             new SqlParameter("@XiangMuId", SqlDbType.Int),
+                             new SqlParameter("@XiangBaoJia", SqlDbType.Money),
+                             new SqlParameter("@XiangMuSum",SqlDbType.Int),
+                             new SqlParameter("@XiangMuCount",SqlDbType.Money),
+                             new SqlParameter("@GongSiID",SqlDbType.Int)
+                         };
 
-                            SqlDataReader redg = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parameters122, out sError);
+                            sum1 = Convert.ToInt32(this.gridView1.GetDataRow(item)[4]);
+                            sum2 = Convert.ToInt32(this.gridView1.GetDataRow(item)["sum"]);
 
-                            while (redg.Read())
-                            {
-                                sumGS = (int)redg[0];
-
-                            }
-                            redg.Close();
-
-                            strSql = new StringBuilder();
-                            strSql.Append(" update T_GongSi");
-                            strSql.Append(" set PyCount=PyCount-1 where GongSiId=@GongSiID");
-                            SqlParameter[] parametersupup = {
-                         new SqlParameter("@GongSiID", SqlDbType.Int) };
-                            parametersupup[0].Value = sumGS;
-
-                            SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parametersupup, out sError);
-
+                            parameters1[0].Value = this.txt_No.Text;
+                            parameters1[1].Value = sum;
+                            parameters1[2].Value = this.gridView1.GetDataRow(item)[2].ToString();
+                            parameters1[3].Value = this.gridView1.GetDataRow(item)[4].ToString();
+                            parameters1[4].Value = sum2;
+                            parameters1[5].Value = sum1;
+                            parameters1[6].Value = 0;
+                            SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters1, out sError);
                         }
-                        else
-                        {
-                            //摇奖流
-                            strSql = new StringBuilder();
-                            strSql.Append("select SUM(randomCount) from T_GongSi");
-                            strSql.Append("  where BaoTypeNo=@No");
-                            SqlParameter[] parametersNo = {
-                        new SqlParameter("@No", SqlDbType.Int) };
-                            parametersNo[0].Value = sum;
-
-                            SqlDataReader red = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parametersNo, out sError);
-
-                            while (red.Read())
-                            {
-                                //获取奖池剩余数量
-                                SumCount = (int)red[0];
-
-                            }
-                            red.Close();
-                            //如果 奖池空了 补充奖池
-                            if (SumCount == 0)
-                            {
-                                strSql = new StringBuilder();
-                                strSql.Append("update T_GongSi set");
-                                strSql.Append(" randomCount=randomCount+random");
-                                strSql.Append(" where BaoTypeNo=@No");
-                                SqlParameter[] parametersAdd = {
-                                new SqlParameter("@No", SqlDbType.Int) };
-                                parametersAdd[0].Value = sum;
-
-                                SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parametersAdd, out sError);
-
-                                strSql = new StringBuilder();
-                                strSql.Append(" update T_GongSi");
-                                strSql.Append(" set randomCount=randomCount-1 where GongSiId=@GongSiID");
-                                SqlParameter[] parametersupup33 = {
-                                new SqlParameter("@GongSiID", SqlDbType.Int) };
-                                parametersupup33[0].Value = sumGS;
-
-                                SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parametersupup33, out sError);
-
-                            }
-
-                            //随机获取 一个数据
-                            strSql = new StringBuilder();
-                            strSql.Append("select top 1 GongSiId from T_GongSi");
-                            strSql.Append(" where BaoTypeNo=@BaoTypeID and randomCount<>0  order by newid()");
-                            SqlParameter[] parameters12 = {
-                                new SqlParameter("@BaoTypeID", SqlDbType.Int) };
-                            parameters12[0].Value = sum;
-
-                            SqlDataReader redg = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parameters12, out sError);
-
-                            while (redg.Read())
-                            {
-                                sumGS = (int)redg[0];
-                            }
-                            redg.Close();
-
-                            strSql = new StringBuilder();
-                            strSql.Append(" update T_GongSi");
-                            strSql.Append(" set randomCount=randomCount-1 where GongSiId=@GongSiID");
-                            SqlParameter[] parametersupup = {
-                         new SqlParameter("@GongSiID", SqlDbType.Int) };
-                            parametersupup[0].Value = sumGS;
-
-                            SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parametersupup, out sError);
-
-
-                        }
-
-
-                        strSql = new StringBuilder();
-                        strSql.Append(" update T_AnQing ");
-
-                        if (sum == 1)
-                        {
-                            strSql.Append(" set GongSiA=@gongsi where AnQingNo=@idid");
-                        }
-                        if (sum == 2)
-                        {
-                            strSql.Append(" set GongSiB=@gongsi where AnQingNo=@idid");
-                        }
-                        if (sum == 3)
-                        {
-                            strSql.Append(" set GongSiD=@gongsi where AnQingNo=@idid");
-                        }
-                        SqlParameter[] parametersupupdate = {
-                         new SqlParameter("@gongsi", SqlDbType.Int),
-                         new SqlParameter("@idid", SqlDbType.Int)};
-                        parametersupupdate[0].Value = sumGS;
-                        parametersupupdate[1].Value = NO;
-                        SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parametersupupdate, out sError);
-
-
-                        i1 = sum;
                     }
-
-
-
-                    //MessageBox.Show(sumGS.ToString());
-
-
-                    strSql = new StringBuilder();
-                    strSql.Append("insert into T_AnQingXiang(");
-                    strSql.Append("AnQingId,BaoType_Id,XiangMuId,XiangBaoJia,XiangMuSum,XiangMuCount,GongSiID)");
-                    strSql.Append(" values (");
-                    strSql.Append("@AnQingId,@BaoType_Id,@XiangMuId,@XiangBaoJia,@XiangMuSum,@XiangMuCount,@GongSiID)");
-                    strSql.Append(";select @@IDENTITY");
-                    SqlParameter[] parameters1 = {
-                     new SqlParameter("@AnQingId", SqlDbType.Int),
-                     new SqlParameter("@BaoType_Id", SqlDbType.Int),
-                     new SqlParameter("@XiangMuId", SqlDbType.Int),
-                     new SqlParameter("@XiangBaoJia", SqlDbType.Money),
-                     new SqlParameter("@XiangMuSum",SqlDbType.Int),
-                     new SqlParameter("@XiangMuCount",SqlDbType.Money),
-                     new SqlParameter("@GongSiID",SqlDbType.Int)
-                    };
-
-                    sum1 = Convert.ToInt32(this.gridView1.GetDataRow(item)[4]);
-                    sum2 = Convert.ToInt32(this.gridView1.GetDataRow(item)["sum"]);
-
-                    parameters1[0].Value = this.txt_No.Text;
-                    parameters1[1].Value = sum;
-                    parameters1[2].Value = this.gridView1.GetDataRow(item)[2].ToString();
-                    parameters1[3].Value = this.gridView1.GetDataRow(item)[4].ToString();
-                    parameters1[4].Value = this.gridView1.GetDataRow(item)["sum"].ToString();
-                    parameters1[5].Value = sum1 * sum2;
-                    parameters1[6].Value = sumGS;
-
-                    SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters1, out sError);
-
-
-                    if (sum != i)
+                    else
                     {
-                        Times frm = new Times(sumGS);
-                        frm.ShowDialog();
-                        i = sum;
+                        strSql = new StringBuilder();
+                        strSql.Append("insert into T_AnQingXiang(");
+                        strSql.Append("AnQingId,BaoType_Id,XiangMuId,XiangBaoJia,XiangMuSum,XiangMuCount,GongSiID)");
+                        strSql.Append(" values (");
+                        strSql.Append("@AnQingId,@BaoType_Id,@XiangMuId,@XiangBaoJia,@XiangMuSum,@XiangMuCount,@GongSiID)");
+                        strSql.Append(";select @@IDENTITY");
+                        SqlParameter[] parameters1 = {
+                             new SqlParameter("@AnQingId", SqlDbType.Int),
+                             new SqlParameter("@BaoType_Id", SqlDbType.Int),
+                             new SqlParameter("@XiangMuId", SqlDbType.Int),
+                             new SqlParameter("@XiangBaoJia", SqlDbType.Money),
+                             new SqlParameter("@XiangMuSum",SqlDbType.Int),
+                             new SqlParameter("@XiangMuCount",SqlDbType.Money),
+                             new SqlParameter("@GongSiID",SqlDbType.Int)
+                         };
 
+                        sum1 = Convert.ToInt32(this.gridView1.GetDataRow(item)[4]);
+                        sum2 = Convert.ToInt32(this.gridView1.GetDataRow(item)["sum"]);
+
+                        parameters1[0].Value = this.txt_No.Text;
+                        parameters1[1].Value = sum;
+                        parameters1[2].Value = this.gridView1.GetDataRow(item)[2].ToString();
+                        parameters1[3].Value = this.gridView1.GetDataRow(item)[4].ToString();
+                        parameters1[4].Value = 1;
+                        parameters1[5].Value = sum1;
+                        parameters1[6].Value = 0;
+                        SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters1, out sError);
                     }
 
 
                 }
 
+
+                getBaoJia(sError, NO);
 
                 if (sError.Trim() != "")
                 {
@@ -470,12 +349,17 @@ namespace WinJiaoJing
             }
             else
             {
-
+               DialogResult rOK= MessageBox.Show("确认修改信息是否填写正确？", "提示", MessageBoxButtons.YesNo);
+                if (rOK == DialogResult.No)
+                {
+                    return;
+                }
                 if (gridView1.SelectedRowsCount <= 0)
                 {
                     MessageBox.Show("请选择鉴定项目 ！");
                     return;
                 }
+
                 strSql = new StringBuilder();
                 strSql.Append("update T_AnQing set ");
                 strSql.Append("AnQingDiDian=@AnQingDiDian,");
@@ -516,19 +400,22 @@ namespace WinJiaoJing
                 //根据行号获取相应行的数据;   
                 foreach (int item in this.gridView1.GetSelectedRows())
                 {
+                    strSql = new StringBuilder();
+                    strSql.Append("select BaoTypeId from T_XiangMu");
+                    strSql.Append("  where XiangMuNo=@Xno");
+                    SqlParameter[] parametersNosum = {
+                        new SqlParameter("@Xno", SqlDbType.Int) };
+                    parametersNosum[0].Value = Convert.ToInt32(this.gridView1.GetDataRow(item)[2]);
 
-                    if (Convert.ToInt32(this.gridView1.GetDataRow(item)[2]) <= 13)
+                    SqlDataReader redsum = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parametersNosum, out sError);
+
+                    while (redsum.Read())
                     {
-                        sum = 1;
+                        //获取指定值数量
+                        sum = (int)redsum[0];
+
                     }
-                    if (Convert.ToInt32(this.gridView1.GetDataRow(item)[2]) == 14)
-                    {
-                        sum = 2;
-                    }
-                    if (Convert.ToInt32(this.gridView1.GetDataRow(item)[2]) >= 16 && Convert.ToInt32(this.gridView1.GetDataRow(item)[2]) <= 20)
-                    {
-                        sum = 3;
-                    }
+                    redsum.Close();
 
 
 
@@ -591,6 +478,8 @@ namespace WinJiaoJing
                 }
                 #endregion
 
+                getBaoJia(sError, NO);
+
                 if (sError.Trim() != "")
                 {
                     MessageBox.Show("保存失败，错误：" + sError, "提示");
@@ -610,16 +499,6 @@ namespace WinJiaoJing
         {
 
 
-            //ID = this.txt_AnQingID.Text.Trim();
-            //NO = this.txt_No.Text.Trim();
-            //DanWei = this.txtDanWei.Text.Trim();
-            //OpID = this.txtOperID.Text.Trim();
-            //DiDian = this.txtDiDian.Text.Trim();
-            //Date = this.txtDate.Text.Trim();
-            //AnQingDesc = this.txtAnQingDesc.Text.Trim();
-            //beizhu = this.txtDemo.Text.Trim();
-            //teshu = this.txt_teshu.Text.Trim();
-            //dieConut = this.txtDieCount.Text.Trim();
             getNO("");
 
             sID = "";
@@ -641,6 +520,8 @@ namespace WinJiaoJing
             this.txtOperID.ToolTip = Program.sOperID;
             this.txtDiDian.Focus();
             this.txtDiDian.Select(2, 1);
+            this.txtDateSS.EditValue = DateTime.Now.ToString("t");
+       
         }
 
         private void groupControl1_Paint(object sender, PaintEventArgs e)
@@ -654,31 +535,197 @@ namespace WinJiaoJing
 
         }
 
-        public void BingGrid(string sCon)
+      
+        
+        /// <summary>
+        /// A包打包价逻辑 需求： a包 1-10 如果大于5个 并且价钱超过4800 价格自动打包为4800
+        /// </summary>
+        /// <param name="sError"></param>
+        /// <param name="NO"></param>
+        private void getBaoJia(string sError,string NO)
         {
-            string sError = "";
-            sCon = " and DeptID like '" + Program.sDeptID + "' " + sCon;
-            string strSql = "select * from T_Car where 1=1  " + sCon + " order by ID";
-            DataTable dt = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);
 
-        }
+            StringBuilder strSql = new StringBuilder();
+                strSql.Append("select count(*)jia from");
+                strSql.Append("(select top 5 * from T_AnQingXiang");
+                strSql.Append("  where XiangMuId <= 10 and AnQingId = @AnQingNo");
+                strSql.Append(" AND BaoType_Id = 1 order by XiangMuCount desc)tb1");
+                SqlParameter[] parameterscou = {
+                     new SqlParameter("@AnQingNo", SqlDbType.Int)};
 
-        public Boolean IsExistsCar(string sCarNO)
-        {
-            string sError = "";
-            string sCon = "";
-            sCon = " and DeptID like '" + Program.sDeptID + "' " + sCon;
-            sCon += " and CarNO like '%" + sCarNO + "%' ";
-            string strSql = "select * from T_CarBaoFei where 1=1  " + sCon + " ";
-            DataTable dt = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);
-            if (sError.Trim() == "" && dt.Rows.Count > 0)
-            {
-                return true;
+                parameterscou[0].Value = NO;
+
+                int count = 0;
+                double sumA = 0;
+                double sumA1 = 0;
+                double sumA2 = 0;
+                double sumB = 0;
+                double sumD = 0;
+                SqlDataReader redcou = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parameterscou, out sError);
+
+                while (redcou.Read())
+                {
+                    count=(int)redcou[0];
+                }
+
+                redcou.Close();
+
+                strSql = new StringBuilder();
+                strSql.Append("select SUM(XiangBaoJia) from");
+                strSql.Append("(select top 5 * from T_AnQingXiang");
+                strSql.Append("  where XiangMuId <= 10 and AnQingId = @AnQingNo");
+                strSql.Append(" AND BaoType_Id = 1 order by XiangMuCount desc)tb1");
+                SqlParameter[] parametersum = {
+                     new SqlParameter("@AnQingNo", SqlDbType.Int)};
+
+                parametersum[0].Value = NO;
+
+                SqlDataReader redsum123= SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parametersum, out sError);
+                while (redsum123.Read())
+                {
+                    sumA = Convert.ToDouble(redsum123[0]);
+                }
+
+                
+                redcou.Close();
+                //A包大于5个项目 并且1-10 最贵的项目总价值大于4800 1-10最贵的5项打包成4800
+                if (count==5 && sumA>=4800)
+                {
+                    sumA = 4800; 
+
+                    //取总包
+                    strSql = new StringBuilder();
+                    strSql.Append("select case when SUM(XiangBaoJia) is null then 0 else SUM(XiangBaoJia) end from T_AnQingXiang");
+                    strSql.Append(" where AnQingId=@AnQingNo and AnQingXiang_ID not in(");
+                    strSql.Append("  select top 5 AnQingXiang_ID from T_AnQingXiang where XiangMuId<=10 and AnQingId=@AnQingNo AND BaoType_Id=1 order by XiangMuCount desc)");
+                    SqlParameter[] parametersum1asw = {
+                     new SqlParameter("@AnQingNo", SqlDbType.Int)};
+
+                    parametersum1asw[0].Value = NO;
+
+                    SqlDataReader redsum1 = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parametersum1asw, out sError);
+                    while (redsum1.Read())
+                    {
+                        sumA1 = Convert.ToDouble(redsum1[0]);
+                    }
+                    redsum1.Close();
+                    sumA1 += sumA;
+                    
+                    //取A包
+                    strSql = new StringBuilder();
+                    strSql.Append("select case when SUM(XiangBaoJia) is null then 0 else SUM(XiangBaoJia) end  from T_AnQingXiang");
+                    strSql.Append(" where AnQingId=@AnQingNo and BaoType_Id=1 and AnQingXiang_ID not in(");
+                    strSql.Append("  select top 5 AnQingXiang_ID from T_AnQingXiang where XiangMuId<=10 and AnQingId=@AnQingNo AND BaoType_Id=1 order by XiangMuCount desc)");
+                    SqlParameter[] parametersum12zza = {
+                     new SqlParameter("@AnQingNo", SqlDbType.Int)};
+
+                    parametersum12zza[0].Value = NO;
+
+                    SqlDataReader redsum2 = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parametersum12zza, out sError);
+                    while (redsum2.Read())
+                    {
+                        sumA2 = Convert.ToDouble(redsum2[0]);
+                    }
+                    redsum2.Close();
+                    sumA2 += sumA;
+                    MessageBox.Show("打包后A包："+sumA.ToString());
+
+                }
+                else
+                {
+                    //取Z包
+                    strSql = new StringBuilder();
+                    strSql.Append("select case when SUM(XiangBaoJia) is null then 0 else SUM(XiangBaoJia) end  from T_AnQingXiang");
+                    strSql.Append(" where AnQingId=@AnQingNo");
+                    SqlParameter[] parametersumaz = {
+                     new SqlParameter("@AnQingNo", SqlDbType.Int)};
+
+                    parametersumaz[0].Value = NO;
+                    SqlDataReader redsumbz = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parametersumaz, out sError);
+                    while (redsumbz.Read())
+                    {
+                        sumA1 = Convert.ToDouble(redsumbz[0]);
+                    }
+                    redsumbz.Close();
+                
+
+                //取a包
+                strSql = new StringBuilder();
+                    strSql.Append("select case when SUM(XiangBaoJia) is null then 0 else SUM(XiangBaoJia) end  from T_AnQingXiang");
+                    strSql.Append(" where AnQingId=@AnQingNo and BaoType_Id=1 ");
+                    SqlParameter[] parametersumBA = {
+                     new SqlParameter("@AnQingNo", SqlDbType.Int)};
+
+                    parametersumBA[0].Value = NO;
+
+                    SqlDataReader redsumbA = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parametersumBA, out sError);
+                    while (redsumbA.Read())
+                    {
+                        sumA2 = Convert.ToDouble(redsumbA[0]);
+                    }
+                    redsumbA.Close();
+              
             }
-            return false;
+
+                //取B包
+                strSql = new StringBuilder();
+                strSql.Append("select case when SUM(XiangBaoJia) is null then 0 else SUM(XiangBaoJia) end  from T_AnQingXiang");
+                strSql.Append(" where AnQingId=@AnQingNo and BaoType_Id=2 ");
+                SqlParameter[] parametersumB = {
+                     new SqlParameter("@AnQingNo", SqlDbType.Int)};
+
+                parametersumB[0].Value = NO;
+
+                SqlDataReader redsumb = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parametersumB, out sError);
+                while (redsumb.Read())
+                {
+                    sumB = Convert.ToDouble(redsumb[0]);
+                }
+                redsumb.Close();
+                
+            
+
+            //取D包
+            strSql = new StringBuilder();
+                strSql.Append("select case when SUM(XiangBaoJia) is null then 0 else SUM(XiangBaoJia) end  from T_AnQingXiang");
+                strSql.Append(" where AnQingId=@AnQingNo and BaoType_Id=3 ");
+                SqlParameter[] parametersumD = {
+                     new SqlParameter("@AnQingNo", SqlDbType.Int)};
+
+                parametersumD[0].Value = NO;
+
+                SqlDataReader redsumd = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parametersumD, out sError);
+                while (redsumd.Read())
+                {
+                    sumD = Convert.ToDouble(redsumd[0]);
+                }
+                redsumd.Close();
+                       
+            //总价赋值
+            strSql = new StringBuilder();
+                strSql.Append("update T_AnQing set BaoSum =@sum,BaOSumA=@sumA,BaOSumB=@sumB,BaOSumD=@sumD  where AnQingNo =@AnQingNo ");
+                strSql.Append(";select @@IDENTITY");
+                SqlParameter[] parametersumup = {
+                     new SqlParameter("@AnQingNo", SqlDbType.Int),
+                     new SqlParameter("@sum", SqlDbType.Decimal),
+                     new SqlParameter("@sumA", SqlDbType.Decimal),
+                     new SqlParameter("@sumB", SqlDbType.Decimal),
+                     new SqlParameter("@sumD", SqlDbType.Decimal)};
+
+                parametersumup[0].Value = NO;
+                parametersumup[1].Value = sumA1;
+                parametersumup[2].Value = sumA2;
+                parametersumup[3].Value = sumB;
+                parametersumup[4].Value = sumD;
+
+
+                SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parametersumup, out sError);
+
         }
-
-
+        /// <summary>
+        /// 获取案情编号
+        /// </summary>
+        /// <param name="sError"></param>
         private void getNO(string sError)
         {
 
@@ -695,7 +742,6 @@ namespace WinJiaoJing
             }
         }
 
-    
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -873,6 +919,17 @@ namespace WinJiaoJing
             }
         }
 
+        private void comDidIan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comDidIan.Text == "其他")
+            {
+                this.txtDiDian.Text = "";
+            }
+            else
+            {
+                this.txtDiDian.Text = comDidIan.Text;
+            }
 
+        }
     }
 }

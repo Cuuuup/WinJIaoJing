@@ -88,11 +88,35 @@ namespace WinJiaoJing.AnJian
 
             if (TYPEID == 1)
             {
-                report.LoadLayout(Application.StartupPath + "/Print/RE_AnQingJD.repx");
+               
+                if (id == 1)
+                {
+                    report.LoadLayout(Application.StartupPath + "/Print/RE_AnQingJD.repx");
+                }
+                if (id == 2)
+                {
+                    report.LoadLayout(Application.StartupPath + "/Print/RE_AnQingJDB.repx");
+                }
+                if (id == 3)
+                {
+                    report.LoadLayout(Application.StartupPath + "/Print/RE_AnQingJDD.repx");
+                }
             }
             else
             {
-                report.LoadLayout(Application.StartupPath + "/Print/AnQingJD.repx");
+                if (id==1)
+                {
+                    report.LoadLayout(Application.StartupPath + "/Print/AnQingJD.repx");
+                }
+                if (id == 2)
+                {
+                    report.LoadLayout(Application.StartupPath + "/Print/AnQingJDB.repx");
+                }
+                if (id == 3)
+                {
+                    report.LoadLayout(Application.StartupPath + "/Print/AnQingJDD.repx");
+                }
+                
             }
             
             

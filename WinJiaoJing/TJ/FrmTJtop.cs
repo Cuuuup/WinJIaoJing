@@ -33,21 +33,11 @@ namespace WinJiaoJing
         }
         //查询
         private void btnSel_Click(object sender, EventArgs e)
-        {
-           
-           
+        {         
           
             string sError = "";
             string sCon = "";
 
-            //string strListA_ClLb = "";
-            //if (strListA_ClLb.Trim() != "")
-            //{
-            //    sCon += "  and A_ClLb in (" + strListA_ClLb + ")";
-            //}
-
-           
-            
             DataBind();
         }
         public void Init()
@@ -75,6 +65,7 @@ namespace WinJiaoJing
             {
                 return;
             }
+
            
         }
 

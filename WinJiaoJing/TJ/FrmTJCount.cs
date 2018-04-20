@@ -27,7 +27,7 @@ namespace WinJiaoJing
         {
 
             string sError = "";
-            string strSql = " select *,(case when IsOk =3 then '已结案' else '未结案'  end) as ja  from T_AnQing where 1=1 " + sCon + " order by AnQingNo";
+            string strSql = " select *  from T_AnQing where 1=1 " + sCon + " order by AnQingNo";
             DataTable dt = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);
 
             this.grd.DataSource = dt;
@@ -41,11 +41,19 @@ namespace WinJiaoJing
 
             if (this.ck1.Checked==true)
             {
-                sCon += "  and IsOk =3 ";
+                sCon += "  and State ='已结算' ";
             }
             if (this.ck2.Checked == true)
             {
-                sCon += "  and IsOk <>3 ";
+                sCon += "  and State ='进行中' ";
+            }
+            if (this.ck3.Checked == true)
+            {
+                sCon += "  and State ='(二次)未结算' ";
+            }
+            if (this.ck4.Checked == true)
+            {
+                sCon += "  and State ='(二次)进行中' ";
             }
 
 
@@ -102,7 +110,7 @@ namespace WinJiaoJing
             {               
                 return;
             }
-            FrmTJXQ jxq = new FrmTJXQ(this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingNo"].ToString(), this.gv.GetDataRow(this.gv.FocusedRowHandle)["ja"].ToString());
+            FrmTJXQ jxq = new FrmTJXQ(this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingNo"].ToString(), this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString());
             jxq.ShowDialog();
         }
 

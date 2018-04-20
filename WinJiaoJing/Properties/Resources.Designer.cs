@@ -123,6 +123,56 @@ namespace WinJiaoJing.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        public static System.Drawing.Bitmap BJ {
+            get {
+                object obj = ResourceManager.GetObject("BJ", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap JJ主页LOGO {
+            get {
+                object obj = ResourceManager.GetObject("JJ主页LOGO", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap JJ字体 {
+            get {
+                object obj = ResourceManager.GetObject("JJ字体", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap JJ登录背景 {
+            get {
+                object obj = ResourceManager.GetObject("JJ登录背景", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap JJ背景 {
+            get {
+                object obj = ResourceManager.GetObject("JJ背景", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         public static System.Drawing.Bitmap LoginB {
             get {
                 object obj = ResourceManager.GetObject("LoginB", resourceCulture);
@@ -136,6 +186,16 @@ namespace WinJiaoJing.Properties {
         public static System.Drawing.Bitmap LoginB1 {
             get {
                 object obj = ResourceManager.GetObject("LoginB1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap logoB {
+            get {
+                object obj = ResourceManager.GetObject("logoB", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -413,6 +473,16 @@ namespace WinJiaoJing.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        public static System.Drawing.Bitmap topB {
+            get {
+                object obj = ResourceManager.GetObject("topB", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         public static System.Drawing.Bitmap tp {
             get {
                 object obj = ResourceManager.GetObject("tp", resourceCulture);
@@ -597,6 +667,16 @@ namespace WinJiaoJing.Properties {
             get {
                 object obj = ResourceManager.GetObject("yiyun3", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap Z {
+            get {
+                object obj = ResourceManager.GetObject("Z", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

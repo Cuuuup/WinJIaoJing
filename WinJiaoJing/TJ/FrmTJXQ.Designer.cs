@@ -84,7 +84,7 @@
             this.grd.Name = "grd";
             this.grd.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemDateEdit1});
-            this.grd.Size = new System.Drawing.Size(821, 408);
+            this.grd.Size = new System.Drawing.Size(821, 440);
             this.grd.TabIndex = 1;
             this.grd.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv,
@@ -193,8 +193,6 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.OptionsColumn.AllowFocus = false;
-            this.gridColumn4.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "XiangMuCount", "    {0:0.##}")});
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 5;
             this.gridColumn4.Width = 74;
@@ -216,9 +214,9 @@
             this.groupControl2.AppearanceCaption.Options.UseFont = true;
             this.groupControl2.Controls.Add(this.grd);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupControl2.Location = new System.Drawing.Point(0, 100);
+            this.groupControl2.Location = new System.Drawing.Point(0, 68);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(825, 433);
+            this.groupControl2.Size = new System.Drawing.Size(825, 465);
             this.groupControl2.TabIndex = 2;
             this.groupControl2.Text = "详细信息";
             // 
@@ -237,7 +235,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(825, 100);
+            this.groupControl1.Size = new System.Drawing.Size(825, 73);
             this.groupControl1.TabIndex = 3;
             this.groupControl1.Text = "操作设置";
             // 
@@ -283,6 +281,7 @@
             this.simpleButton1.Size = new System.Drawing.Size(87, 25);
             this.simpleButton1.TabIndex = 17;
             this.simpleButton1.Text = "保存打包价";
+            this.simpleButton1.Visible = false;
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // btnPrint
@@ -311,6 +310,7 @@
             this.txtBao.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtBao.Size = new System.Drawing.Size(105, 20);
             this.txtBao.TabIndex = 1;
+            this.txtBao.Visible = false;
             // 
             // label1
             // 
@@ -321,6 +321,7 @@
             this.label1.Size = new System.Drawing.Size(68, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "打包价：";
+            this.label1.Visible = false;
             // 
             // FrmTJXQ
             // 

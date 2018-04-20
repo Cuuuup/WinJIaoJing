@@ -35,7 +35,6 @@
             this.toolQingKong = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.txtDiDian = new DevExpress.XtraEditors.TextEdit();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.txtOperID = new DevExpress.XtraEditors.TextEdit();
@@ -59,6 +58,10 @@
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.txtAnQingDesc = new DevExpress.XtraEditors.MemoEdit();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.txtDateSS = new DevExpress.XtraEditors.TimeEdit();
+            this.comDidIan = new System.Windows.Forms.ComboBox();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.txtDieCount = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -80,8 +83,8 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txt_AnQingID = new DevExpress.XtraEditors.TextEdit();
             this.txt_No = new DevExpress.XtraEditors.TextEdit();
+            this.txtDiDian = new DevExpress.XtraEditors.TextEdit();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDiDian.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOperID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDanWei.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties.CalendarTimeProperties)).BeginInit();
@@ -95,6 +98,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtAnQingDesc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDateSS.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDieCount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
@@ -107,6 +111,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkedListBoxControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_AnQingID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_No.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiDian.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -154,30 +159,20 @@
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
-            this.labelControl3.Location = new System.Drawing.Point(29, 70);
+            this.labelControl3.Location = new System.Drawing.Point(10, 99);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(53, 16);
+            this.labelControl3.Size = new System.Drawing.Size(75, 16);
             this.labelControl3.TabIndex = 13;
-            this.labelControl3.Text = "地  点：";
-            // 
-            // txtDiDian
-            // 
-            this.txtDiDian.EnterMoveNextControl = true;
-            this.txtDiDian.Location = new System.Drawing.Point(81, 68);
-            this.txtDiDian.Name = "txtDiDian";
-            this.txtDiDian.Size = new System.Drawing.Size(175, 20);
-            this.txtDiDian.TabIndex = 0;
-            this.txtDiDian.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCarID_KeyPress);
-            this.txtDiDian.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtCarID_MouseClick);
+            this.labelControl3.Text = "详细地点：";
             // 
             // labelControl9
             // 
             this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
-            this.labelControl9.Location = new System.Drawing.Point(265, 72);
+            this.labelControl9.Location = new System.Drawing.Point(265, 64);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(75, 16);
             this.labelControl9.TabIndex = 17;
-            this.labelControl9.Text = "申请时间：";
+            this.labelControl9.Text = "申请日期：";
             // 
             // labelControl12
             // 
@@ -200,7 +195,7 @@
             // labelControl5
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
-            this.labelControl5.Location = new System.Drawing.Point(7, 29);
+            this.labelControl5.Location = new System.Drawing.Point(10, 29);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(75, 16);
             this.labelControl5.TabIndex = 32;
@@ -210,7 +205,7 @@
             // 
             this.txtDanWei.Enabled = false;
             this.txtDanWei.EnterMoveNextControl = true;
-            this.txtDanWei.Location = new System.Drawing.Point(82, 27);
+            this.txtDanWei.Location = new System.Drawing.Point(82, 28);
             this.txtDanWei.Name = "txtDanWei";
             this.txtDanWei.Size = new System.Drawing.Size(175, 20);
             this.txtDanWei.TabIndex = 8;
@@ -228,7 +223,7 @@
             // 
             this.txtDate.EditValue = null;
             this.txtDate.EnterMoveNextControl = true;
-            this.txtDate.Location = new System.Drawing.Point(343, 68);
+            this.txtDate.Location = new System.Drawing.Point(343, 62);
             this.txtDate.Name = "txtDate";
             this.txtDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -335,7 +330,7 @@
             // labelControl16
             // 
             this.labelControl16.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
-            this.labelControl16.Location = new System.Drawing.Point(12, 198);
+            this.labelControl16.Location = new System.Drawing.Point(10, 226);
             this.labelControl16.Name = "labelControl16";
             this.labelControl16.Size = new System.Drawing.Size(75, 16);
             this.labelControl16.TabIndex = 47;
@@ -344,7 +339,7 @@
             // labelControl20
             // 
             this.labelControl20.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
-            this.labelControl20.Location = new System.Drawing.Point(286, 598);
+            this.labelControl20.Location = new System.Drawing.Point(286, 601);
             this.labelControl20.Name = "labelControl20";
             this.labelControl20.Size = new System.Drawing.Size(135, 16);
             this.labelControl20.TabIndex = 51;
@@ -353,14 +348,14 @@
             // txtDemo
             // 
             this.txtDemo.EnterMoveNextControl = true;
-            this.txtDemo.Location = new System.Drawing.Point(427, 596);
+            this.txtDemo.Location = new System.Drawing.Point(427, 599);
             this.txtDemo.Name = "txtDemo";
             this.txtDemo.Size = new System.Drawing.Size(479, 20);
             this.txtDemo.TabIndex = 14;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(277, 632);
+            this.btnSave.Location = new System.Drawing.Point(277, 635);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(80, 30);
             this.btnSave.TabIndex = 52;
@@ -370,7 +365,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(522, 632);
+            this.btnClose.Location = new System.Drawing.Point(522, 635);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(80, 30);
             this.btnClose.TabIndex = 54;
@@ -379,13 +374,17 @@
             // 
             // txtAnQingDesc
             // 
-            this.txtAnQingDesc.Location = new System.Drawing.Point(83, 139);
+            this.txtAnQingDesc.Location = new System.Drawing.Point(82, 162);
             this.txtAnQingDesc.Name = "txtAnQingDesc";
             this.txtAnQingDesc.Size = new System.Drawing.Size(432, 147);
             this.txtAnQingDesc.TabIndex = 12;
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.txtDateSS);
+            this.groupControl1.Controls.Add(this.comDidIan);
+            this.groupControl1.Controls.Add(this.labelControl8);
+            this.groupControl1.Controls.Add(this.labelControl7);
             this.groupControl1.Controls.Add(this.txtDieCount);
             this.groupControl1.Controls.Add(this.labelControl2);
             this.groupControl1.Controls.Add(this.comboBox1);
@@ -416,10 +415,50 @@
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl1_Paint);
             // 
+            // txtDateSS
+            // 
+            this.txtDateSS.EditValue = new System.DateTime(2018, 4, 19, 0, 0, 0, 0);
+            this.txtDateSS.Location = new System.Drawing.Point(343, 95);
+            this.txtDateSS.Name = "txtDateSS";
+            this.txtDateSS.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtDateSS.Size = new System.Drawing.Size(175, 20);
+            this.txtDateSS.TabIndex = 66;
+            // 
+            // comDidIan
+            // 
+            this.comDidIan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comDidIan.FormattingEnabled = true;
+            this.comDidIan.Items.AddRange(new object[] {
+            "请选择"});
+            this.comDidIan.Location = new System.Drawing.Point(82, 62);
+            this.comDidIan.Name = "comDidIan";
+            this.comDidIan.Size = new System.Drawing.Size(175, 22);
+            this.comDidIan.TabIndex = 62;
+            this.comDidIan.SelectedIndexChanged += new System.EventHandler(this.comDidIan_SelectedIndexChanged);
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
+            this.labelControl8.Location = new System.Drawing.Point(32, 66);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(53, 16);
+            this.labelControl8.TabIndex = 61;
+            this.labelControl8.Text = "地  点：";
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
+            this.labelControl7.Location = new System.Drawing.Point(265, 99);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(75, 16);
+            this.labelControl7.TabIndex = 59;
+            this.labelControl7.Text = "事发时间：";
+            // 
             // txtDieCount
             // 
             this.txtDieCount.EnterMoveNextControl = true;
-            this.txtDieCount.Location = new System.Drawing.Point(101, 596);
+            this.txtDieCount.Location = new System.Drawing.Point(101, 599);
             this.txtDieCount.Name = "txtDieCount";
             this.txtDieCount.Properties.Mask.EditMask = "n0";
             this.txtDieCount.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
@@ -429,7 +468,7 @@
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
-            this.labelControl2.Location = new System.Drawing.Point(20, 598);
+            this.labelControl2.Location = new System.Drawing.Point(20, 601);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(75, 16);
             this.labelControl2.TabIndex = 58;
@@ -437,12 +476,13 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "请选择"});
-            this.comboBox1.Location = new System.Drawing.Point(89, 104);
+            this.comboBox1.Location = new System.Drawing.Point(82, 130);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(426, 22);
+            this.comboBox1.Size = new System.Drawing.Size(432, 22);
             this.comboBox1.TabIndex = 56;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -454,7 +494,7 @@
             this.groupControl3.Controls.Add(this.checkButton1);
             this.groupControl3.Controls.Add(this.checkButton2);
             this.groupControl3.Controls.Add(this.checkedListBoxControl2);
-            this.groupControl3.Location = new System.Drawing.Point(12, 312);
+            this.groupControl3.Location = new System.Drawing.Point(12, 315);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.Size = new System.Drawing.Size(913, 264);
             this.groupControl3.TabIndex = 55;
@@ -556,7 +596,7 @@
             this.repositoryItemTextEdit2.AutoHeight = false;
             this.repositoryItemTextEdit2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.repositoryItemTextEdit2.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.repositoryItemTextEdit2.Mask.EditMask = "n1";
+            this.repositoryItemTextEdit2.Mask.EditMask = "d";
             this.repositoryItemTextEdit2.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.repositoryItemTextEdit2.Name = "repositoryItemTextEdit2";
             // 
@@ -619,7 +659,7 @@
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
-            this.labelControl1.Location = new System.Drawing.Point(7, 109);
+            this.labelControl1.Location = new System.Drawing.Point(10, 132);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(75, 16);
             this.labelControl1.TabIndex = 47;
@@ -644,6 +684,16 @@
             this.txt_No.Size = new System.Drawing.Size(175, 20);
             this.txt_No.TabIndex = 8;
             // 
+            // txtDiDian
+            // 
+            this.txtDiDian.EnterMoveNextControl = true;
+            this.txtDiDian.Location = new System.Drawing.Point(82, 97);
+            this.txtDiDian.Name = "txtDiDian";
+            this.txtDiDian.Size = new System.Drawing.Size(175, 20);
+            this.txtDiDian.TabIndex = 0;
+            this.txtDiDian.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCarID_KeyPress);
+            this.txtDiDian.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtCarID_MouseClick);
+            // 
             // FrmBaoFeiEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -659,7 +709,6 @@
             this.Load += new System.EventHandler(this.FrmRoleEdit_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDiDian.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOperID.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDanWei.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties.CalendarTimeProperties)).EndInit();
@@ -675,6 +724,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDateSS.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDieCount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
@@ -687,6 +737,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkedListBoxControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_AnQingID.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_No.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiDian.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -700,7 +751,6 @@
         private System.Windows.Forms.ToolStripButton toolQingKong;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.TextEdit txtDiDian;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.LabelControl labelControl12;
         private DevExpress.XtraEditors.TextEdit txtOperID;
@@ -746,5 +796,10 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.TextEdit txtDiDian;
+        private System.Windows.Forms.ComboBox comDidIan;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.TimeEdit txtDateSS;
     }
 }

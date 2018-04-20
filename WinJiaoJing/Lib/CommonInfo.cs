@@ -1107,5 +1107,30 @@ public static class CommonInfo
     }
     #endregion
 
+    #region 获取两个日期的相差天数
+    /// <summary>
+    /// 计算两个日期的时间间隔
+    /// </summary>
+    /// <param name="DateTime1">第一个日期和时间</param>
+    /// <param name="DateTime2">第二个日期和时间</param>
+    /// <returns></returns>
+    public static int DateDiff(DateTime DateTime1, DateTime DateTime2)
+    {
+        int dateDiff = 0;
+
+        TimeSpan ts1 = new TimeSpan(DateTime1.Ticks);
+        TimeSpan ts2 = new TimeSpan(DateTime2.Ticks);
+        TimeSpan ts = ts1.Subtract(ts2).Duration();
+        dateDiff = ts.Days;
+        //+"天"
+        //+ ts.Hours.ToString() + "小时"
+        //+ ts.Minutes.ToString() + "分钟"
+        //+ ts.Seconds.ToString() + "秒";
+
+        return dateDiff;
+    }
+
+    #endregion
+
 }
 

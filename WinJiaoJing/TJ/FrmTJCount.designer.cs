@@ -61,6 +61,8 @@
             this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ck3 = new DevExpress.XtraEditors.CheckEdit();
+            this.ck4 = new DevExpress.XtraEditors.CheckEdit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -77,6 +79,8 @@
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ck3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ck4.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -130,8 +134,10 @@
             this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 9.5F);
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
             this.groupControl1.CaptionLocation = DevExpress.Utils.Locations.Top;
+            this.groupControl1.Controls.Add(this.ck4);
             this.groupControl1.Controls.Add(this.ck2);
             this.groupControl1.Controls.Add(this.ckAll);
+            this.groupControl1.Controls.Add(this.ck3);
             this.groupControl1.Controls.Add(this.ck1);
             this.groupControl1.Controls.Add(this.labelControl5);
             this.groupControl1.Controls.Add(this.dateEdit2);
@@ -155,12 +161,12 @@
             // 
             // ck2
             // 
-            this.ck2.Location = new System.Drawing.Point(614, 96);
+            this.ck2.Location = new System.Drawing.Point(607, 96);
             this.ck2.Name = "ck2";
-            this.ck2.Properties.Caption = "未结案";
+            this.ck2.Properties.Caption = "进行中";
             this.ck2.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
             this.ck2.Properties.RadioGroupIndex = 1;
-            this.ck2.Size = new System.Drawing.Size(75, 19);
+            this.ck2.Size = new System.Drawing.Size(56, 19);
             this.ck2.TabIndex = 37;
             this.ck2.TabStop = false;
             // 
@@ -180,7 +186,7 @@
             this.ck1.EditValue = true;
             this.ck1.Location = new System.Drawing.Point(548, 96);
             this.ck1.Name = "ck1";
-            this.ck1.Properties.Caption = "已结案";
+            this.ck1.Properties.Caption = "已结算";
             this.ck1.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
             this.ck1.Properties.RadioGroupIndex = 1;
             this.ck1.Size = new System.Drawing.Size(75, 19);
@@ -427,7 +433,7 @@
             this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.5F);
             this.gridColumn2.AppearanceHeader.Options.UseFont = true;
             this.gridColumn2.Caption = "案情状态";
-            this.gridColumn2.FieldName = "ja";
+            this.gridColumn2.FieldName = "State";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.OptionsColumn.AllowFocus = false;
@@ -449,6 +455,27 @@
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 2;
             this.gridColumn4.Width = 174;
+            // 
+            // ck3
+            // 
+            this.ck3.Location = new System.Drawing.Point(667, 96);
+            this.ck3.Name = "ck3";
+            this.ck3.Properties.Caption = "(二次)已结算";
+            this.ck3.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
+            this.ck3.Properties.RadioGroupIndex = 1;
+            this.ck3.Size = new System.Drawing.Size(99, 19);
+            this.ck3.TabIndex = 37;
+            // 
+            // ck4
+            // 
+            this.ck4.Location = new System.Drawing.Point(760, 96);
+            this.ck4.Name = "ck4";
+            this.ck4.Properties.Caption = "(二次)进行中";
+            this.ck4.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
+            this.ck4.Properties.RadioGroupIndex = 1;
+            this.ck4.Size = new System.Drawing.Size(94, 19);
+            this.ck4.TabIndex = 37;
+            this.ck4.TabStop = false;
             // 
             // FrmTJCount
             // 
@@ -480,6 +507,8 @@
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ck3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ck4.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -518,5 +547,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private System.Windows.Forms.ToolStripButton toolXiangQing;
+        private DevExpress.XtraEditors.CheckEdit ck4;
+        private DevExpress.XtraEditors.CheckEdit ck3;
     }
 }
