@@ -45,7 +45,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
@@ -74,7 +73,12 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem19 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem20 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem21 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.treeView1 = new System.Windows.Forms.TreeView();
@@ -98,7 +102,7 @@
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 24);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(638, 95);
+            this.pictureBox1.Size = new System.Drawing.Size(789, 95);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -138,9 +142,13 @@
             this.barButtonItem15,
             this.barButtonItem16,
             this.barButtonItem17,
-            this.barButtonItem18});
+            this.barButtonItem18,
+            this.barButtonItem19,
+            this.barButtonItem20,
+            this.barSubItem2,
+            this.barButtonItem21});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 27;
+            this.barManager1.MaxItemId = 33;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -150,16 +158,9 @@
             this.bar1.DockRow = 0;
             this.bar1.FloatLocation = new System.Drawing.Point(1473, 72);
             this.bar1.FloatSize = new System.Drawing.Size(46, 31);
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
             this.bar1.Offset = 123;
             this.bar1.Text = "Tools";
             this.bar1.Visible = false;
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Id = 15;
-            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // bar2
             // 
@@ -368,14 +369,14 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(638, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(789, 24);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 536);
-            this.barDockControlBottom.Size = new System.Drawing.Size(638, 27);
+            this.barDockControlBottom.Size = new System.Drawing.Size(789, 27);
             // 
             // barDockControlLeft
             // 
@@ -388,7 +389,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(638, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(789, 24);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 512);
             // 
             // barButtonItem5
@@ -397,11 +398,44 @@
             this.barButtonItem5.Id = 7;
             this.barButtonItem5.Name = "barButtonItem5";
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Id = 15;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
             // barButtonItem17
             // 
             this.barButtonItem17.Caption = "招标公司概率维护";
             this.barButtonItem17.Id = 25;
             this.barButtonItem17.Name = "barButtonItem17";
+            // 
+            // barButtonItem19
+            // 
+            this.barButtonItem19.Id = 27;
+            this.barButtonItem19.Name = "barButtonItem19";
+            // 
+            // barButtonItem20
+            // 
+            this.barButtonItem20.Caption = "高级维护";
+            this.barButtonItem20.Id = 30;
+            this.barButtonItem20.Name = "barButtonItem20";
+            this.barButtonItem20.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem20_ItemClick);
+            // 
+            // barSubItem2
+            // 
+            this.barSubItem2.Caption = "高级维护";
+            this.barSubItem2.Id = 31;
+            this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem21)});
+            this.barSubItem2.Name = "barSubItem2";
+            // 
+            // barButtonItem21
+            // 
+            this.barButtonItem21.Caption = "高级鉴定机构维护";
+            this.barButtonItem21.Id = 32;
+            this.barButtonItem21.Name = "barButtonItem21";
+            this.barButtonItem21.Tag = "高级维护|高级鉴定机构维护";
+            this.barButtonItem21.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // xtraTabbedMdiManager1
             // 
@@ -525,7 +559,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(638, 563);
+            this.ClientSize = new System.Drawing.Size(789, 563);
             this.Controls.Add(this.splitterControl1);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.pictureBox1);
@@ -591,6 +625,10 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem16;
         private DevExpress.XtraBars.BarButtonItem barButtonItem17;
         private DevExpress.XtraBars.BarButtonItem barButtonItem18;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem19;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem20;
+        private DevExpress.XtraBars.BarSubItem barSubItem2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem21;
     }
 }
 

@@ -14,7 +14,7 @@ namespace WinJiaoJing
 {
     public partial class FrmBaoFeiList : Form
     {
-      
+
 
         public FrmBaoFeiList()
         {
@@ -31,7 +31,7 @@ namespace WinJiaoJing
         private void toolEdit_Click(object sender, EventArgs e)
         {
             if (this.gv.GetDataRow(this.gv.FocusedRowHandle) == null)
-            {                
+            {
                 return;
             }
             //if (Convert.ToInt32(this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingNo"])<=0) return;
@@ -101,19 +101,19 @@ namespace WinJiaoJing
             this.grd.DataSource = dt;
         }
 
-        
+
 
         private void gv_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
         {
-            
+
             int hand = e.RowHandle;
             if (hand < 0) return;
             DataRow dr = this.gv.GetDataRow(hand);
             if (dr == null) return;
 
-            int cha = CommonInfo.DateDiff(Convert.ToDateTime(dr["insDate"]),DateTime.Now);
-           
-          
+            int cha = CommonInfo.DateDiff(Convert.ToDateTime(dr["insDate"]), DateTime.Now);
+
+
             switch (dr["State"].ToString().Trim())
             {
                 case "作废":
@@ -127,7 +127,7 @@ namespace WinJiaoJing
                         e.Appearance.ForeColor = Color.Red;//红色字体
                         e.Appearance.BackColor = Color.Yellow;// 黄背景
                     }
-                    if(cha >= 20)
+                    if (cha >= 20)
                     {
                         e.Appearance.ForeColor = Color.White;//白色字体
                         e.Appearance.BackColor = Color.Red;// 红背景
@@ -137,7 +137,7 @@ namespace WinJiaoJing
                     e.Appearance.BackColor = Color.PaleGreen;// 深绿背景
                     break;
             }
-           
+
 
 
         }
@@ -200,7 +200,7 @@ namespace WinJiaoJing
                 return;
             }
             if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() == "已结算")
-            {   
+            {
                 MessageBox.Show("案情已结算,请勿重复操作。");
                 return;
             }
@@ -212,15 +212,15 @@ namespace WinJiaoJing
 
 
 
-            DialogResult dl= MessageBox.Show("提交后无法修改 请确认填写无误后提交 确定要提交吗？", "提示", MessageBoxButtons.YesNo);
-            if (dl==DialogResult.No)
+            DialogResult dl = MessageBox.Show("提交后无法修改 请确认填写无误后提交 确定要提交吗？", "提示", MessageBoxButtons.YesNo);
+            if (dl == DialogResult.No)
             {
                 return;
             }
 
             string sError = "";
             string id = this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingID"].ToString();
-            string no= this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingNo"].ToString();
+            string no = this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingNo"].ToString();
             string sql = "";
             StringBuilder strSql;
             int py, sumGS, SumCount, sum;
@@ -237,7 +237,7 @@ namespace WinJiaoJing
 
             List<int> sumList = new List<int>();
             while (sumData.Read())
-            {     
+            {
                 sumList.Add((int)sumData[0]);
             }
             sumData.Close();
@@ -250,111 +250,125 @@ namespace WinJiaoJing
                 {
 
                     strSql = new StringBuilder();
-                strSql.Append("select SUM(PyCount) from T_GongSi");
-                strSql.Append("  where BaoTypeNo=@No");
-                SqlParameter[] parametersNopy = {
-                        new SqlParameter("@No", SqlDbType.Int) };
-                parametersNopy[0].Value = item;
-
-                SqlDataReader redpy = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parametersNopy, out sError);
-
-                while (redpy.Read())
-                {
-                    //获取指定值数量
-                    py = (int)redpy[0];
-
-                }
-                redpy.Close();
-
-
-                if (py > 0)
-                {
-                    //PY流
-                    strSql = new StringBuilder();
-                    strSql.Append("select top 1 GongSiId from T_GongSi");
-                    strSql.Append(" where BaoTypeNo=@BaoTypeID and PyCount<>0  order by newid()");
-                    SqlParameter[] parameters122 = {
-                               new SqlParameter("@BaoTypeID", SqlDbType.Int) };
-                    parameters122[0].Value = item;
-
-                    SqlDataReader redg = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parameters122, out sError);
-
-                    while (redg.Read())
-                    {
-                        sumGS = (int)redg[0];
-
-                    }
-                    redg.Close();
-
-                    strSql = new StringBuilder();
-                    strSql.Append(" update T_GongSi");
-                    strSql.Append(" set PyCount=PyCount-1 where GongSiId=@GongSiID");
-                    SqlParameter[] parametersupup = {
-                         new SqlParameter("@GongSiID", SqlDbType.Int) };
-                    parametersupup[0].Value = sumGS;
-
-                    SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parametersupup, out sError);
-
-                }
-                else
-                {
-                    //摇奖流
-                    strSql = new StringBuilder();
-                    strSql.Append("select SUM(randomCount) from T_GongSi");
+                    strSql.Append("select SUM(PyCount) from T_GongSi");
                     strSql.Append("  where BaoTypeNo=@No");
-                    SqlParameter[] parametersNo = {
+                    SqlParameter[] parametersNopy = {
                         new SqlParameter("@No", SqlDbType.Int) };
-                    parametersNo[0].Value = item;
+                    parametersNopy[0].Value = item;
 
-                    SqlDataReader red = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parametersNo, out sError);
+                    SqlDataReader redpy = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parametersNopy, out sError);
 
-                    while (red.Read())
+                    while (redpy.Read())
                     {
-                        //获取奖池剩余数量
-                        SumCount = (int)red[0];
+                        //获取指定值数量
+                        py = (int)redpy[0];
 
                     }
-                    red.Close();
+                    redpy.Close();
 
-                    
-                    //如果 奖池空了 补充奖池
-                    if (SumCount == 0)
+
+                    if (py > 0)
                     {
+                        //PY流
                         strSql = new StringBuilder();
-                        strSql.Append("update T_GongSi set");
-                        strSql.Append(" randomCount=randomCount+random");
-                        strSql.Append(" where BaoTypeNo=@No");
-                        SqlParameter[] parametersAdd = {
-                                    new SqlParameter("@No", SqlDbType.Int) };
-                        parametersAdd[0].Value = item;
+                        strSql.Append("select top 1 GongSiId from T_GongSi");
+                        strSql.Append(" where BaoTypeNo=@BaoTypeID and PyCount<>0  order by newid()");
+                        SqlParameter[] parameters122 = {
+                               new SqlParameter("@BaoTypeID", SqlDbType.Int) };
+                        parameters122[0].Value = item;
 
-                        SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parametersAdd, out sError);
+                        SqlDataReader redg = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parameters122, out sError);
 
-                        //strSql = new StringBuilder();
-                        //strSql.Append(" update T_GongSi");
-                        //strSql.Append(" set randomCount=randomCount-1 where GongSiId=@GongSiID");
-                        //SqlParameter[] parametersupup33 = {
-                        //            new SqlParameter("@GongSiID", SqlDbType.Int) };
-                        //parametersupup33[0].Value = sumGS;
+                        while (redg.Read())
+                        {
+                            sumGS = (int)redg[0];
 
-                        //SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parametersupup33, out sError);
+                        }
+                        redg.Close();
+
+                        strSql = new StringBuilder();
+                        strSql.Append(" update T_GongSi");
+                        strSql.Append(" set PyCount=PyCount-1 where GongSiId=@GongSiID");
+                        SqlParameter[] parametersupup222 = {
+                         new SqlParameter("@GongSiID", SqlDbType.Int) };
+                        parametersupup222[0].Value = sumGS;
+
+                        SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parametersupup222, out sError);
+
+                        strSql = new StringBuilder();
+                        strSql.Append(" update T_AnQing");
+                        strSql.Append(" set AnQingTwo=2 where AnQingID=@AnQingID");
+                        SqlParameter[] parametersupup111 = {
+                         new SqlParameter("@AnQingID", SqlDbType.Int) };
+                        parametersupup111[0].Value = id;
+
+                        SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parametersupup111, out sError);
+
 
                     }
-                    //随机获取 一个数据
-                    strSql = new StringBuilder();
-                    strSql.Append("select top 1 GongSiId from T_GongSi");
-                    strSql.Append(" where BaoTypeNo=@BaoTypeID and randomCount<>0  order by newid()");
-                    SqlParameter[] parameters12 = {
-                                    new SqlParameter("@BaoTypeID", SqlDbType.Int) };
-                    parameters12[0].Value = item;
-
-                    SqlDataReader redg = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parameters12, out sError);
-
-                    while (redg.Read())
+                    else
                     {
-                        sumGS = (int)redg[0];
+                        //摇奖流
+                        strSql = new StringBuilder();
+                        strSql.Append("select SUM(randomCount) from T_GongSi");
+                        strSql.Append("  where BaoTypeNo=@No");
+                        SqlParameter[] parametersNo = {
+                        new SqlParameter("@No", SqlDbType.Int) };
+                        parametersNo[0].Value = item;
+
+                        SqlDataReader red = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parametersNo, out sError);
+
+                        while (red.Read())
+                        {
+                            //获取奖池剩余数量
+                            SumCount = (int)red[0];
+
+                        }
+                        red.Close();
+
+
+                        //如果 奖池空了 补充奖池
+                        if (SumCount == 0)
+                        {
+                            strSql = new StringBuilder();
+                            strSql.Append("update T_GongSi set");
+                            strSql.Append(" randomCount=randomCount+random");
+                            strSql.Append(" where BaoTypeNo=@No");
+                            SqlParameter[] parametersAdd = {
+                                    new SqlParameter("@No", SqlDbType.Int) };
+                            parametersAdd[0].Value = item;
+
+                            SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parametersAdd, out sError);
+
+                            //strSql = new StringBuilder();
+                            //strSql.Append(" update T_GongSi");
+                            //strSql.Append(" set randomCount=randomCount-1 where GongSiId=@GongSiID");
+                            //SqlParameter[] parametersupup33 = {
+                            //            new SqlParameter("@GongSiID", SqlDbType.Int) };
+                            //parametersupup33[0].Value = sumGS;
+
+                            //SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parametersupup33, out sError);
+
+                        }
+                        //随机获取 一个数据
+                        strSql = new StringBuilder();
+                        strSql.Append("select top 1 GongSiId from T_GongSi");
+                        strSql.Append(" where BaoTypeNo=@BaoTypeID and randomCount<>0  order by newid()");
+                        SqlParameter[] parameters12 = {
+                                    new SqlParameter("@BaoTypeID", SqlDbType.Int) };
+                        parameters12[0].Value = item;
+                        
+
+                        SqlDataReader redg = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parameters12, out sError);
+
+                        while (redg.Read())
+                        {
+                            sumGS = (int)redg[0];
+                        }
+                        redg.Close();
+
+
                     }
-                    redg.Close();
 
                     strSql = new StringBuilder();
                     strSql.Append(" update T_GongSi");
@@ -387,7 +401,7 @@ namespace WinJiaoJing
                     parametersupupdate[0].Value = sumGS;
                     parametersupupdate[1].Value = no;
                     parametersupupdate[2].Value = DateTime.Now;
-                        SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parametersupupdate, out sError);
+                    SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parametersupupdate, out sError);
 
 
                     strSql = new StringBuilder();
@@ -405,19 +419,20 @@ namespace WinJiaoJing
                     parameters1[0].Value = no;
                     parameters1[1].Value = item;
                     parameters1[2].Value = sumGS;
-                                    
+
                     SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters1, out sError);
 
 
 
-                        //摇奖窗体
+                    //摇奖窗体
 
-                   
-                        Times frm = new Times(sumGS);
-                        frm.ShowDialog();
-                        sum = item;
 
-                    }
+                    Times frm = new Times(sumGS);
+                    frm.ShowDialog();
+                    sum = item;
+
+
+
 
 
                 }
@@ -440,26 +455,28 @@ namespace WinJiaoJing
             string sError = "";
             if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() == "进行中")
             {
-                MessageBox.Show("案情已提交,无法作废,请勿重复操作。");
+                MessageBox.Show("案情已提交,无法删除,请勿重复操作。");
                 return;
             }
             if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() == "已结算")
             {
-                MessageBox.Show("案情已结算,无法作废,请勿重复操作。");
+                MessageBox.Show("案情已结算,无法删除,请勿重复操作。");
                 return;
             }
             if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() == "作废")
             {
-                MessageBox.Show("以作废,请勿重复操作。");
+                MessageBox.Show("以作废,无法删除,请勿重复操作。");
                 return;
             }
-            DialogResult dl = MessageBox.Show("是否作废此案情？,提示：在案情作废前最好修改案情 备注原因。","提示",MessageBoxButtons.YesNo);
-            if (dl==DialogResult.No)
+            DialogResult dl = MessageBox.Show("是否删除此案情？", "提示", MessageBoxButtons.YesNo);
+            if (dl == DialogResult.No)
             {
                 return;
             }
 
-            string sql = "update T_AnQing set State = '作废' where AnQingID = '" + this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingID"].ToString() + "'";
+            string sql = "delete T_AnQingXiang where AnQingId = '" + this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingNo"].ToString() + "'";
+            SqlHelper.ExecuteNonQuery(CommandType.Text, sql, null, out sError);
+            sql = "delete T_AnQing where AnQingNo = '" + this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingNo"].ToString() + "'";
             SqlHelper.ExecuteNonQuery(CommandType.Text, sql, null, out sError);
             this.btnSel_Click(null, null);
         }

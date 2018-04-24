@@ -158,8 +158,6 @@ namespace WinJiaoJing
             switch (sPMenuName)
             {
 
-               
-
                 case "案件管理":
                     switch (sMenuName)
                     {
@@ -311,8 +309,6 @@ namespace WinJiaoJing
                             break;
 
                     }
-                    break;
-                case "关于":
                     switch (sMenuName)
                     {
                         case "关于":
@@ -392,6 +388,11 @@ namespace WinJiaoJing
         }
 
         private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barButtonItem20_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
         }

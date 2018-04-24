@@ -34,9 +34,18 @@ namespace WinJiaoJing
             FrmLogin frm = new FrmLogin();
             if (frm.ShowDialog() == DialogResult.OK)
             {
-              
+                if (sOperName == "高级用户")
+                {
+                    Application.Run(new FrmMain1());
+                }
+                else
+                {
                     Application.Run(new FrmMain());
-               
+                }
+
+
+
+
             }
             else {
                 Application.Exit();

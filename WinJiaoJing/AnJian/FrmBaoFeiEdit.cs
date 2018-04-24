@@ -77,8 +77,8 @@ namespace WinJiaoJing
             checkedListBoxControl1.CheckOnClick = true;
             //是否多列显示
             checkedListBoxControl1.MultiColumn = true;
-
-            getNO(sError);
+            string n1;
+            getNO(sError,out n1);
 
             //项目有编号 修改的情况下 显示数据
             if (sID.Trim() != "")
@@ -157,11 +157,12 @@ namespace WinJiaoJing
 
         private void toolSave_Click(object sender, EventArgs e)
         {
-           
+
+            
             string sError = "";
             string ID, NO, DanWei, OpID, DiDian, Date, AnQingDesc, teshu, beizhu, dieConut,DateSS,DiZhi;
+            getNO(sError,out NO);
             ID = this.txt_AnQingID.Text.Trim();
-            NO = this.txt_No.Text.Trim();
             DanWei = this.txtDanWei.Text.Trim();
             OpID = this.txtOperID.Text.Trim();
             DiDian = this.txtDiDian.Text.Trim();
@@ -499,7 +500,7 @@ namespace WinJiaoJing
         {
 
 
-            getNO("");
+           
 
             sID = "";
             this.txt_AnQingID.Text = "";
@@ -571,7 +572,7 @@ namespace WinJiaoJing
                 redcou.Close();
 
                 strSql = new StringBuilder();
-                strSql.Append("select SUM(XiangBaoJia) from");
+                strSql.Append("select case when SUM(XiangBaoJia) is null then 0 else SUM(XiangBaoJia) end from");
                 strSql.Append("(select top 5 * from T_AnQingXiang");
                 strSql.Append("  where XiangMuId <= 10 and AnQingId = @AnQingNo");
                 strSql.Append(" AND BaoType_Id = 1 order by XiangMuCount desc)tb1");
@@ -628,7 +629,7 @@ namespace WinJiaoJing
                     }
                     redsum2.Close();
                     sumA2 += sumA;
-                    MessageBox.Show("打包后A包："+sumA.ToString());
+                   
 
                 }
                 else
@@ -726,7 +727,7 @@ namespace WinJiaoJing
         /// 获取案情编号
         /// </summary>
         /// <param name="sError"></param>
-        private void getNO(string sError)
+        private void getNO(string sError,out string no)
         {
 
             //编号
@@ -735,10 +736,13 @@ namespace WinJiaoJing
             if (dt3.Rows[0][0].ToString() == "")
             {
                 this.txt_No.Text = "1";
+                no = "1";
             }
             else
             {
                 this.txt_No.Text = dt3.Rows[0][0].ToString();
+                no= dt3.Rows[0][0].ToString();
+
             }
         }
 

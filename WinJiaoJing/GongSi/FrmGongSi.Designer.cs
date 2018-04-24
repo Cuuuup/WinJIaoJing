@@ -153,11 +153,12 @@
             // 
             this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.5F);
             this.gridColumn2.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn2.Caption = "必中数";
-            this.gridColumn2.FieldName = "PyCount";
+            this.gridColumn2.Caption = "二次鉴定中标数";
+            this.gridColumn2.FieldName = "towRandom";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 3;
+            this.gridColumn2.Width = 114;
             // 
             // splitter1
             // 

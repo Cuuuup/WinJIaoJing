@@ -37,9 +37,38 @@ namespace WinJiaoJing
 
         }
 
+        private void getSum()
+        {
+            string sError = "";
+            string strSql = "";
+
+            if (CommonInfo.CLng(this.cmbDeptID.EditValue) == -1)
+            {
+                strSql = $"select BaoSum from T_AnQing where AnQingNo={sID} ";
+            }
+
+            if (CommonInfo.CLng(this.cmbDeptID.EditValue) == 1)
+            {
+                strSql = $"select BaOSumA from T_AnQing where AnQingNo={sID} ";
+            }
+            if (CommonInfo.CLng(this.cmbDeptID.EditValue) == 2)
+            {
+                strSql = $"select BaOSumB from T_AnQing where AnQingNo={sID} ";
+            }
+            if (CommonInfo.CLng(this.cmbDeptID.EditValue) == 3)
+            {
+                strSql = $"select BaOSumD from T_AnQing where AnQingNo={sID} ";
+            }
+
+            DataTable dt12 = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);
+            sum = Convert.ToInt32(dt12.Rows[0][0]);
+
+            this.label2.Text = sum.ToString(); ;
+        }
+
         private void btn_cx_Click(object sender, EventArgs e)
         {
-
+            getSum();
             string sCon = "";
             string ssCon = "";
             if (CommonInfo.CLng(this.cmbDeptID.EditValue) == -1)
@@ -68,7 +97,7 @@ namespace WinJiaoJing
             string sError = "";
             StringBuilder strSql1 = new StringBuilder();
             strSql1 = new StringBuilder();
-            strSql1.Append(" select AnQingXiang_ID,XiangBaoJia,ax.AnQingId,Bao_Desc,XiangMuName,XiangMuSum,XiangMuCount,GongSiName," + ssCon + "  from T_AnQingXiang ax ");
+            strSql1.Append(" select AnQingXiang_ID,XiangBaoJia,ax.AnQingId,Bao_Desc,XiangMuName,XiangMuCount,GongSiName,ax.XiangMuId, " + ssCon + "  from T_AnQingXiang ax ");
             strSql1.Append(" join T_XiangMu xm on ax.XiangMuId=xm.XiangMuID");
             strSql1.Append(" join T_BaoType bt on ax.BaoType_Id=bt.Bao_TypeId");
             strSql1.Append(" join T_GongSi gs on ax.GongSiID=gs.GongSiId");
@@ -78,10 +107,6 @@ namespace WinJiaoJing
             DataTable dt = SqlHelper.RunQuery(CommandType.Text, strSql1.ToString(), null, out sError);
 
             this.grd.DataSource = dt;
-            if ((int)dt.Rows[0][8]>0)
-                this.txtBao.Text = dt.Rows[0][8].ToString();
-            else 
-                this.txtBao.Text = gridColumn4.SummaryText.Trim();
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -118,32 +143,12 @@ namespace WinJiaoJing
         private void btnPrint_Click(object sender, EventArgs e)
         {
 
-            string sError = "";
-            string strSql = "";
+            getSum();
 
-            if (CommonInfo.CLng(this.cmbDeptID.EditValue) == -1)
-            {
-                strSql = $"select BaoSum from T_AnQing where AnQingNo={sID} ";
-            }
 
-            if (CommonInfo.CLng(this.cmbDeptID.EditValue) == 1)
-            {
-                strSql = $"select BaOSumA from T_AnQing where AnQingNo={sID} ";
-            }
-            if (CommonInfo.CLng(this.cmbDeptID.EditValue) == 2)
-            {
-                strSql = $"select BaOSumB from T_AnQing where AnQingNo={sID} ";
-            }
-            if (CommonInfo.CLng(this.cmbDeptID.EditValue) == 3)
-            {
-                strSql = $"select BaOSumD from T_AnQing where AnQingNo={sID} ";
-            }
-
-            DataTable dt = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);
-            sum = Convert.ToInt32(dt.Rows[0][0]);
-            
             try
             {
+                string sError="";
 
 
                 DataSet ds = new DataSet();//创建数据集

@@ -268,6 +268,24 @@
     <Compile Include="DiDian\FrmDiDianEdit.Designer.cs">
       <DependentUpon>FrmDiDianEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMain1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain1.designer.cs">
+      <DependentUpon>FrmMain1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GaoJi\FrmGG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GaoJi\FrmGG.Designer.cs">
+      <DependentUpon>FrmGG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GaoJi\FrmGGEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GaoJi\FrmGGEdit.Designer.cs">
+      <DependentUpon>FrmGGEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lib\RandomController.cs" />
     <Compile Include="PrintRibbonControllerResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -469,6 +487,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DiDian\FrmDiDianEdit.resx">
       <DependentUpon>FrmDiDianEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain1.resx">
+      <DependentUpon>FrmMain1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GaoJi\FrmGG.resx">
+      <DependentUpon>FrmGG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GaoJi\FrmGGEdit.resx">
+      <DependentUpon>FrmGGEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintRibbonControllerResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -700,6 +727,8 @@
     <Content Include="Resources\topB.png" />
     <Content Include="Resources\yiyun.ico" />
     <Content Include="Resources\Z.png" />
+    <Content Include="Resources\交警背景1.png" />
+    <Content Include="Resources\交警背景2.png" />
     <Content Include="yiyun.ico" />
     <None Include="Resources\菜单管理%282%29.png" />
     <None Include="Resources\菜单管理%281%29.png" />

@@ -35,7 +35,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::WinJiaoJing.Properties.Resources.JJ背景;
+            this.pictureBox1.Image = global::WinJiaoJing.Properties.Resources.交警背景1;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(608, 528);

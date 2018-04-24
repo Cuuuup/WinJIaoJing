@@ -316,13 +316,25 @@ namespace WinJiaoJing
             if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() == "作废")
             {
                 MessageBox.Show("鉴定项已作废,无法归档。");
+                return;
             }
             if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() == "(二次)作废")
             {
                 MessageBox.Show("鉴定项已作废,无法归档。");
+                return;
+            }
+            if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() == "(二次)未检测")
+            {
+                MessageBox.Show("归档前请先提交鉴定项。");
+                return;
             }
 
-            MessageBox.Show("归档后无法修改,确定要提交吗？", "提示", MessageBoxButtons.YesNo);
+            DialogResult dr= MessageBox.Show("归档后无法修改,确定要提交吗？", "提示", MessageBoxButtons.YesNo);
+            if (dr!=DialogResult.Yes)
+            {
+                return;
+            }
+             
             string sError = "";
             string sql = "";
             if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() == "进行中")
@@ -331,6 +343,7 @@ namespace WinJiaoJing
 
                 SqlHelper.ExecuteNonQuery(CommandType.Text, sql, null, out sError);
                 this.btnSel_Click(null, null);
+                return;
             }
             if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() == "(二次)进行中")
             {
@@ -338,6 +351,7 @@ namespace WinJiaoJing
 
                 SqlHelper.ExecuteNonQuery(CommandType.Text, sql, null, out sError);
                 this.btnSel_Click(null, null);
+                return;
             }
 
 
@@ -393,15 +407,23 @@ namespace WinJiaoJing
             if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() == "作废")
             {
                 MessageBox.Show("鉴定项已作废,请勿重复操作");
+                return;
             }
             if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() == "(二次)作废")
             {
                 MessageBox.Show("鉴定项已作废,无法二次鉴定。");
+                return;
             }
           
             if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() == "(二次)已结算")
             {
                 MessageBox.Show("鉴定项已结算,无法再次提交。");
+                return;
+            }
+
+            DialogResult dr = MessageBox.Show("作废后不可逆,确定要作废案情吗？", "警告", MessageBoxButtons.YesNo);
+            if (dr != DialogResult.Yes)
+            {
                 return;
             }
             string sError = "";
@@ -446,10 +468,12 @@ namespace WinJiaoJing
             if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() == "作废")
             {
                 MessageBox.Show("鉴定项已作废,无法二次鉴定。");
+                return;
             }
             if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() == "(二次)作废")
             {
                 MessageBox.Show("鉴定项已作废,无法二次鉴定。");
+                return;
             }
             if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() == "(二次)进行中")
             {
@@ -472,17 +496,43 @@ namespace WinJiaoJing
                 return;
             }
 
+
+
             string id = this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingID"].ToString();
             string no= this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingNo"].ToString();
             string sql = "";
             StringBuilder strSql;
-            int py, sumGS, SumCount, sum;
+            int py, sumGS, SumCount, sum,oldNO,sA,sB,sD;
             py = -1;
             sumGS = 0;
             SumCount = -1;
             sum = -1;
+            oldNO = -1;
+            sA = -1;
+            sB = -1;
+            sD = -1;
 
 
+
+            sql = $"select IsOk FROM T_AnQing where AnQingNo={no}";
+            SqlDataReader oldNOData= SqlHelper.ExecuteReader(CommandType.Text, sql, null, out sError);
+            //获取被二次鉴定的案情流水号
+            while (oldNOData.Read())
+            {
+                oldNO = Convert.ToInt32(oldNOData[0]);
+            }
+            oldNOData.Close();
+
+            sql = $"select GongSiA,GongSiB,GongSiD FROM T_AnQing where AnQingNo={oldNO}";
+            SqlDataReader oldGS = SqlHelper.ExecuteReader(CommandType.Text, sql, null, out sError);
+            while (oldGS.Read())
+            {
+                sA = Convert.ToInt32(oldGS[0]);
+                sB = Convert.ToInt32(oldGS[1]);
+                sD = Convert.ToInt32(oldGS[2]);
+            }
+
+            oldGS.Close();
 
             sql = "select BaoType_Id from T_AnQingXiang where AnQingId=" + no + "  group by BaoType_Id";
 
@@ -502,7 +552,7 @@ namespace WinJiaoJing
                 if (item != sum)
                 {
 
-                    strSql = new StringBuilder();
+                strSql = new StringBuilder();
                 strSql.Append("select SUM(PyCount) from T_GongSi");
                 strSql.Append("  where BaoTypeNo=@No");
                 SqlParameter[] parametersNopy = {
@@ -518,14 +568,14 @@ namespace WinJiaoJing
 
                 }
                 redpy.Close();
-
+                
 
                 if (py > 0)
                 {
                     //PY流
                     strSql = new StringBuilder();
                     strSql.Append("select top 1 GongSiId from T_GongSi");
-                    strSql.Append(" where BaoTypeNo=@BaoTypeID and PyCount<>0  order by newid()");
+                    strSql.Append(" where BaoTypeNo=@BaoTypeID and towPyCount<>0  order by newid()");
                     SqlParameter[] parameters122 = {
                                new SqlParameter("@BaoTypeID", SqlDbType.Int) };
                     parameters122[0].Value = item;
@@ -541,7 +591,7 @@ namespace WinJiaoJing
 
                     strSql = new StringBuilder();
                     strSql.Append(" update T_GongSi");
-                    strSql.Append(" set PyCount=PyCount-1 where GongSiId=@GongSiID");
+                    strSql.Append(" set PyCount=towPyCount-1 where GongSiId=@GongSiID");
                     SqlParameter[] parametersupup = {
                          new SqlParameter("@GongSiID", SqlDbType.Int) };
                     parametersupup[0].Value = sumGS;
@@ -596,12 +646,18 @@ namespace WinJiaoJing
                     //随机获取 一个数据
                     strSql = new StringBuilder();
                     strSql.Append("select top 1 GongSiId from T_GongSi");
-                    strSql.Append(" where BaoTypeNo=@BaoTypeID and towRandomCount<>0  order by newid()");
+                    strSql.Append(" where BaoTypeNo=@BaoTypeID and GongSiId not in (@A,@B,@D,'0') order by newid()");
                     SqlParameter[] parameters12 = {
-                                    new SqlParameter("@BaoTypeID", SqlDbType.Int) };
-                    parameters12[0].Value = item;
+                                    new SqlParameter("@BaoTypeID", SqlDbType.Int),
+                                    new SqlParameter("@A", SqlDbType.Int),
+                                    new SqlParameter("@B", SqlDbType.Int),
+                                    new SqlParameter("@D", SqlDbType.Int)};
+                        parameters12[0].Value = item;
+                        parameters12[1].Value = sA;
+                        parameters12[2].Value = sB;
+                        parameters12[3].Value = sD;
 
-                    SqlDataReader redg = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parameters12, out sError);
+                        SqlDataReader redg = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parameters12, out sError);
 
                     while (redg.Read())
                     {

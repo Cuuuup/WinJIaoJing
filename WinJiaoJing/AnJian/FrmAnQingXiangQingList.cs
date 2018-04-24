@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace WinJiaoJing
 {
@@ -65,7 +66,19 @@ namespace WinJiaoJing
            
             DataTable dt = SqlHelper.RunQuery(CommandType.Text, strSql1.ToString(), null, out sError);
             this.grd.DataSource = dt;
-          //  grd.RefreshDataSource();
+
+            strSql1 = new StringBuilder();
+            strSql1.Append(" select BaoSum from T_AnQing");
+            strSql1.Append(" where AnQingNo=" + sID);
+            SqlDataReader red = SqlHelper.ExecuteReader(CommandType.Text, strSql1.ToString(), null, out sError);
+
+            while (red.Read())
+            {
+                this.label2.Text = red[0].ToString(); ;
+            }
+            red.Close();
+
+            grd.RefreshDataSource();
         }
     }
 }

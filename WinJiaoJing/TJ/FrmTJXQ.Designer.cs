@@ -44,6 +44,8 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.btn_cx = new DevExpress.XtraEditors.SimpleButton();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbDeptID = new DevExpress.XtraEditors.LookUpEdit();
@@ -130,7 +132,7 @@
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.OptionsColumn.AllowFocus = false;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 1;
+            this.gridColumn6.VisibleIndex = 2;
             this.gridColumn6.Width = 344;
             // 
             // gridColumn2
@@ -145,7 +147,7 @@
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.OptionsColumn.AllowFocus = false;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 2;
+            this.gridColumn2.VisibleIndex = 3;
             this.gridColumn2.Width = 94;
             // 
             // repositoryItemDateEdit1
@@ -168,28 +170,28 @@
             this.gridColumn17.OptionsColumn.AllowEdit = false;
             this.gridColumn17.OptionsColumn.AllowFocus = false;
             this.gridColumn17.Visible = true;
-            this.gridColumn17.VisibleIndex = 3;
+            this.gridColumn17.VisibleIndex = 4;
             this.gridColumn17.Width = 144;
             // 
             // gridColumn3
             // 
             this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.5F);
             this.gridColumn3.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn3.Caption = "项目数量";
-            this.gridColumn3.FieldName = "XiangMuSum";
+            this.gridColumn3.Caption = "项目编号";
+            this.gridColumn3.FieldName = "XiangMuId";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.OptionsColumn.AllowFocus = false;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 4;
+            this.gridColumn3.VisibleIndex = 1;
             this.gridColumn3.Width = 74;
             // 
             // gridColumn4
             // 
             this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.5F);
             this.gridColumn4.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn4.Caption = "统计金额";
-            this.gridColumn4.FieldName = "XiangMuCount";
+            this.gridColumn4.Caption = "项目报价";
+            this.gridColumn4.FieldName = "XiangBaoJia";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.OptionsColumn.AllowFocus = false;
@@ -224,6 +226,8 @@
             // 
             this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 9.5F);
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
+            this.groupControl1.Controls.Add(this.label4);
+            this.groupControl1.Controls.Add(this.label2);
             this.groupControl1.Controls.Add(this.btn_cx);
             this.groupControl1.Controls.Add(this.label3);
             this.groupControl1.Controls.Add(this.cmbDeptID);
@@ -238,6 +242,23 @@
             this.groupControl1.Size = new System.Drawing.Size(825, 73);
             this.groupControl1.TabIndex = 3;
             this.groupControl1.Text = "操作设置";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(693, 44);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 14);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "总计价格：";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(766, 44);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 14);
+            this.label2.TabIndex = 21;
             // 
             // btn_cx
             // 
@@ -376,5 +397,7 @@
         private System.Windows.Forms.Label label3;
         private DevExpress.XtraEditors.SimpleButton btn_cx;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
     }
 }

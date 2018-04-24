@@ -28,10 +28,11 @@ namespace WinJiaoJing
         {
             
             string sError = "";
-            string strSql = "select AnQingNo,AnQingDiDian,AnQingDesc,AnQingDate,AnQingDieCount,State from T_AnQing  where 1=1  " + sCon + " order by AnQingNo";
+            string strSql = "select AnQingNo,AnQingDiDian,AnQingDesc,AnQingDate,AnQingDieCount,State from T_AnQing  where 1=1 and AnQingDieCount>0  " + sCon + " order by AnQingNo";
             DataTable dt = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);
 
             this.grd.DataSource = dt;
+
         }
 
        

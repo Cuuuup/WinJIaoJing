@@ -77,8 +77,8 @@ namespace WinJiaoJing
             checkedListBoxControl1.CheckOnClick = true;
             //是否多列显示
             checkedListBoxControl1.MultiColumn = true;
-
-            getNO(sError);
+            string no;
+            getNO(sError,out no);
 
             //项目有编号 修改的情况下 显示数据
             if (sID.Trim() != "")
@@ -100,7 +100,7 @@ namespace WinJiaoJing
                     this.txtAnQingDesc.Text = dt.Rows[0]["AnQingDesc"].ToString();
                     this.txtDate.Text = dt.Rows[0]["AnQingDate"].ToString();
                     this.txtDieCount.Text = dt.Rows[0]["AnQingDieCount"].ToString();
-                    this.txtDateSS.Text = dt.Rows[0]["AnQingDateSS"].ToString();
+                    this.txtDateSS.EditValue = dt.Rows[0]["AnQingDateSS"].ToString();
 
 
                     if (dt.Rows[0]["AnQingTeShuXiang"].ToString() != "")
@@ -139,7 +139,8 @@ namespace WinJiaoJing
                     red1.Close();
 
                     this.txt_AnQingID.Text = null;
-                    getNO(sError);
+                     
+                    getNO(sError,out no);
                 }
                 else
                 {
@@ -167,11 +168,11 @@ namespace WinJiaoJing
                 MessageBox.Show("请选择鉴定项目 ！");
                 return;
             }
-
+            
             string sError = "";
-            string ID, NO, DanWei, OpID, DiDian, Date, AnQingDesc, teshu, beizhu, dieConut, DateSS, DiZhi;
+            string ID, NO, DanWei, OpID, DiDian, Date, AnQingDesc, teshu, beizhu, dieConut, DateSS, DiZhi,isOK;
+            getNO(sError, out NO);
             ID = this.txt_AnQingID.Text.Trim();
-            NO = this.txt_No.Text.Trim();
             DanWei = this.txtDanWei.Text.Trim();
             OpID = this.txtOperID.Text.Trim();
             DiDian = this.txtDiDian.Text.Trim();
@@ -180,8 +181,9 @@ namespace WinJiaoJing
             beizhu = this.txtDemo.Text.Trim();
             teshu = this.txt_teshu.Text.Trim();
             dieConut = this.txtDieCount.Text.Trim();
-            DateSS = this.txtDateSS.Text;
+            DateSS = this.txtDateSS.EditValue.ToString() ;
             DiZhi = this.comDidIan.Text;
+            isOK = sID;
 
             StringBuilder strSql = new StringBuilder();
             //新增
@@ -196,11 +198,11 @@ namespace WinJiaoJing
                 strSql.Append("insert into T_AnQing(");
                 strSql.Append("AnQingDiDian,AnQingDesc,AnQingNo,AnQingDate,");
                 strSql.Append(" DeftName,OperName,AnQingTeShuXiang,");
-                strSql.Append(" AnQingBeiZhu,AnQingDieCount,AnQingTwo,AnQingDateSS,AnQingDiZhi,State)");
+                strSql.Append(" AnQingBeiZhu,AnQingDieCount,AnQingTwo,AnQingDateSS,AnQingDiZhi,State,IsOk)");
                 strSql.Append(" values (");
                 strSql.Append("@AnQingDiDian,@AnQingDesc,@AnQingNo,@AnQingDate,");
                 strSql.Append("@DeftName,@OperName,@AnQingTeShuXiang,");
-                strSql.Append("@AnQingBeiZhu,@AnQingDieCount,@AnQingTwo,@AnQingDateSS,@AnQingDiZhi,@State)");
+                strSql.Append("@AnQingBeiZhu,@AnQingDieCount,@AnQingTwo,@AnQingDateSS,@AnQingDiZhi,@State,@isok)");
                 strSql.Append(";select @@IDENTITY");
                 SqlParameter[] parameters = {
                      new SqlParameter("@AnQingDiDian", SqlDbType.VarChar,70),
@@ -215,7 +217,8 @@ namespace WinJiaoJing
                      new SqlParameter("@AnQingTwo",SqlDbType.Int),
                      new SqlParameter("@AnQingDateSS", SqlDbType.Time),
                      new SqlParameter("@AnQingDiZhi", SqlDbType.VarChar,20),
-                     new SqlParameter("@State", SqlDbType.VarChar,20) };
+                     new SqlParameter("@State", SqlDbType.VarChar,20),
+                     new SqlParameter("@isok",SqlDbType.Int) };
 
                 parameters[0].Value = DiDian;
                 parameters[1].Value = AnQingDesc;
@@ -230,6 +233,8 @@ namespace WinJiaoJing
                 parameters[10].Value = DateSS;
                 parameters[11].Value = DiZhi;
                 parameters[12].Value = "(二次)未检测";
+                parameters[13].Value = isOK;
+               
 
 
                 SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters, out sError);
@@ -334,7 +339,8 @@ namespace WinJiaoJing
             //beizhu = this.txtDemo.Text.Trim();
             //teshu = this.txt_teshu.Text.Trim();
             //dieConut = this.txtDieCount.Text.Trim();
-            getNO("");
+            string no;
+            getNO("",out no);
 
             sID = "";
             this.txt_AnQingID.Text = "";
@@ -428,7 +434,7 @@ namespace WinJiaoJing
                 redcou.Close();
 
                 strSql = new StringBuilder();
-                strSql.Append("select SUM(XiangBaoJia) from");
+                strSql.Append("select case when SUM(XiangBaoJia) is null then 0 else SUM(XiangBaoJia)end from");
                 strSql.Append("(select top 5 * from T_AnQingXiang");
                 strSql.Append("  where XiangMuId <= 10 and AnQingId = @AnQingNo");
                 strSql.Append(" AND BaoType_Id = 1 order by XiangMuCount desc)tb1");
@@ -579,7 +585,7 @@ namespace WinJiaoJing
 
         }
 
-        private void getNO(string sError)
+        private void getNO(string sError,out string _no)
         {
 
             //编号
@@ -588,10 +594,12 @@ namespace WinJiaoJing
             if (dt3.Rows[0][0].ToString() == "")
             {
                 this.txt_No.Text = "1";
+                _no = "1";
             }
             else
             {
                 this.txt_No.Text = dt3.Rows[0][0].ToString();
+                _no = dt3.Rows[0][0].ToString(); 
             }
         }
 

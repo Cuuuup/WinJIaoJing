@@ -45,8 +45,16 @@
             this.toolPint = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolTwo = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolTowT = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolClose = new System.Windows.Forms.ToolStripButton();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.ckrz = new DevExpress.XtraEditors.CheckEdit();
+            this.ckrj = new DevExpress.XtraEditors.CheckEdit();
+            this.ckrs = new DevExpress.XtraEditors.CheckEdit();
+            this.ckrw = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit4 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
@@ -77,17 +85,13 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.ckrw = new DevExpress.XtraEditors.CheckEdit();
-            this.toolTowT = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolClose = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.ckrj = new DevExpress.XtraEditors.CheckEdit();
-            this.ckrs = new DevExpress.XtraEditors.CheckEdit();
-            this.ckrz = new DevExpress.XtraEditors.CheckEdit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ckrz.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckrj.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckrs.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckrw.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
@@ -103,10 +107,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckrw.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckrj.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckrs.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckrz.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -181,7 +181,7 @@
             // 
             // toolZF
             // 
-            this.toolZF.Image = ((System.Drawing.Image)(resources.GetObject("toolZF.Image")));
+            this.toolZF.Image = global::WinJiaoJing.Properties.Resources.p放弃1;
             this.toolZF.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolZF.Name = "toolZF";
             this.toolZF.Size = new System.Drawing.Size(55, 23);
@@ -240,6 +240,33 @@
             this.toolTwo.Text = "二次鉴定";
             this.toolTwo.Click += new System.EventHandler(this.toolTwo_Click);
             // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 26);
+            // 
+            // toolTowT
+            // 
+            this.toolTowT.Image = ((System.Drawing.Image)(resources.GetObject("toolTowT.Image")));
+            this.toolTowT.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolTowT.Name = "toolTowT";
+            this.toolTowT.Size = new System.Drawing.Size(107, 23);
+            this.toolTowT.Text = "二次鉴定提交";
+            this.toolTowT.Click += new System.EventHandler(this.toolTowT_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 26);
+            // 
+            // toolClose
+            // 
+            this.toolClose.Image = ((System.Drawing.Image)(resources.GetObject("toolClose.Image")));
+            this.toolClose.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolClose.Name = "toolClose";
+            this.toolClose.Size = new System.Drawing.Size(55, 23);
+            this.toolClose.Text = "关闭";
+            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
@@ -277,6 +304,50 @@
             this.groupControl1.Size = new System.Drawing.Size(927, 143);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "查询条件";
+            // 
+            // ckrz
+            // 
+            this.ckrz.Location = new System.Drawing.Point(299, 105);
+            this.ckrz.Name = "ckrz";
+            this.ckrz.Properties.Caption = "(二次)已作废";
+            this.ckrz.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
+            this.ckrz.Properties.RadioGroupIndex = 1;
+            this.ckrz.Size = new System.Drawing.Size(111, 19);
+            this.ckrz.TabIndex = 10;
+            this.ckrz.TabStop = false;
+            // 
+            // ckrj
+            // 
+            this.ckrj.Location = new System.Drawing.Point(108, 105);
+            this.ckrj.Name = "ckrj";
+            this.ckrj.Properties.Caption = "(二次)进行中";
+            this.ckrj.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
+            this.ckrj.Properties.RadioGroupIndex = 1;
+            this.ckrj.Size = new System.Drawing.Size(89, 19);
+            this.ckrj.TabIndex = 10;
+            this.ckrj.TabStop = false;
+            // 
+            // ckrs
+            // 
+            this.ckrs.Location = new System.Drawing.Point(203, 105);
+            this.ckrs.Name = "ckrs";
+            this.ckrs.Properties.Caption = "(二次)已结算";
+            this.ckrs.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
+            this.ckrs.Properties.RadioGroupIndex = 1;
+            this.ckrs.Size = new System.Drawing.Size(111, 19);
+            this.ckrs.TabIndex = 9;
+            this.ckrs.TabStop = false;
+            // 
+            // ckrw
+            // 
+            this.ckrw.Location = new System.Drawing.Point(12, 105);
+            this.ckrw.Name = "ckrw";
+            this.ckrw.Properties.Caption = "(二次)未检测";
+            this.ckrw.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
+            this.ckrw.Properties.RadioGroupIndex = 1;
+            this.ckrw.Size = new System.Drawing.Size(111, 19);
+            this.ckrw.TabIndex = 9;
+            this.ckrw.TabStop = false;
             // 
             // checkEdit4
             // 
@@ -624,77 +695,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
             // 
-            // ckrw
-            // 
-            this.ckrw.Location = new System.Drawing.Point(12, 105);
-            this.ckrw.Name = "ckrw";
-            this.ckrw.Properties.Caption = "(二次)未检测";
-            this.ckrw.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
-            this.ckrw.Properties.RadioGroupIndex = 1;
-            this.ckrw.Size = new System.Drawing.Size(111, 19);
-            this.ckrw.TabIndex = 9;
-            this.ckrw.TabStop = false;
-            // 
-            // toolTowT
-            // 
-            this.toolTowT.Image = ((System.Drawing.Image)(resources.GetObject("toolTowT.Image")));
-            this.toolTowT.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolTowT.Name = "toolTowT";
-            this.toolTowT.Size = new System.Drawing.Size(107, 23);
-            this.toolTowT.Text = "二次鉴定提交";
-            this.toolTowT.Click += new System.EventHandler(this.toolTowT_Click);
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 26);
-            // 
-            // toolClose
-            // 
-            this.toolClose.Image = ((System.Drawing.Image)(resources.GetObject("toolClose.Image")));
-            this.toolClose.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolClose.Name = "toolClose";
-            this.toolClose.Size = new System.Drawing.Size(55, 23);
-            this.toolClose.Text = "关闭";
-            // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 26);
-            // 
-            // ckrj
-            // 
-            this.ckrj.Location = new System.Drawing.Point(108, 105);
-            this.ckrj.Name = "ckrj";
-            this.ckrj.Properties.Caption = "(二次)进行中";
-            this.ckrj.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
-            this.ckrj.Properties.RadioGroupIndex = 1;
-            this.ckrj.Size = new System.Drawing.Size(89, 19);
-            this.ckrj.TabIndex = 10;
-            this.ckrj.TabStop = false;
-            // 
-            // ckrs
-            // 
-            this.ckrs.Location = new System.Drawing.Point(203, 105);
-            this.ckrs.Name = "ckrs";
-            this.ckrs.Properties.Caption = "(二次)已结算";
-            this.ckrs.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
-            this.ckrs.Properties.RadioGroupIndex = 1;
-            this.ckrs.Size = new System.Drawing.Size(111, 19);
-            this.ckrs.TabIndex = 9;
-            this.ckrs.TabStop = false;
-            // 
-            // ckrz
-            // 
-            this.ckrz.Location = new System.Drawing.Point(299, 105);
-            this.ckrz.Name = "ckrz";
-            this.ckrz.Properties.Caption = "(二次)已作废";
-            this.ckrz.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
-            this.ckrz.Properties.RadioGroupIndex = 1;
-            this.ckrz.Size = new System.Drawing.Size(111, 19);
-            this.ckrz.TabIndex = 10;
-            this.ckrz.TabStop = false;
-            // 
             // FrmAnQing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -711,6 +711,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ckrz.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckrj.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckrs.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckrw.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
@@ -726,10 +730,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckrw.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckrj.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckrs.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckrz.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

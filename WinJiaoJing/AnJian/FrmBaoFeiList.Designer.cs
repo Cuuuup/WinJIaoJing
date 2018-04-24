@@ -602,11 +602,11 @@
             // 
             // toolDel
             // 
-            this.toolDel.Image = ((System.Drawing.Image)(resources.GetObject("toolDel.Image")));
+            this.toolDel.Image = global::WinJiaoJing.Properties.Resources.p删除;
             this.toolDel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolDel.Name = "toolDel";
             this.toolDel.Size = new System.Drawing.Size(55, 23);
-            this.toolDel.Text = "作废";
+            this.toolDel.Text = "删除";
             this.toolDel.Click += new System.EventHandler(this.toolTwo_Click);
             // 
             // toolStripSeparator6

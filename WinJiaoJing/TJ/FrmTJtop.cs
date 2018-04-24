@@ -27,8 +27,8 @@ namespace WinJiaoJing
         public void DataBind()
         {
             string sError = "";
-
-            DataTable dt = SqlHelper.RunQuery(CommandType.StoredProcedure, "GetGaiLv", null, out sError);
+            //使用存储过程实现 查询 union 拼接3中类型 如需求变化 SQL解读困难建议根据需求重写
+            DataTable dt = SqlHelper.RunQuery(CommandType.StoredProcedure, "GetStuCou", null, out sError);
             this.grd.DataSource = dt;
         }
         //查询
