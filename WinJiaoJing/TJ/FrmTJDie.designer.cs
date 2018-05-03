@@ -387,7 +387,7 @@
             // 
             this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.5F);
             this.gridColumn2.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn2.Caption = "案发时间";
+            this.gridColumn2.Caption = "案发日期";
             this.gridColumn2.FieldName = "AnQingDate";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;

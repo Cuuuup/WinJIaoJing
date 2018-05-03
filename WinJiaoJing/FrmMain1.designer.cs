@@ -30,18 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain1));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("案情录入", 3, 4);
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("案情管理", 3, 4);
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("案件管理", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("交通事故案件统计报表", 3, 4);
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("招标公司中标次数统计报表", 3, 4);
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("死亡人数统计表", 3, 4);
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("统计报表", 2, 0, new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode5,
-            treeNode6});
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("案情录入", 3, 4);
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("案情管理", 3, 4);
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("案件管理", new System.Windows.Forms.TreeNode[] {
+            treeNode8,
+            treeNode9});
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("交通事故案件统计报表", 3, 4);
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("招标公司中标次数统计报表", 3, 4);
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("死亡人数统计表", 3, 4);
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("统计报表", 2, 0, new System.Windows.Forms.TreeNode[] {
+            treeNode11,
+            treeNode12,
+            treeNode13});
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -500,46 +500,46 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(2, 21);
             this.treeView1.Name = "treeView1";
-            treeNode1.ImageIndex = 3;
-            treeNode1.Name = "节点1";
-            treeNode1.SelectedImageIndex = 4;
-            treeNode1.Text = "案情录入";
-            treeNode1.ToolTipText = "0102";
-            treeNode2.ImageIndex = 3;
-            treeNode2.Name = "节点2";
-            treeNode2.SelectedImageIndex = 4;
-            treeNode2.Text = "案情管理";
-            treeNode2.ToolTipText = "0103";
-            treeNode3.ImageIndex = 2;
-            treeNode3.Name = "节点0";
-            treeNode3.SelectedImageKey = "菜单管理(2).png";
-            treeNode3.Tag = "4";
-            treeNode3.Text = "案件管理";
-            treeNode3.ToolTipText = "01";
-            treeNode4.ImageIndex = 3;
-            treeNode4.Name = "节点3";
-            treeNode4.SelectedImageIndex = 4;
-            treeNode4.Text = "交通事故案件统计报表";
-            treeNode4.ToolTipText = "0202";
-            treeNode5.ImageIndex = 3;
-            treeNode5.Name = "节点0";
-            treeNode5.SelectedImageIndex = 4;
-            treeNode5.Text = "招标公司中标次数统计报表";
-            treeNode5.ToolTipText = "0203";
-            treeNode6.ImageIndex = 3;
-            treeNode6.Name = "节点0";
-            treeNode6.SelectedImageIndex = 4;
-            treeNode6.Text = "死亡人数统计表";
-            treeNode6.ToolTipText = "0205";
-            treeNode7.ImageIndex = 2;
-            treeNode7.Name = "节点2";
-            treeNode7.SelectedImageIndex = 0;
-            treeNode7.Tag = "4";
-            treeNode7.Text = "统计报表";
-            treeNode7.ToolTipText = "02";
+            treeNode8.ImageIndex = 3;
+            treeNode8.Name = "节点1";
+            treeNode8.SelectedImageIndex = 4;
+            treeNode8.Text = "案情录入";
+            treeNode8.ToolTipText = "0102";
+            treeNode9.ImageIndex = 3;
+            treeNode9.Name = "节点2";
+            treeNode9.SelectedImageIndex = 4;
+            treeNode9.Text = "案情管理";
+            treeNode9.ToolTipText = "0103";
+            treeNode10.ImageIndex = 2;
+            treeNode10.Name = "节点0";
+            treeNode10.SelectedImageKey = "菜单管理(2).png";
+            treeNode10.Tag = "4";
+            treeNode10.Text = "案件管理";
+            treeNode10.ToolTipText = "01";
+            treeNode11.ImageIndex = 3;
+            treeNode11.Name = "节点3";
+            treeNode11.SelectedImageIndex = 4;
+            treeNode11.Text = "交通事故案件统计报表";
+            treeNode11.ToolTipText = "0202";
+            treeNode12.ImageIndex = 3;
+            treeNode12.Name = "节点0";
+            treeNode12.SelectedImageIndex = 4;
+            treeNode12.Text = "招标公司中标次数统计报表";
+            treeNode12.ToolTipText = "0203";
+            treeNode13.ImageIndex = 3;
+            treeNode13.Name = "节点0";
+            treeNode13.SelectedImageIndex = 4;
+            treeNode13.Text = "死亡人数统计表";
+            treeNode13.ToolTipText = "0205";
+            treeNode14.ImageIndex = 2;
+            treeNode14.Name = "节点2";
+            treeNode14.SelectedImageIndex = 0;
+            treeNode14.Tag = "4";
+            treeNode14.Text = "统计报表";
+            treeNode14.ToolTipText = "02";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode7});
+            treeNode10,
+            treeNode14});
             this.treeView1.SelectedImageIndex = 0;
             this.treeView1.Size = new System.Drawing.Size(223, 394);
             this.treeView1.TabIndex = 0;
@@ -592,7 +592,7 @@
             this.IsMdiContainer = true;
             this.Name = "FrmMain1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "曹妃甸交警支队-交通事故司法鉴定委托系统";
+            this.Text = " 曹妃甸交警支队-交通事故司法鉴定委托系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

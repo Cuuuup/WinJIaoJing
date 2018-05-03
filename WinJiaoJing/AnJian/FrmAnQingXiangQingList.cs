@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -72,6 +72,7 @@ namespace WinJiaoJing
             strSql1.Append(" where AnQingNo=" + sID);
             SqlDataReader red = SqlHelper.ExecuteReader(CommandType.Text, strSql1.ToString(), null, out sError);
 
+          
             while (red.Read())
             {
                 this.label2.Text = red[0].ToString(); ;

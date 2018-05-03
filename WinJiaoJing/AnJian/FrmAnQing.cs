@@ -448,7 +448,6 @@ namespace WinJiaoJing
             }
 
 
-
             this.btnSel_Click(null, null);
         }
 

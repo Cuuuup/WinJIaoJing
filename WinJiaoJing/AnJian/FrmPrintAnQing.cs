@@ -63,7 +63,6 @@ namespace WinJiaoJing.AnJian
         {
             DataSet ds = new DataSet();//创建数据集
 
-            //ds.Clear();
 
             string sqlError = "";
             string sql = $"select * from T_AnQing where AnQingNo={ID}";

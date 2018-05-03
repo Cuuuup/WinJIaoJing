@@ -32,7 +32,6 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.txtTow = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -41,23 +40,23 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cmbDeptID = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.txtTowPY = new DevExpress.XtraEditors.TextEdit();
             this.txtPY = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txtRandom = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.txtOperID = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.txtTowPY = new DevExpress.XtraEditors.TextEdit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTow.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbDeptID.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTowPY.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPY.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRandom.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOperID.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTowPY.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -65,8 +64,7 @@
             this.toolStrip1.Font = new System.Drawing.Font("微软雅黑", 9.5F);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolSave,
-            this.toolStripSeparator4,
-            this.toolStripSeparator3});
+            this.toolStripSeparator4});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(543, 26);
@@ -86,11 +84,6 @@
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 26);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 26);
             // 
             // groupControl1
             // 
@@ -183,6 +176,14 @@
             this.labelControl7.TabIndex = 12;
             this.labelControl7.Text = "包类型：";
             // 
+            // txtTowPY
+            // 
+            this.txtTowPY.Location = new System.Drawing.Point(159, 291);
+            this.txtTowPY.Name = "txtTowPY";
+            this.txtTowPY.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtTowPY.Size = new System.Drawing.Size(175, 20);
+            this.txtTowPY.TabIndex = 0;
+            // 
             // txtPY
             // 
             this.txtPY.Location = new System.Drawing.Point(159, 242);
@@ -190,6 +191,15 @@
             this.txtPY.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.txtPY.Size = new System.Drawing.Size(175, 20);
             this.txtPY.TabIndex = 0;
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
+            this.labelControl5.Location = new System.Drawing.Point(38, 293);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(115, 16);
+            this.labelControl5.TabIndex = 0;
+            this.labelControl5.Text = "(二次)指定次数：";
             // 
             // labelControl3
             // 
@@ -233,23 +243,6 @@
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "公司名称：";
             // 
-            // labelControl5
-            // 
-            this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
-            this.labelControl5.Location = new System.Drawing.Point(38, 293);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(115, 16);
-            this.labelControl5.TabIndex = 0;
-            this.labelControl5.Text = "(二次)指定次数：";
-            // 
-            // txtTowPY
-            // 
-            this.txtTowPY.Location = new System.Drawing.Point(159, 291);
-            this.txtTowPY.Name = "txtTowPY";
-            this.txtTowPY.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtTowPY.Size = new System.Drawing.Size(175, 20);
-            this.txtTowPY.TabIndex = 0;
-            // 
             // FrmGGEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -271,10 +264,10 @@
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTow.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbDeptID.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTowPY.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPY.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRandom.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOperID.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTowPY.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,7 +278,6 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolSave;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.TextEdit txtOperID;
         private DevExpress.XtraEditors.LabelControl labelControl1;

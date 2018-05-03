@@ -67,8 +67,6 @@ namespace WinJiaoJing
 
                 sCon += $"  and AnQingDateSS>='{this.txtDateSS.Text.Trim()}' and AnQingDateSS<='{this.txtT3.Text.Trim()}'  ";
 
-
-
             }
             
             if (CommonInfo.CObjectToStr(this.dateEdit1.EditValue).Trim() != "")

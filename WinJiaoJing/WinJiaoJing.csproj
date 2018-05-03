@@ -458,12 +458,6 @@
     <Compile Include="old\FrmYaoHaoEdit.Designer.cs">
       <DependentUpon>FrmYaoHaoEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="old\FrmYaoHaoList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="old\FrmYaoHaoList.Designer.cs">
-      <DependentUpon>FrmYaoHaoList.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="AnJian\FrmTwo.resx">
       <DependentUpon>FrmTwo.cs</DependentUpon>
     </EmbeddedResource>
@@ -599,9 +593,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="old\FrmYaoHaoEdit.resx">
       <DependentUpon>FrmYaoHaoEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="old\FrmYaoHaoList.resx">
-      <DependentUpon>FrmYaoHaoList.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>

@@ -328,17 +328,7 @@ namespace WinJiaoJing
         private void toolQingKong_Click(object sender, EventArgs e)
         {
 
-
-            //ID = this.txt_AnQingID.Text.Trim();
-            //NO = this.txt_No.Text.Trim();
-            //DanWei = this.txtDanWei.Text.Trim();
-            //OpID = this.txtOperID.Text.Trim();
-            //DiDian = this.txtDiDian.Text.Trim();
-            //Date = this.txtDate.Text.Trim();
-            //AnQingDesc = this.txtAnQingDesc.Text.Trim();
-            //beizhu = this.txtDemo.Text.Trim();
-            //teshu = this.txt_teshu.Text.Trim();
-            //dieConut = this.txtDieCount.Text.Trim();
+         
             string no;
             getNO("",out no);
 
@@ -375,7 +365,6 @@ namespace WinJiaoJing
         {
             string sError = "";
             sCon = " and DeptID like '" + Program.sDeptID + "' " + sCon;
-            //sCon += " and CarNO not in (SELECT CarNO FROM T_CarBaoFei WHERE DeptID='"+Program.sDeptID+"') ";
 
             string strSql = "select * from T_Car where 1=1  " + sCon + " order by ID";
             DataTable dt = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);
@@ -451,8 +440,8 @@ namespace WinJiaoJing
 
                 
                 redcou.Close();
-                //A包大于5个项目 并且1-10 最贵的项目总价值大于4800 1-10最贵的5项打包成4800
-                if (count==5 && sumA>=4800)
+                //A包1-10 最贵的项目总价值大于4800 1-10最贵的5项打包成4800
+                if (sumA>=4800)
                 {
                     sumA = 4800; 
 

@@ -182,7 +182,7 @@
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(75, 16);
             this.labelControl9.TabIndex = 17;
-            this.labelControl9.Text = "申请时间：";
+            this.labelControl9.Text = "案发时间：";
             // 
             // labelControl12
             // 

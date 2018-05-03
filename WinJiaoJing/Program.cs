@@ -43,9 +43,6 @@ namespace WinJiaoJing
                     Application.Run(new FrmMain());
                 }
 
-
-
-
             }
             else {
                 Application.Exit();

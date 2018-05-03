@@ -88,7 +88,7 @@ namespace WinJiaoJing
             {
                 try
                 {
-                    DataView dv = dtQx.DefaultView;
+                    DataView dv = dtQx.DefaultView; 
                     dv.RowFilter = " MenuID='" + dt.Rows[i]["MenuID"].ToString() + "'";
                     dt.Rows[i]["IsQx"] = CommonInfo.CBoolean(dv.ToTable().Rows[0]["IsQx"].ToString());
                 }

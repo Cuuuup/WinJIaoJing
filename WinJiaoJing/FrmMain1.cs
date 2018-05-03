@@ -29,6 +29,7 @@ namespace WinJiaoJing
                 //    barQx.Enabled = false;
                 //    brahw.Enabled = false;
                 //}
+
                 barInfo.Caption = "部门：" + Program.sDeptName + "        登陆人：" + Program.sOperID + " | " + Program.sOperName;
                 try
                 {
@@ -134,7 +135,7 @@ namespace WinJiaoJing
                     tn.SelectedImageIndex = 4;
                     tn.ImageIndex = 3;
                     tn.Text = dv.ToTable().Rows[i]["TreeNodeName"].ToString();
-                    tnode.Nodes.Add(tn);
+                    tnode.Nodes.Add(tn);    
                 }
             }
             catch { }
@@ -156,9 +157,7 @@ namespace WinJiaoJing
         public void ShowMenu(string sPMenuName, string sMenuName)
         {
             switch (sPMenuName)
-            {
-
-
+            {       
 
                 case "案件管理":
                     switch (sMenuName)
@@ -180,7 +179,6 @@ namespace WinJiaoJing
                             FrmAnQing.Text = "案情管理";
                             FrmAnQing.Show();
                             break;
-
                     }
                     break;
 
@@ -360,22 +358,12 @@ namespace WinJiaoJing
 
         private void xtraTabbedMdiManager1_PageRemoved(object sender, DevExpress.XtraTabbedMdi.MdiTabPageEventArgs e)
         {
-            //if(e.Page.Text.Trim()=="我的桌面")
-            //{
-            //    Form1 Form1 = new Form1();
-            //    Form1.MdiParent = this;
-            //    Form1.Text = "我的桌面";
-            //    Form1.Show();
-            //}
+            
         }
 
         private void treeView1_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    ShowMenu(treeView1.SelectedNode.Parent.Text.Trim(), treeView1.SelectedNode.Text.Trim());
-            //}
-            //catch { }
+          
         }
 
         private void barClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -400,11 +388,7 @@ namespace WinJiaoJing
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            //try
-            //{
-            //    ShowMenu(treeView1.SelectedNode.Parent.Text.Trim(), treeView1.SelectedNode.Text.Trim());
-            //}
-            //catch { }
+           
         }
 
         private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

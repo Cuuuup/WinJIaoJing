@@ -27,7 +27,7 @@ namespace WinJiaoJing
         {
 
             string sError = "";
-            string strSql = " select *  from T_AnQing where 1=1 " + sCon + " order by AnQingNo";
+            string strSql = " select *  from T_AnQing  where 1=1 " + sCon + " order by AnQingNo";
             DataTable dt = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);
 
             this.grd.DataSource = dt;
@@ -69,7 +69,30 @@ namespace WinJiaoJing
                 else
                     sCon += " and DeftName like '" + CommonInfo.CObjectToStr(this.cmbDeptID.Text) + "' ";
             }
-           
+
+            if (CommonInfo.CObjectToStr(this.cmbgs.Text) != "")
+            {
+                if (this.cmbgs.Text == "全部")
+                    sCon += " ";
+                else
+                {
+                    if (Convert.ToInt32(this.cmbgs.EditValue)<=3)
+                    {
+                        sCon += " and GongSiA = '" + Convert.ToInt32(this.cmbgs.EditValue) + "' ";
+                    }
+                    if (Convert.ToInt32(this.cmbgs.EditValue) > 3 && Convert.ToInt32(this.cmbgs.EditValue)<=6)
+                    {
+                        sCon += " and GongSiB = '" + Convert.ToInt32(this.cmbgs.EditValue) + "' ";
+                    }
+                    if (Convert.ToInt32(this.cmbgs.EditValue) > 6 && Convert.ToInt32(this.cmbgs.EditValue) <= 9)
+                    {
+                        sCon += " and GongSiD = '" + Convert.ToInt32(this.cmbgs.EditValue) + "' ";
+                    }
+
+                }
+                    
+            }
+
             if (CommonInfo.CObjectToStr(this.dateEdit1.EditValue).Trim() != "")
             {
                 sCon += " and AnQingDate>='" + CommonInfo.CDate(this.dateEdit1.EditValue).ToString("yyyy-MM-dd") + " 00:00:00' ";
@@ -90,6 +113,11 @@ namespace WinJiaoJing
             DataTable dt = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);
             this.cmbDeptID.Properties.DataSource = dt;
             this.cmbDeptID.EditValue = Program.sDeptID;
+
+            strSql = "select '全部' as TypeName,-1 as TypeID union all select '('+bt.Bao_Name+')'+GongSiName as TypeName ,GongSiId as TypeID from T_GongSi gs join T_BaoType bt on gs.BaoTypeNo=bt.Bao_TypeId  where GongSiId<>0 ";
+            DataTable dt1 = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);
+            this.cmbgs.Properties.DataSource = dt1;
+            this.cmbgs.EditValue = -1;
             if (Program.sRoleID == "002")
             {
                 this.cmbDeptID.Enabled = false;
@@ -153,6 +181,27 @@ namespace WinJiaoJing
                 p3_1.Description = "统计";
                 p3_1.Value = gridColumn2.SummaryText; ; ; ;
                 report.Parameters.Add(p3_1);
+
+                DevExpress.XtraReports.Parameters.Parameter p3_2 = new DevExpress.XtraReports.Parameters.Parameter();
+                p3_2.Name = "A统计";
+                p3_2.Description = "A统计";
+                p3_2.Value = " " + gridColumn5.SummaryText; 
+                report.Parameters.Add(p3_2);
+                DevExpress.XtraReports.Parameters.Parameter p3_3 = new DevExpress.XtraReports.Parameters.Parameter();
+                p3_3.Name = "B统计";
+                p3_3.Description = "B统计";
+                p3_3.Value = " " + gridColumn7.SummaryText;
+                report.Parameters.Add(p3_3);
+                DevExpress.XtraReports.Parameters.Parameter p3_4 = new DevExpress.XtraReports.Parameters.Parameter();
+                p3_4.Name = "D统计";
+                p3_4.Description = "D统计";
+                p3_4.Value = " " + gridColumn8.SummaryText;
+                report.Parameters.Add(p3_4);
+                DevExpress.XtraReports.Parameters.Parameter p3_5 = new DevExpress.XtraReports.Parameters.Parameter();
+                p3_5.Name = "S统计";
+                p3_5.Description = "S统计";
+                p3_5.Value = " "+gridColumn9.SummaryText;
+                report.Parameters.Add(p3_5);
 
 
                 if (Program.sOperID != "admin")

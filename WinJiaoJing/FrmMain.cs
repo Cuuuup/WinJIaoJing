@@ -48,7 +48,7 @@ namespace WinJiaoJing
                 string sql = $"select AnQingDate,insDate from T_AnQing where DeftName='{ Program.sDeptName}' and OperName='{Program.sOperName}' and State='进行中'";
 
                 string sumdate= "";
-                string _sumdate = "";
+                string _sumdate = ""; 
                 DataTable tbDate = SqlHelper.RunQuery(CommandType.Text, sql, null,out sError);
                 if (tbDate.Rows.Count!=0)
                 {
@@ -56,11 +56,9 @@ namespace WinJiaoJing
                     for (int i = 0; i < tbDate.Rows.Count; i++)
                     {
                         cha = CommonInfo.DateDiff(Convert.ToDateTime(tbDate.Rows[i]["insDate"]), DateTime.Now);
-
                         
                         if (cha >= 20)
                         {
-
                             sumdate=Convert.ToDateTime(tbDate.Rows[i]["AnQingDate"]).ToString("M月");
 
                             if (sumdate!=_sumdate)
@@ -68,7 +66,6 @@ namespace WinJiaoJing
                                 MessageBox.Show(sumdate+"有正在进行中的检测项以超过20天,请尽快处理！","警告",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                                 _sumdate = sumdate;
                             }   
-                         
                         }
 
                     }
@@ -80,12 +77,9 @@ namespace WinJiaoJing
                     FrmBaoFeiEdit bf = new FrmBaoFeiEdit();
                     bf.ShowDialog();
                 }
-
-
-                               
+                
 
                 //菜单权限读取
-                
                 string sRoleID = Program.sRoleID;
                 string strSql = "SELECT *,TQx_Menu.TreeNodeName FROM TQx_RoleQx left join TQx_Menu on TQx_Menu.MenuID=TQx_RoleQx.MenuID  WHERE IsQx=1 and TQx_Menu.TreeNodeName<>'' and  RoleID='" + sRoleID + "' order by TQx_Menu.SortID ";
                 DataTable dtQx = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);
@@ -97,8 +91,9 @@ namespace WinJiaoJing
 
                 }
                 else
-                {
+                { 
                     //treeView1.Nodes.Clear();
+
                 }
             }
             catch { }
@@ -161,7 +156,6 @@ namespace WinJiaoJing
                 case "案件管理":
                     switch (sMenuName)
                     {
-
                         case "案情录入":
                             if (IsExistsForm("案情录入"))
                                 return;
@@ -178,6 +172,7 @@ namespace WinJiaoJing
                             FrmAnQing.Text = "案情管理";
                             FrmAnQing.Show();
                             break;
+                       
 
                     }
                     break;
@@ -211,7 +206,6 @@ namespace WinJiaoJing
                             FrmBao12.Text = "死亡人数统计表";
                             FrmBao12.Show();
                             break;
-                            
 
                     }
                     break;
@@ -291,6 +285,13 @@ namespace WinJiaoJing
                             FrmGongSi.Text = "鉴定机构维护";
                             FrmGongSi.Show();
                             break;
+                     
+
+                    }
+                    break;
+                case "模板维护":
+                    switch (sMenuName)
+                    {                      
                         case "案件详情母版维护":
                             if (IsExistsForm("案件详情母版维护"))
                                 return;
@@ -393,6 +394,11 @@ namespace WinJiaoJing
         }
 
         private void barButtonItem20_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barButtonItem22_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
         }

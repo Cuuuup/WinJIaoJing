@@ -78,6 +78,7 @@ namespace WinJiaoJing
                 DevExpress.XtraPrinting.XlsExportOptions options = new DevExpress.XtraPrinting.XlsExportOptions();
                 grd.ExportToXls(sDialog.FileName, options);
                 DevExpress.XtraEditors.XtraMessageBox.Show("保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
             }
         }
 

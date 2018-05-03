@@ -36,8 +36,6 @@ namespace WinJiaoJing
                     this.txtRoleName.Text = dt.Rows[0]["DeptName"].ToString();
                     this.txtSortID.Text = dt.Rows[0]["SortID"].ToString();
                     this.cmbState.Text = dt.Rows[0]["State"].ToString();
-                    //this.checkEdit1.Checked = CommonInfo.CBoolean(dt.Rows[0]["IsQm"].ToString());
-                    //this.ckbIsSheBeiHz.Checked = CommonInfo.CBoolean(dt.Rows[0]["IsSheBeiHz"].ToString());
                 }
             }
         }
@@ -63,9 +61,8 @@ namespace WinJiaoJing
 					new SqlParameter("@DeptID", SqlDbType.VarChar,50),
 					new SqlParameter("@DeptName", SqlDbType.VarChar,50),
 					new SqlParameter("@SortID", SqlDbType.Int,4),
-					new SqlParameter("@State", SqlDbType.VarChar,50),
-                    //new SqlParameter("@IsQm", this.checkEdit1.Checked),
-                    //new SqlParameter("@IsSheBeiHz", this.ckbIsSheBeiHz.Checked)
+					new SqlParameter("@State", SqlDbType.VarChar,50)
+               
                 };
                 parameters[0].Value = RoleID;
                 parameters[1].Value = RoleName;
@@ -94,9 +91,7 @@ namespace WinJiaoJing
 					new SqlParameter("@ID", SqlDbType.BigInt,8)};
                 parameters[0].Value = RoleName;
                 parameters[1].Value = SortID;
-                parameters[2].Value = State;
-                //parameters[3].Value = this.checkEdit1.Checked;
-                //parameters[4].Value = this.ckbIsSheBeiHz.Checked;
+                parameters[2].Value = State;             
                 parameters[3].Value = ID;
                 SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters, out sError);
                 if (sError.Trim() != "")

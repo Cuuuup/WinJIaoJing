@@ -181,7 +181,7 @@
             // 
             // toolZF
             // 
-            this.toolZF.Image = global::WinJiaoJing.Properties.Resources.p放弃1;
+            this.toolZF.Image = ((System.Drawing.Image)(resources.GetObject("toolZF.Image")));
             this.toolZF.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolZF.Name = "toolZF";
             this.toolZF.Size = new System.Drawing.Size(55, 23);
@@ -616,7 +616,7 @@
             this.gridColumn19.AppearanceCell.Options.UseFont = true;
             this.gridColumn19.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.5F);
             this.gridColumn19.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn19.Caption = "申请时间";
+            this.gridColumn19.Caption = "案发时间";
             this.gridColumn19.FieldName = "AnQingDate";
             this.gridColumn19.MinWidth = 44;
             this.gridColumn19.Name = "gridColumn19";

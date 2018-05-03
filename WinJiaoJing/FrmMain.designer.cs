@@ -30,18 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("案情录入", 3, 4);
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("案情管理", 3, 4);
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("案件管理", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("交通事故案件统计报表", 3, 4);
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("招标公司中标次数统计报表", 3, 4);
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("死亡人数统计表", 3, 4);
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("统计报表", 2, 0, new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode5,
-            treeNode6});
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("案情录入", 3, 4);
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("案情管理", 3, 4);
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("案件管理", new System.Windows.Forms.TreeNode[] {
+            treeNode8,
+            treeNode9});
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("交通事故案件统计报表", 3, 4);
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("招标公司中标次数统计报表", 3, 4);
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("死亡人数统计表", 3, 4);
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("统计报表", 2, 0, new System.Windows.Forms.TreeNode[] {
+            treeNode11,
+            treeNode12,
+            treeNode13});
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -58,8 +58,9 @@
             this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem23 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
@@ -75,10 +76,12 @@
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem19 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem20 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem21 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem22 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.treeView1 = new System.Windows.Forms.TreeView();
@@ -140,15 +143,18 @@
             this.barButtonItem13,
             this.barButtonItem14,
             this.barButtonItem15,
-            this.barButtonItem16,
             this.barButtonItem17,
             this.barButtonItem18,
             this.barButtonItem19,
             this.barButtonItem20,
             this.barSubItem2,
-            this.barButtonItem21});
+            this.barButtonItem21,
+            this.barButtonItem22,
+            this.barSubItem4,
+            this.barButtonItem16,
+            this.barButtonItem23});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 33;
+            this.barManager1.MaxItemId = 37;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -174,8 +180,9 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barQx, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.brahw, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem4, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemAllClose)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -255,9 +262,7 @@
             this.brahw.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem13),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem14),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem15),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem16),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem18)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem15)});
             this.brahw.Name = "brahw";
             // 
             // barButtonItem13
@@ -284,21 +289,30 @@
             this.barButtonItem15.Tag = "信息维护|鉴定机构维护";
             this.barButtonItem15.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
+            // barSubItem4
+            // 
+            this.barSubItem4.Caption = "模板维护";
+            this.barSubItem4.Id = 34;
+            this.barSubItem4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem16),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem23)});
+            this.barSubItem4.Name = "barSubItem4";
+            // 
             // barButtonItem16
             // 
             this.barButtonItem16.Caption = "案件详情母版维护";
-            this.barButtonItem16.Id = 24;
+            this.barButtonItem16.Id = 35;
             this.barButtonItem16.Name = "barButtonItem16";
-            this.barButtonItem16.Tag = "信息维护|案件详情母版维护";
+            this.barButtonItem16.Tag = "模板维护|案件详情母版维护";
             this.barButtonItem16.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
-            // barButtonItem18
+            // barButtonItem23
             // 
-            this.barButtonItem18.Caption = "案发地点维护";
-            this.barButtonItem18.Id = 26;
-            this.barButtonItem18.Name = "barButtonItem18";
-            this.barButtonItem18.Tag = "信息维护|案发地点维护";
-            this.barButtonItem18.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            this.barButtonItem23.Caption = "案发地点维护";
+            this.barButtonItem23.Id = 36;
+            this.barButtonItem23.Name = "barButtonItem23";
+            this.barButtonItem23.Tag = "模板维护|案发地点维护";
+            this.barButtonItem23.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // barSubItem3
             // 
@@ -409,6 +423,14 @@
             this.barButtonItem17.Id = 25;
             this.barButtonItem17.Name = "barButtonItem17";
             // 
+            // barButtonItem18
+            // 
+            this.barButtonItem18.Caption = "案发地点维护";
+            this.barButtonItem18.Id = 26;
+            this.barButtonItem18.Name = "barButtonItem18";
+            this.barButtonItem18.Tag = "信息维护|案发地点维护";
+            this.barButtonItem18.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            // 
             // barButtonItem19
             // 
             this.barButtonItem19.Id = 27;
@@ -436,6 +458,13 @@
             this.barButtonItem21.Name = "barButtonItem21";
             this.barButtonItem21.Tag = "高级维护|高级鉴定机构维护";
             this.barButtonItem21.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            // 
+            // barButtonItem22
+            // 
+            this.barButtonItem22.Caption = "模板维护";
+            this.barButtonItem22.Id = 33;
+            this.barButtonItem22.Name = "barButtonItem22";
+            this.barButtonItem22.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem22_ItemClick);
             // 
             // xtraTabbedMdiManager1
             // 
@@ -479,46 +508,46 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(2, 21);
             this.treeView1.Name = "treeView1";
-            treeNode1.ImageIndex = 3;
-            treeNode1.Name = "节点1";
-            treeNode1.SelectedImageIndex = 4;
-            treeNode1.Text = "案情录入";
-            treeNode1.ToolTipText = "0102";
-            treeNode2.ImageIndex = 3;
-            treeNode2.Name = "节点2";
-            treeNode2.SelectedImageIndex = 4;
-            treeNode2.Text = "案情管理";
-            treeNode2.ToolTipText = "0103";
-            treeNode3.ImageIndex = 2;
-            treeNode3.Name = "节点0";
-            treeNode3.SelectedImageKey = "菜单管理(2).png";
-            treeNode3.Tag = "4";
-            treeNode3.Text = "案件管理";
-            treeNode3.ToolTipText = "01";
-            treeNode4.ImageIndex = 3;
-            treeNode4.Name = "节点3";
-            treeNode4.SelectedImageIndex = 4;
-            treeNode4.Text = "交通事故案件统计报表";
-            treeNode4.ToolTipText = "0202";
-            treeNode5.ImageIndex = 3;
-            treeNode5.Name = "节点0";
-            treeNode5.SelectedImageIndex = 4;
-            treeNode5.Text = "招标公司中标次数统计报表";
-            treeNode5.ToolTipText = "0203";
-            treeNode6.ImageIndex = 3;
-            treeNode6.Name = "节点0";
-            treeNode6.SelectedImageIndex = 4;
-            treeNode6.Text = "死亡人数统计表";
-            treeNode6.ToolTipText = "0205";
-            treeNode7.ImageIndex = 2;
-            treeNode7.Name = "节点2";
-            treeNode7.SelectedImageIndex = 0;
-            treeNode7.Tag = "4";
-            treeNode7.Text = "统计报表";
-            treeNode7.ToolTipText = "02";
+            treeNode8.ImageIndex = 3;
+            treeNode8.Name = "节点1";
+            treeNode8.SelectedImageIndex = 4;
+            treeNode8.Text = "案情录入";
+            treeNode8.ToolTipText = "0102";
+            treeNode9.ImageIndex = 3;
+            treeNode9.Name = "节点2";
+            treeNode9.SelectedImageIndex = 4;
+            treeNode9.Text = "案情管理";
+            treeNode9.ToolTipText = "0103";
+            treeNode10.ImageIndex = 2;
+            treeNode10.Name = "节点0";
+            treeNode10.SelectedImageKey = "菜单管理(2).png";
+            treeNode10.Tag = "4";
+            treeNode10.Text = "案件管理";
+            treeNode10.ToolTipText = "01";
+            treeNode11.ImageIndex = 3;
+            treeNode11.Name = "节点3";
+            treeNode11.SelectedImageIndex = 4;
+            treeNode11.Text = "交通事故案件统计报表";
+            treeNode11.ToolTipText = "0202";
+            treeNode12.ImageIndex = 3;
+            treeNode12.Name = "节点0";
+            treeNode12.SelectedImageIndex = 4;
+            treeNode12.Text = "招标公司中标次数统计报表";
+            treeNode12.ToolTipText = "0203";
+            treeNode13.ImageIndex = 3;
+            treeNode13.Name = "节点0";
+            treeNode13.SelectedImageIndex = 4;
+            treeNode13.Text = "死亡人数统计表";
+            treeNode13.ToolTipText = "0205";
+            treeNode14.ImageIndex = 2;
+            treeNode14.Name = "节点2";
+            treeNode14.SelectedImageIndex = 0;
+            treeNode14.Tag = "4";
+            treeNode14.Text = "统计报表";
+            treeNode14.ToolTipText = "02";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode7});
+            treeNode10,
+            treeNode14});
             this.treeView1.SelectedImageIndex = 0;
             this.treeView1.Size = new System.Drawing.Size(223, 394);
             this.treeView1.TabIndex = 0;
@@ -622,13 +651,16 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem13;
         private DevExpress.XtraBars.BarButtonItem barButtonItem14;
         private DevExpress.XtraBars.BarButtonItem barButtonItem15;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem16;
         private DevExpress.XtraBars.BarButtonItem barButtonItem17;
         private DevExpress.XtraBars.BarButtonItem barButtonItem18;
         private DevExpress.XtraBars.BarButtonItem barButtonItem19;
         private DevExpress.XtraBars.BarButtonItem barButtonItem20;
         private DevExpress.XtraBars.BarSubItem barSubItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem21;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem22;
+        private DevExpress.XtraBars.BarSubItem barSubItem4;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem16;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem23;
     }
 }
 

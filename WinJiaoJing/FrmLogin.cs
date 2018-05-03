@@ -36,7 +36,7 @@ namespace WinJiaoJing
 
         }
         //确定
-        private void btnOK_Click(object sender, EventArgs e)
+        private void btnOK_Click(object sender, EventArgs e)    
         {
             string sError = "";
 
@@ -48,7 +48,7 @@ namespace WinJiaoJing
                         + " left join TQx_Dept on TQx_Dept.DeptID=TQx_Oper.DeptID WHERE TQx_Oper.DeptID='" + sDeptID + "' AND  OperID='" + sOperID + "' AND OperPwd='" + sPwd + "' ";
             DataTable dt = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);
             
-            
+            //1
             if (dt!=null && dt.Rows.Count > 0)
             {
                Program.sDeptID = dt.Rows[0]["DeptID"].ToString();
@@ -90,7 +90,7 @@ namespace WinJiaoJing
         private void lookUpEdit1_EditValueChanged(object sender, EventArgs e)
         {
             string sError = "";
-
+            string s = "";
             string strSql = $"select OperID as 账号,OperName as 姓名 from TQx_Oper where DeptID='{this.lookUpEdit1.EditValue.ToString()}'";
 
             DataTable dt = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);
