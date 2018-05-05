@@ -60,6 +60,7 @@ namespace WinJiaoJing
 
         private void btnSel_Click(object sender, EventArgs e)
         {
+            
             string sError = "";
             string sCon = "";
             if(this.textEdit1.Text.Trim()!="")

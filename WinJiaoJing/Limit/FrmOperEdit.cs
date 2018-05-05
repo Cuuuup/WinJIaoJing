@@ -64,6 +64,7 @@ namespace WinJiaoJing
             RoleID=this.cmbRoleID.EditValue.ToString();
             RoleName = this.cmbRoleID.Text.Trim();
             State = this.cmbState.Text.Trim();
+            
 
             StringBuilder strSql = new StringBuilder();
             if (sID.Trim() == "")

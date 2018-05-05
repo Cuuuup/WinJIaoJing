@@ -17,7 +17,7 @@ namespace WinJiaoJing
 
         private void toolAdd_Click(object sender, EventArgs e)
         {
-            FrmDeptEdit frm = new FrmDeptEdit();
+            FrmDeptEdit frm = new FrmDeptEdit();    
             frm.ShowDialog();
             this.btnSel_Click(null, null);
         }
@@ -35,6 +35,7 @@ namespace WinJiaoJing
                 return;
             string sError = "";
             string strSql = "DELETE FROM TQx_Dept WHERE ID=" + this.gv.GetDataRow(this.gv.FocusedRowHandle)["ID"].ToString();
+
             SqlHelper.ExecuteNonQuery(CommandType.Text, strSql, null, out sError);
             if(sError.Trim()!="")
             {
