@@ -9,8 +9,6 @@ using System.Diagnostics;
 using System.Net;
 using System.Data;
 
-
-
 public static class CommonInfo
 {
 
@@ -36,7 +34,7 @@ public static class CommonInfo
         sw.Write(data);
         sw.Flush();
         cst.FlushFinalBlock();
-        sw.Flush();
+        sw.Flush(); 
         return Convert.ToBase64String(ms.GetBuffer(), 0, (int)ms.Length);
 
     }
@@ -57,7 +55,7 @@ public static class CommonInfo
         byte[] byEnc;
         try
         {
-            byEnc = Convert.FromBase64String(data);
+            byEnc = Convert.FromBase64String(data); 
         }
         catch
         {
@@ -489,7 +487,7 @@ public static class CommonInfo
     {
         if (!Convert.IsDBNull(input) && !object.Equals(input, null))
         {
-            return CDouble(input.ToString(), defaultValue);
+            return CDouble(input.ToString(), defaultValue);                 
         }
         return 0.0;
     }

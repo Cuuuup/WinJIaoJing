@@ -171,7 +171,7 @@ namespace WinJiaoJing
             
             string sError = "";
             string ID, NO, DanWei, OpID, DiDian, Date, AnQingDesc, teshu, beizhu, dieConut, DateSS, DiZhi,isOK;
-            getNO(sError, out NO);
+            NO = this.txt_No.Text.Trim();
             ID = this.txt_AnQingID.Text.Trim();
             DanWei = this.txtDanWei.Text.Trim();
             OpID = this.txtOperID.Text.Trim();
@@ -194,6 +194,7 @@ namespace WinJiaoJing
                 {
                     return;
                 }
+                getNO(sError, out NO);
                 strSql = new StringBuilder();
                 strSql.Append("insert into T_AnQing(");
                 strSql.Append("AnQingDiDian,AnQingDesc,AnQingNo,AnQingDate,");
@@ -215,10 +216,10 @@ namespace WinJiaoJing
                      new SqlParameter("@AnQingBeiZhu", SqlDbType.VarChar,150),
                      new SqlParameter("@AnQingDieCount", SqlDbType.Int),
                      new SqlParameter("@AnQingTwo",SqlDbType.Int),
-                     new SqlParameter("@AnQingDateSS", SqlDbType.Time),
+                     new SqlParameter("@AnQingDateSS", SqlDbType.DateTime),
                      new SqlParameter("@AnQingDiZhi", SqlDbType.VarChar,20),
                      new SqlParameter("@State", SqlDbType.VarChar,20),
-                     new SqlParameter("@isok",SqlDbType.Int) };
+                     new SqlParameter("@isok",SqlDbType.Int) }; 
 
                 parameters[0].Value = DiDian;
                 parameters[1].Value = AnQingDesc;
@@ -428,7 +429,8 @@ namespace WinJiaoJing
                 strSql.Append("  where XiangMuId <= 10 and AnQingId = @AnQingNo");
                 strSql.Append(" AND BaoType_Id = 1 order by XiangMuCount desc)tb1");
                 SqlParameter[] parametersum = {
-                     new SqlParameter("@AnQingNo", SqlDbType.Int)};
+                     new SqlParameter("@AnQingNo", SqlDbType.Int)
+                };
 
                 parametersum[0].Value = NO;
 

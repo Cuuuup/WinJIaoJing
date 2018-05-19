@@ -27,11 +27,11 @@ public class SqlHelper
     public static string pwd = System.Configuration.ConfigurationManager.ConnectionStrings["pwd"].ConnectionString;
     public static string database = System.Configuration.ConfigurationManager.ConnectionStrings["database"].ConnectionString;
 
-    
-    //public static string ConnStr = "server=" + server + ";uid=" + uid + ";pwd=" + pwd + ";database=" + database + "";// ConfigurationManager.ConnectionStrings["ConnStr"].ToString();
+
+    //public static string ConnStr = "server=" + server + ";uid=" + uid + ";pwd=" + CommonInfo.Decode(pwd) + ";database=" + database + "";// ConfigurationManager.ConnectionStrings["ConnStr"].ToString();
     //=DESKTOP-5GL5BOJ\SQLEXPRESS
-   //public static string ConnStr = @"server=.;uid=sa;pwd=sa123;database=WinJiaoJinDB";//CarTangYunDB WinJiaoJinDB
-    public static string ConnStr  = System.Configuration.ConfigurationManager.ConnectionStrings["DBUrl"].ConnectionString;
+   public static string ConnStr = @"server=DESKTOP-5GL5BOJ\SQLEXPRESS;uid=sa;pwd=sa123;database=WinJiaoJinDB";//CarTangYunDB WinJiaoJinDB
+    //public static string ConnStr  = System.Configuration.ConfigurationManager.ConnectionStrings["DBUrl"].ConnectionString;
 
     /// <summary>
     /// 获取数据集，返回DataTable

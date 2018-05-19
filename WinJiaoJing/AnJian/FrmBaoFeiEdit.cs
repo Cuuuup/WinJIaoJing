@@ -161,7 +161,7 @@ namespace WinJiaoJing
             
             string sError = "";
             string ID, NO, DanWei, OpID, DiDian, Date, AnQingDesc, teshu, beizhu, dieConut,DateSS,DiZhi;
-            getNO(sError,out NO);
+            NO = this.txt_No.Text.Trim();
             ID = this.txt_AnQingID.Text.Trim();
             DanWei = this.txtDanWei.Text.Trim();
             OpID = this.txtOperID.Text.Trim();
@@ -179,11 +179,13 @@ namespace WinJiaoJing
             //新增
             if (ID.Trim() == "")
             {
+
                 DialogResult OK= MessageBox.Show("确认保存信息是否填写正确？", "提示", MessageBoxButtons.YesNo);
                 if (OK==DialogResult.No)
                 {
                     return;
                 }
+
 
                 if (this.txtDiDian.Text.Trim() == "")
                 {
@@ -200,7 +202,7 @@ namespace WinJiaoJing
                     MessageBox.Show("请选择鉴定项目 ！");
                     return;
                 }
-
+                getNO(sError, out NO);
                 strSql = new StringBuilder();
                 strSql.Append("insert into T_AnQing(");
                 strSql.Append("AnQingDiDian,AnQingDesc,AnQingNo,AnQingDate,");
@@ -221,7 +223,7 @@ namespace WinJiaoJing
                      new SqlParameter("@AnQingTeShuXiang", SqlDbType.VarChar,50),
                      new SqlParameter("@AnQingBeiZhu", SqlDbType.VarChar,150),
                      new SqlParameter("@AnQingDieCount", SqlDbType.Int),
-                     new SqlParameter("@AnQingDateSS", SqlDbType.Time),
+                     new SqlParameter("@AnQingDateSS", SqlDbType.DateTime),
                      new SqlParameter("@AnQingDiZhi", SqlDbType.VarChar,20)};
 
                 parameters[0].Value = DiDian;
@@ -348,7 +350,7 @@ namespace WinJiaoJing
                 }
                 toolQingKong_Click(null, null);
             }
-            else
+            else//修改
             {
                DialogResult rOK= MessageBox.Show("确认修改信息是否填写正确？", "提示", MessageBoxButtons.YesNo);
                 if (rOK == DialogResult.No)
@@ -368,7 +370,9 @@ namespace WinJiaoJing
                 strSql.Append("AnQingDesc=@AnQingDesc,");
                 strSql.Append("AnQingTeShuXiang=@AnQingTeShuXiang,");
                 strSql.Append("AnQingBeiZhu=@AnQingBeiZhu,");
-                strSql.Append("AnQingDieCount=@AnQingDieCount");
+                strSql.Append("AnQingDieCount=@AnQingDieCount,");
+                strSql.Append("AnQingDateSS=@AnQingDateSS,");
+                strSql.Append("AnQingDiZhi=@AnQingDiZhi");
                 strSql.Append(" where AnQingID=@AnQingID");
                 SqlParameter[] parameters = {
                         new SqlParameter("@AnQingDiDian", SqlDbType.VarChar,70),
@@ -377,6 +381,8 @@ namespace WinJiaoJing
                         new SqlParameter("@AnQingTeShuXiang", SqlDbType.VarChar, 50),
                         new SqlParameter("@AnQingBeiZhu", SqlDbType.VarChar, 150),
                         new SqlParameter("@AnQingDieCount", SqlDbType.Int),
+                        new SqlParameter("@AnQingDateSS",SqlDbType.DateTime),
+                        new SqlParameter("@AnQingDiZhi",SqlDbType.VarChar,50),
                         new SqlParameter("@AnQingID", SqlDbType.Int)};
 
                 parameters[0].Value = DiDian;
@@ -385,19 +391,22 @@ namespace WinJiaoJing
                 parameters[3].Value = teshu;
                 parameters[4].Value = beizhu;
                 parameters[5].Value = dieConut;
-                parameters[6].Value = ID;
+                parameters[6].Value = DateSS;
+                parameters[7].Value = DiZhi;
+                parameters[8].Value = ID;
 
                 SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters, out sError);
 
-                string strSql1 = "DELETE FROM T_AnQingXiang WHERE AnQingId=" + NO;
+                string strSql1 = "DELETE FROM T_AnQingXiang WHERE AnQingId=" + NO ;
                 SqlHelper.ExecuteNonQuery(CommandType.Text, strSql1, null, out sError);
 
 
                 #region 获取选项
-                int sum = 0;
+                
+                  // 获取选项
+                int sum = -1;
                 int sum1 = 0;
                 int sum2 = 0;
-                int gongsi = -1;
                 //根据行号获取相应行的数据;   
                 foreach (int item in this.gridView1.GetSelectedRows())
                 {
@@ -416,67 +425,80 @@ namespace WinJiaoJing
                         sum = (int)redsum[0];
 
                     }
+
                     redsum.Close();
 
 
-
-                    strSql = new StringBuilder();
-                    strSql.Append(" select ");
-
-                    if (sum == 1)
+                    if (sum == -1)
                     {
-                        strSql.Append(" GongSiA from T_AnQing where AnQingNo=@idid");
+                        MessageBox.Show("请勾选鉴定项目类型。");
+                        return;
                     }
-                    if (sum == 2)
+                    if (Convert.ToInt32(this.gridView1.GetDataRow(item)["sum"]) > 1)
                     {
-                        strSql.Append(" GongSiB from T_AnQing where AnQingNo=@idid");
+                        for (int i = 0; i < Convert.ToInt32(this.gridView1.GetDataRow(item)["sum"]); i++)
+                        {
+                            strSql = new StringBuilder();
+                            strSql.Append("insert into T_AnQingXiang(");
+                            strSql.Append("AnQingId,BaoType_Id,XiangMuId,XiangBaoJia,XiangMuSum,XiangMuCount,GongSiID)");
+                            strSql.Append(" values (");
+                            strSql.Append("@AnQingId,@BaoType_Id,@XiangMuId,@XiangBaoJia,@XiangMuSum,@XiangMuCount,@GongSiID)");
+                            strSql.Append(";select @@IDENTITY");
+                            SqlParameter[] parameters1 = {
+                             new SqlParameter("@AnQingId", SqlDbType.Int),
+                             new SqlParameter("@BaoType_Id", SqlDbType.Int),
+                             new SqlParameter("@XiangMuId", SqlDbType.Int),
+                             new SqlParameter("@XiangBaoJia", SqlDbType.Money),
+                             new SqlParameter("@XiangMuSum",SqlDbType.Int),
+                             new SqlParameter("@XiangMuCount",SqlDbType.Money),
+                             new SqlParameter("@GongSiID",SqlDbType.Int)
+                         };
+
+                            sum1 = Convert.ToInt32(this.gridView1.GetDataRow(item)[4]);
+                            sum2 = Convert.ToInt32(this.gridView1.GetDataRow(item)["sum"]);
+
+                            parameters1[0].Value = NO;
+                            parameters1[1].Value = sum;
+                            parameters1[2].Value = this.gridView1.GetDataRow(item)[2].ToString();
+                            parameters1[3].Value = this.gridView1.GetDataRow(item)[4].ToString();
+                            parameters1[4].Value = sum2;
+                            parameters1[5].Value = sum1;
+                            parameters1[6].Value = 0;
+                            SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters1, out sError);
+                        }
                     }
-                    if (sum == 3)
+                    else
                     {
-                        strSql.Append(" GongSiD from T_AnQing where AnQingNo=@idid");
+                        strSql = new StringBuilder();
+                        strSql.Append("insert into T_AnQingXiang(");
+                        strSql.Append("AnQingId,BaoType_Id,XiangMuId,XiangBaoJia,XiangMuSum,XiangMuCount,GongSiID)");
+                        strSql.Append(" values (");
+                        strSql.Append("@AnQingId,@BaoType_Id,@XiangMuId,@XiangBaoJia,@XiangMuSum,@XiangMuCount,@GongSiID)");
+                        strSql.Append(";select @@IDENTITY");
+                        SqlParameter[] parameters1 = {
+                             new SqlParameter("@AnQingId", SqlDbType.Int),
+                             new SqlParameter("@BaoType_Id", SqlDbType.Int),
+                             new SqlParameter("@XiangMuId", SqlDbType.Int),
+                             new SqlParameter("@XiangBaoJia", SqlDbType.Money),
+                             new SqlParameter("@XiangMuSum",SqlDbType.Int),
+                             new SqlParameter("@XiangMuCount",SqlDbType.Money),
+                             new SqlParameter("@GongSiID",SqlDbType.Int)
+                         };
+
+                        sum1 = Convert.ToInt32(this.gridView1.GetDataRow(item)[4]);
+                        sum2 = Convert.ToInt32(this.gridView1.GetDataRow(item)["sum"]);
+
+                        parameters1[0].Value = NO;
+                        parameters1[1].Value = sum;
+                        parameters1[2].Value = this.gridView1.GetDataRow(item)[2].ToString();
+                        parameters1[3].Value = this.gridView1.GetDataRow(item)[4].ToString();
+                        parameters1[4].Value = 1;
+                        parameters1[5].Value = sum1;
+                        parameters1[6].Value = 0;
+                        SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters1, out sError);
                     }
-                    SqlParameter[] parametersupupdate1 = {
-                         new SqlParameter("@idid", SqlDbType.Int)};
-                    parametersupupdate1[0].Value = NO;
-                    SqlDataReader red= SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parametersupupdate1, out sError);
-
-                    while (red.Read())
-                    {
-                        gongsi = (int)red[0];
-                    }
-                    red.Close();
-
-
-                    strSql = new StringBuilder();
-                    strSql.Append("insert into T_AnQingXiang(");
-                    strSql.Append("AnQingId,BaoType_Id,XiangMuId,XiangBaoJia,XiangMuSum,XiangMuCount,GongSiID)");
-                    strSql.Append(" values (");
-                    strSql.Append("@AnQingId,@BaoType_Id,@XiangMuId,@XiangBaoJia,@XiangMuSum,@XiangMuCount,@GongSiID)");
-                    strSql.Append(";select @@IDENTITY");
-                    SqlParameter[] parameters1 = {
-                     new SqlParameter("@AnQingId", SqlDbType.Int),
-                     new SqlParameter("@BaoType_Id", SqlDbType.Int),
-                     new SqlParameter("@XiangMuId", SqlDbType.Int),
-                     new SqlParameter("@XiangBaoJia", SqlDbType.Money),
-                     new SqlParameter("@XiangMuSum",SqlDbType.Int),
-                     new SqlParameter("@XiangMuCount",SqlDbType.Money),
-                     new SqlParameter("@GongSiID",SqlDbType.Int)
-                    };
-
-                    sum1 = Convert.ToInt32(this.gridView1.GetDataRow(item)[4]);
-                    sum2 = Convert.ToInt32(this.gridView1.GetDataRow(item)["sum"]);
-
-                    parameters1[0].Value = this.txt_No.Text;
-                    parameters1[1].Value = sum;
-                    parameters1[2].Value = this.gridView1.GetDataRow(item)[2].ToString();
-                    parameters1[3].Value = this.gridView1.GetDataRow(item)[4].ToString();
-                    parameters1[4].Value = this.gridView1.GetDataRow(item)["sum"].ToString();
-                    parameters1[5].Value = sum1 * sum2;
-                    parameters1[6].Value = gongsi;
-
-                    SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters1, out sError);
-
                 }
+                
                 #endregion
 
                 getBaoJia(sError, NO);
@@ -740,8 +762,17 @@ namespace WinJiaoJing
             }
             else
             {
-                this.txt_No.Text = dt3.Rows[0][0].ToString();
-                no= dt3.Rows[0][0].ToString();
+                if (this.txt_AnQingID.Text.Trim()==null && this.txt_AnQingID.Text=="0")
+                {
+                    this.txt_No.Text = sID;
+                    no = sID;
+                }
+                else
+                {
+                    this.txt_No.Text = dt3.Rows[0][0].ToString();
+                    no = dt3.Rows[0][0].ToString();
+                }
+                
 
             }
         }

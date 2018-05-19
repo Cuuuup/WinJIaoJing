@@ -103,8 +103,7 @@ namespace WinJiaoJing.AnJian
             }
             else
             {
-                if (id==1)
-                {
+                if (id==1)                {
                     report.LoadLayout(Application.StartupPath + "/Print/AnQingJD.repx");
                 }
                 if (id == 2)

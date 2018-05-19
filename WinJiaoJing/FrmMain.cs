@@ -4,8 +4,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
-using System.Windows.Forms;
-
+using System.Windows.Forms; 
+    
 namespace WinJiaoJing
 {
     public partial class FrmMain : Form
@@ -36,7 +36,7 @@ namespace WinJiaoJing
                     this.treeView1.Nodes[3].Expand();
                 }
                 catch { }
-               
+
 
                 Form1 childForm = new Form1();
                 childForm.MdiParent = this;
@@ -47,29 +47,29 @@ namespace WinJiaoJing
                 string sError = "";
                 string sql = $"select AnQingDate,insDate from T_AnQing where DeftName='{ Program.sDeptName}' and OperName='{Program.sOperName}' and State='进行中'";
 
-                string sumdate= "";
-                string _sumdate = ""; 
-                DataTable tbDate = SqlHelper.RunQuery(CommandType.Text, sql, null,out sError);
-                if (tbDate.Rows.Count!=0)
+                string sumdate = "";
+                string _sumdate = "";
+                DataTable tbDate = SqlHelper.RunQuery(CommandType.Text, sql, null, out sError);
+                if (tbDate.Rows.Count != 0)
                 {
                     int cha = 0;
                     for (int i = 0; i < tbDate.Rows.Count; i++)
                     {
                         cha = CommonInfo.DateDiff(Convert.ToDateTime(tbDate.Rows[i]["insDate"]), DateTime.Now);
-                        
+
                         if (cha >= 20)
                         {
-                            sumdate=Convert.ToDateTime(tbDate.Rows[i]["AnQingDate"]).ToString("M月");
+                            sumdate = Convert.ToDateTime(tbDate.Rows[i]["AnQingDate"]).ToString("M月");
 
-                            if (sumdate!=_sumdate)
+                            if (sumdate != _sumdate)
                             {
-                                MessageBox.Show(sumdate+"有正在进行中的检测项以超过20天,请尽快处理！","警告",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                                MessageBox.Show(sumdate + "有正在进行中的检测项以超过20天,请尽快处理！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 _sumdate = sumdate;
-                            }   
+                            }
                         }
 
                     }
-                   
+
                 }
 
                 if (Program.sRoleID == "003")
@@ -77,13 +77,14 @@ namespace WinJiaoJing
                     FrmBaoFeiEdit bf = new FrmBaoFeiEdit();
                     bf.ShowDialog();
                 }
-                
+
 
                 //菜单权限读取
                 string sRoleID = Program.sRoleID;
                 string strSql = "SELECT *,TQx_Menu.TreeNodeName FROM TQx_RoleQx left join TQx_Menu on TQx_Menu.MenuID=TQx_RoleQx.MenuID  WHERE IsQx=1 and TQx_Menu.TreeNodeName<>'' and  RoleID='" + sRoleID + "' order by TQx_Menu.SortID ";
                 DataTable dtQx = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);
-                
+              
+
                 if (Program.sOperID.Trim() != "admin")
                 {
                     LoadTreeViewQx(treeView1.Nodes[0], dtQx.DefaultView, CommonInfo.CLng(treeView1.Nodes[0].Tag));
@@ -91,9 +92,8 @@ namespace WinJiaoJing
 
                 }
                 else
-                { 
+                {
                     //treeView1.Nodes.Clear();
-
                 }
             }
             catch { }
@@ -172,7 +172,6 @@ namespace WinJiaoJing
                             FrmAnQing.Text = "案情管理";
                             FrmAnQing.Show();
                             break;
-                       
 
                     }
                     break;
@@ -197,7 +196,7 @@ namespace WinJiaoJing
                             FrmBao1.Text = "招标公司中标次数统计报表";
                             FrmBao1.Show();
                             break;
-                        
+
                         case "死亡人数统计表":
                             if (IsExistsForm("死亡人数统计表"))
                                 return;
@@ -268,7 +267,7 @@ namespace WinJiaoJing
                             FrmBao.MdiParent = this;
                             FrmBao.Text = "包鉴定项目维护";
                             FrmBao.Show();
-                            break;  
+                            break;
                         case "检验项目维护":
                             if (IsExistsForm("检验项目维护"))
                                 return;
@@ -285,13 +284,13 @@ namespace WinJiaoJing
                             FrmGongSi.Text = "鉴定机构维护";
                             FrmGongSi.Show();
                             break;
-                     
+
 
                     }
                     break;
                 case "模板维护":
                     switch (sMenuName)
-                    {                      
+                    {
                         case "案件详情母版维护":
                             if (IsExistsForm("案件详情母版维护"))
                                 return;

@@ -75,10 +75,10 @@ namespace WinJiaoJing
           
             while (red.Read())
             {
-                this.label2.Text = red[0].ToString(); ;
+                this.label2.Text = red[0].ToString(); 
             }
             red.Close();
-
+                
             grd.RefreshDataSource();
         }
     }

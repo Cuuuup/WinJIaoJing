@@ -417,7 +417,7 @@
             // 
             // txtDateSS
             // 
-            this.txtDateSS.EditValue = new System.DateTime(2018, 4, 19, 0, 0, 0, 0);
+            this.txtDateSS.EditValue = new System.DateTime(2018, 5, 17, 10, 23, 56, 891);
             this.txtDateSS.Location = new System.Drawing.Point(343, 95);
             this.txtDateSS.Name = "txtDateSS";
             this.txtDateSS.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {

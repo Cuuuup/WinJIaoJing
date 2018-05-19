@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace WinJiaoJing
-{
+{   
     public partial class FrmRole : Form
     {
         public FrmRole()

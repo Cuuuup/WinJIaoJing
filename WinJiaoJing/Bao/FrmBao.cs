@@ -55,10 +55,12 @@ namespace WinJiaoJing
         {
             string sError = "";
             string sCon = "";
+
             if(this.textEdit1.Text.Trim()!="")
             {
                 sCon += "  and (Bao_Name like '%" + this.textEdit1.Text.Trim() + "%' or  Bao_Desc like '%" + this.textEdit1.Text.Trim() + "%')";
             }
+
             string strSql = "select * from T_BaoType where 1=1  " + sCon + " order by Bao_TypeId";
             DataTable dt = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);
             this.grd.DataSource = dt;

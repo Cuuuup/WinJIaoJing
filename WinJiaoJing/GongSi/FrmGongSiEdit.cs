@@ -96,8 +96,8 @@ namespace WinJiaoJing
                 SqlParameter[] parameters = {
 					new SqlParameter("@GongSiName", SqlDbType.VarChar,50),
 					new SqlParameter("@BaoTypeId", SqlDbType.Int),
-                     new SqlParameter("@random",SqlDbType.Int),
-                     new SqlParameter("@towRandom",SqlDbType.Int),
+                    new SqlParameter("@random",SqlDbType.Int),
+                    new SqlParameter("@towRandom",SqlDbType.Int),
                 new SqlParameter("@GongSiId", SqlDbType.BigInt,8)};
                 parameters[0].Value = GongSiName;
                 parameters[1].Value = DeptID;

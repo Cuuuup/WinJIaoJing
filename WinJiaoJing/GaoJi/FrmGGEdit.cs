@@ -41,7 +41,6 @@ namespace WinJiaoJing
                     this.txtPY.Text = dt.Rows[0]["PyCount"].ToString();
                     this.txtTow.Text = dt.Rows[0]["towRandom"].ToString();
                     this.txtTowPY.Text = dt.Rows[0]["towPyCount"].ToString(); 
-                     
 
                 }
             }

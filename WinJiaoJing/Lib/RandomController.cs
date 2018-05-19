@@ -8,7 +8,7 @@ public class RandomController
 
     public List<string> datas = new List<string>();
 
-
+    
     //权值
 
     public List<ushort> weights = new List<ushort>();

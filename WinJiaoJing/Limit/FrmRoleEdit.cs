@@ -36,6 +36,7 @@ namespace WinJiaoJing
                     this.txtRoleName.Text = dt.Rows[0]["RoleName"].ToString();
                     this.txtSortID.Text = dt.Rows[0]["SortID"].ToString();
                     this.cmbState.Text = dt.Rows[0]["State"].ToString();
+
                 }
             }
         }

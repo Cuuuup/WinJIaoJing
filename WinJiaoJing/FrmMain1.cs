@@ -35,6 +35,7 @@ namespace WinJiaoJing
                 {
                     this.treeView1.Nodes[0].Expand();
                     this.treeView1.Nodes[3].Expand();
+                    
                 }
                 catch { }
                
@@ -58,6 +59,7 @@ namespace WinJiaoJing
                     {
                         cha = CommonInfo.DateDiff(Convert.ToDateTime(tbDate.Rows[i]["insDate"]), DateTime.Now);
 
+
                         
                         if (cha >= 20)
                         {
@@ -75,17 +77,16 @@ namespace WinJiaoJing
                     }
                    
                 }
-
+                //操作员直接打开添加页面 
                 if (Program.sRoleID == "003")
                 {
                     FrmBaoFeiEdit bf = new FrmBaoFeiEdit();
                     bf.ShowDialog();
                 }
 
-
                                
 
-                //菜单权限读取
+                //菜单权限读取 
                 
                 string sRoleID = Program.sRoleID;
                 string strSql = "SELECT *,TQx_Menu.TreeNodeName FROM TQx_RoleQx left join TQx_Menu on TQx_Menu.MenuID=TQx_RoleQx.MenuID  WHERE IsQx=1 and TQx_Menu.TreeNodeName<>'' and  RoleID='" + sRoleID + "' order by TQx_Menu.SortID ";
@@ -95,7 +96,6 @@ namespace WinJiaoJing
                 {
                     LoadTreeViewQx(treeView1.Nodes[0], dtQx.DefaultView, CommonInfo.CLng(treeView1.Nodes[0].Tag));
                     LoadTreeViewQx(treeView1.Nodes[1], dtQx.DefaultView, CommonInfo.CLng(treeView1.Nodes[1].Tag));
-
                 }
                 else
                 {
@@ -116,7 +116,7 @@ namespace WinJiaoJing
                     MessageBox.Show("您的当前版本不是最新版本，请更新到最新版本[" + dtInit.Rows[0]["BanBenDesc"].ToString().Trim() + "]！", "提示");
                     this.Close();
                 }
-            }
+            } 
             catch { barButtonItem9.Caption = "       "; }
 
 
@@ -127,9 +127,10 @@ namespace WinJiaoJing
             tnode.Nodes.Clear();
             DataView dv = dvQx;
             dv.RowFilter = " MenuID  like '" + tnode.ToolTipText.Trim() + "%'  and  Len(MenuID) >= " + iLen;
+
             try
             {
-                for (int i = 0; i < dv.ToTable().Rows.Count; i++)
+                for (int i = 0; i < dv.ToTable().Rows.Count; i++)   
                 {
                     TreeNode tn = new TreeNode();
                     tn.SelectedImageIndex = 4;
@@ -307,7 +308,6 @@ namespace WinJiaoJing
                             FrmDiDian.Text = "案发地点维护";
                             FrmDiDian.Show();
                             break;
-
                     }
                     break;
 
