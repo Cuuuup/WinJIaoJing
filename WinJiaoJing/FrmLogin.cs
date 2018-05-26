@@ -60,7 +60,7 @@ namespace WinJiaoJing
                 Program.sDeptName = dt.Rows[0]["DeptName"].ToString();
                 Program.sOperID = dt.Rows[0]["OperID"].ToString();
                 Program.sOperName = dt.Rows[0]["OperName"].ToString();
-                Program.sRoleID = dt.Rows[0]["RoleID"].ToString();  
+                Program.sRoleID = dt.Rows[0]["RoleID"].ToString();             
                 Program.SOperPwd = dt.Rows[0]["OperPwd"].ToString();
 
                 Program.iErBaoTiXingDay = CommonInfo.CLng(dt.Rows[0]["ErBaoTiXingDay"].ToString());
@@ -73,7 +73,7 @@ namespace WinJiaoJing
                 catch { }
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
             }
-            else
+            else   
             {
                 MessageBox.Show("用户名或密码错误，请重新输入！", "提示");
                 return;

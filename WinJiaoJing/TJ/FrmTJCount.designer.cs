@@ -34,13 +34,19 @@
             this.toolXiangQing = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolClose = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolJieSuan = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.ckhdy = new DevExpress.XtraEditors.CheckEdit();
+            this.ckhdn = new DevExpress.XtraEditors.CheckEdit();
             this.ck4 = new DevExpress.XtraEditors.CheckEdit();
             this.ck2 = new DevExpress.XtraEditors.CheckEdit();
             this.ckAll = new DevExpress.XtraEditors.CheckEdit();
             this.ck3 = new DevExpress.XtraEditors.CheckEdit();
             this.ck1 = new DevExpress.XtraEditors.CheckEdit();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -69,9 +75,12 @@
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ckhdy.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckhdn.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ck4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ck2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckAll.Properties)).BeginInit();
@@ -96,7 +105,10 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolXiangQing,
             this.toolStripSeparator3,
-            this.toolClose});
+            this.toolClose,
+            this.toolStripSeparator2,
+            this.toolJieSuan,
+            this.toolStripSeparator1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1155, 26);
@@ -125,6 +137,25 @@
             this.toolClose.Text = "关闭";
             this.toolClose.Click += new System.EventHandler(this.toolClose_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 26);
+            // 
+            // toolJieSuan
+            // 
+            this.toolJieSuan.Image = ((System.Drawing.Image)(resources.GetObject("toolJieSuan.Image")));
+            this.toolJieSuan.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolJieSuan.Name = "toolJieSuan";
+            this.toolJieSuan.Size = new System.Drawing.Size(81, 23);
+            this.toolJieSuan.Text = "核对结算";
+            this.toolJieSuan.Click += new System.EventHandler(this.toolJieSuan_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 26);
+            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
@@ -141,11 +172,14 @@
             this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 9.5F);
             this.groupControl1.AppearanceCaption.Options.UseFont = true;
             this.groupControl1.CaptionLocation = DevExpress.Utils.Locations.Top;
+            this.groupControl1.Controls.Add(this.ckhdy);
+            this.groupControl1.Controls.Add(this.ckhdn);
             this.groupControl1.Controls.Add(this.ck4);
             this.groupControl1.Controls.Add(this.ck2);
             this.groupControl1.Controls.Add(this.ckAll);
             this.groupControl1.Controls.Add(this.ck3);
             this.groupControl1.Controls.Add(this.ck1);
+            this.groupControl1.Controls.Add(this.labelControl7);
             this.groupControl1.Controls.Add(this.labelControl5);
             this.groupControl1.Controls.Add(this.dateEdit2);
             this.groupControl1.Controls.Add(this.labelControl4);
@@ -167,6 +201,28 @@
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "查询条件";
             this.groupControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl1_Paint);
+            // 
+            // ckhdy
+            // 
+            this.ckhdy.Location = new System.Drawing.Point(497, 86);
+            this.ckhdy.Name = "ckhdy";
+            this.ckhdy.Properties.Caption = "已核对";
+            this.ckhdy.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
+            this.ckhdy.Properties.RadioGroupIndex = 2;
+            this.ckhdy.Size = new System.Drawing.Size(63, 19);
+            this.ckhdy.TabIndex = 39;
+            this.ckhdy.TabStop = false;
+            // 
+            // ckhdn
+            // 
+            this.ckhdn.EditValue = true;
+            this.ckhdn.Location = new System.Drawing.Point(566, 86);
+            this.ckhdn.Name = "ckhdn";
+            this.ckhdn.Properties.Caption = "未核对";
+            this.ckhdn.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
+            this.ckhdn.Properties.RadioGroupIndex = 2;
+            this.ckhdn.Size = new System.Drawing.Size(57, 19);
+            this.ckhdn.TabIndex = 38;
             // 
             // ck4
             // 
@@ -222,6 +278,15 @@
             this.ck1.Properties.RadioGroupIndex = 1;
             this.ck1.Size = new System.Drawing.Size(75, 19);
             this.ck1.TabIndex = 37;
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 9.5F);
+            this.labelControl7.Location = new System.Drawing.Point(416, 87);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(75, 16);
+            this.labelControl7.TabIndex = 36;
+            this.labelControl7.Text = "结算状态：";
             // 
             // labelControl5
             // 
@@ -406,7 +471,8 @@
             this.gridColumn5,
             this.gridColumn7,
             this.gridColumn8,
-            this.gridColumn9});
+            this.gridColumn9,
+            this.gridColumn10});
             this.gv.GridControl = this.grd;
             this.gv.Name = "gv";
             this.gv.OptionsView.ColumnAutoWidth = false;
@@ -425,7 +491,7 @@
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.OptionsColumn.AllowFocus = false;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 1;
+            this.gridColumn6.VisibleIndex = 2;
             this.gridColumn6.Width = 74;
             // 
             // gridColumn24
@@ -440,7 +506,7 @@
             this.gridColumn24.OptionsColumn.AllowEdit = false;
             this.gridColumn24.OptionsColumn.AllowFocus = false;
             this.gridColumn24.Visible = true;
-            this.gridColumn24.VisibleIndex = 3;
+            this.gridColumn24.VisibleIndex = 4;
             this.gridColumn24.Width = 104;
             // 
             // gridColumn1
@@ -455,7 +521,7 @@
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.OptionsColumn.AllowFocus = false;
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 4;
+            this.gridColumn1.VisibleIndex = 5;
             this.gridColumn1.Width = 90;
             // 
             // gridColumn3
@@ -470,7 +536,7 @@
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.OptionsColumn.AllowFocus = false;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 5;
+            this.gridColumn3.VisibleIndex = 6;
             this.gridColumn3.Width = 117;
             // 
             // gridColumn26
@@ -485,7 +551,7 @@
             this.gridColumn26.OptionsColumn.AllowEdit = false;
             this.gridColumn26.OptionsColumn.AllowFocus = false;
             this.gridColumn26.Visible = true;
-            this.gridColumn26.VisibleIndex = 6;
+            this.gridColumn26.VisibleIndex = 7;
             this.gridColumn26.Width = 534;
             // 
             // gridColumn2
@@ -500,7 +566,7 @@
             this.gridColumn2.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "ja", "   {0}")});
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 0;
+            this.gridColumn2.VisibleIndex = 1;
             this.gridColumn2.Width = 74;
             // 
             // gridColumn4
@@ -513,7 +579,7 @@
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.OptionsColumn.AllowFocus = false;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 2;
+            this.gridColumn4.VisibleIndex = 3;
             this.gridColumn4.Width = 174;
             // 
             // gridColumn5
@@ -528,7 +594,7 @@
             this.gridColumn5.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "BaOSumA", "{0:0.##}")});
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 7;
+            this.gridColumn5.VisibleIndex = 8;
             this.gridColumn5.Width = 84;
             // 
             // gridColumn7
@@ -543,7 +609,7 @@
             this.gridColumn7.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "BaOSumB", "{0:0.##}")});
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 8;
+            this.gridColumn7.VisibleIndex = 9;
             this.gridColumn7.Width = 84;
             // 
             // gridColumn8
@@ -558,7 +624,7 @@
             this.gridColumn8.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "BaOSumD", "{0:0.##}")});
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 9;
+            this.gridColumn8.VisibleIndex = 10;
             this.gridColumn8.Width = 84;
             // 
             // gridColumn9
@@ -573,8 +639,21 @@
             this.gridColumn9.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "BaoSum", "{0:0.##}")});
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 10;
-            this.gridColumn9.Width = 84;
+            this.gridColumn9.VisibleIndex = 11;
+            this.gridColumn9.Width = 70;
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 9.5F);
+            this.gridColumn10.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn10.Caption = "结算状态";
+            this.gridColumn10.FieldName = "StateMo";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.OptionsColumn.AllowEdit = false;
+            this.gridColumn10.OptionsColumn.AllowFocus = false;
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 0;
+            this.gridColumn10.Width = 68;
             // 
             // FrmTJCount
             // 
@@ -593,6 +672,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ckhdy.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckhdn.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ck4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ck2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckAll.Properties)).EndInit();
@@ -655,5 +736,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolJieSuan;
+        private DevExpress.XtraEditors.CheckEdit ckhdy;
+        private DevExpress.XtraEditors.CheckEdit ckhdn;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
     }
 }

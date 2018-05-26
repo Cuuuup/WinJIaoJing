@@ -55,7 +55,8 @@ namespace WinJiaoJing
                     int cha = 0;
                     for (int i = 0; i < tbDate.Rows.Count; i++)
                     {
-                        cha = CommonInfo.DateDiff(Convert.ToDateTime(tbDate.Rows[i]["insDate"]), DateTime.Now);
+                        cha = CommonInfo.DateDiff(Convert.ToDateTime(tbDate.Rows[i]["insDate"]), Da.
+                            0teTime.Now);
 
                         if (cha >= 20)
                         {
@@ -82,7 +83,7 @@ namespace WinJiaoJing
                 //菜单权限读取
                 string sRoleID = Program.sRoleID;
                 string strSql = "SELECT *,TQx_Menu.TreeNodeName FROM TQx_RoleQx left join TQx_Menu on TQx_Menu.MenuID=TQx_RoleQx.MenuID  WHERE IsQx=1 and TQx_Menu.TreeNodeName<>'' and  RoleID='" + sRoleID + "' order by TQx_Menu.SortID ";
-                DataTable dtQx = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);
+                DataTable dtQx = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);    
               
 
                 if (Program.sOperID.Trim() != "admin")
@@ -193,7 +194,7 @@ namespace WinJiaoJing
                                 return;
                             FrmTJtop FrmBao1 = new FrmTJtop();
                             FrmBao1.MdiParent = this;
-                            FrmBao1.Text = "招标公司中标次数统计报表";
+                            FrmBao1.Text = "招标公司中标次数统计报表";  
                             FrmBao1.Show();
                             break;
 

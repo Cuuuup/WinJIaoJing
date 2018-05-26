@@ -39,6 +39,15 @@ namespace WinJiaoJing
             string sError = "";
             string sCon = "";
 
+            if (this.ckhdy.Checked==true)
+            {
+                sCon += " and StateMo ='已核对'";
+            }
+            if (this.ckhdn.Checked==true)
+            {
+                sCon += " and StateMo ='未核对'";
+            }
+
             if (this.ck1.Checked==true)
             {
                 sCon += "  and State ='已结算' ";
@@ -49,7 +58,7 @@ namespace WinJiaoJing
             }
             if (this.ck3.Checked == true)
             {
-                sCon += "  and State ='(二次)未结算' ";
+                sCon += "  and State ='(二次)已结算' ";
             }
             if (this.ck4.Checked == true)
             {
@@ -227,6 +236,45 @@ namespace WinJiaoJing
             }
             FrmTJXQ jxq = new FrmTJXQ(this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingNo"].ToString(), this.gv.GetDataRow(this.gv.FocusedRowHandle)["ja"].ToString());
             jxq.ShowDialog();
+
+        }
+
+        private void toolJieSuan_Click(object sender, EventArgs e)
+        {
+            string sql = "";
+            string sError = "";
+            if (Program.sRoleID!="001")
+            {
+                MessageBox.Show("只有支队管理员及以上权限才可操作此项。");
+                return;
+            }
+
+            if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() != "已结算" && this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() != "(二次)已结算")
+            {
+                MessageBox.Show("确认核对前请先归档案情。");
+                return;
+            }
+
+
+            if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["StateMo"].ToString() == "已核对")
+            {
+                MessageBox.Show("该项已结算核对。");
+               
+                return;
+            }
+            DialogResult dr = MessageBox.Show("确认核对信息是否正确，确认无误请点击确定。", "提示", MessageBoxButtons.YesNo);
+            if (dr != DialogResult.Yes)
+            {
+                return;
+            }
+            if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["StateMo"].ToString() == "未核对")
+            {
+                sql = "update T_AnQing set StateMo = '已核对' where AnQingNo = '" + this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingNo"].ToString() + "'";
+
+                SqlHelper.ExecuteNonQuery(CommandType.Text, sql, null, out sError);
+                this.btnSel_Click(null, null);
+                return;
+            }
 
         }
     }
