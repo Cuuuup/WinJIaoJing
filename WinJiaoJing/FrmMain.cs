@@ -78,7 +78,6 @@ namespace WinJiaoJing
                     bf.ShowDialog();
                 }
 
-
                 //菜单权限读取
                 string sRoleID = Program.sRoleID;
                 string strSql = "SELECT *,TQx_Menu.TreeNodeName FROM TQx_RoleQx left join TQx_Menu on TQx_Menu.MenuID=TQx_RoleQx.MenuID  WHERE IsQx=1 and TQx_Menu.TreeNodeName<>'' and  RoleID='" + sRoleID + "' order by TQx_Menu.SortID ";
@@ -89,7 +88,6 @@ namespace WinJiaoJing
                 {
                     LoadTreeViewQx(treeView1.Nodes[0], dtQx.DefaultView, CommonInfo.CLng(treeView1.Nodes[0].Tag));
                     LoadTreeViewQx(treeView1.Nodes[1], dtQx.DefaultView, CommonInfo.CLng(treeView1.Nodes[1].Tag));
-
                 }
                 else
                 {

@@ -43,7 +43,7 @@ namespace WinJiaoJing
         //确定
         private void btnOK_Click(object sender, EventArgs e)
         {
-            string sError = "";
+            string sError = ""; 
 
             string sDeptID = this.lookUpEdit1.EditValue.ToString();
             string sOperID = this.lookUpEdit2.EditValue.ToString();
@@ -72,6 +72,7 @@ namespace WinJiaoJing
                 }
                 catch { }
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                
             }
             else   
             {
