@@ -26,9 +26,9 @@ public class SqlHelper
     public static string uid = System.Configuration.ConfigurationManager.ConnectionStrings["uid"].ConnectionString;
     public static string pwd = System.Configuration.ConfigurationManager.ConnectionStrings["pwd"].ConnectionString;
     public static string database = System.Configuration.ConfigurationManager.ConnectionStrings["database"].ConnectionString;
-    //public static string ConnStr = "server=" + server + ";uid=" + uid + ";pwd=" + CommonInfo.Decode(pwd) + ";database=" + database + "";// ConfigurationManager.ConnectionStrings["ConnStr"].ToString();
+    public static string ConnStr = "server=" + server + ";uid=" + uid + ";pwd=" + CommonInfo.Decode(pwd) + ";database=" + database + "";// ConfigurationManager.ConnectionStrings["ConnStr"].ToString();
     //=DESKTOP-5GL5BOJ\SQLEXPRESS
-    public static string ConnStr = @"server=DESKTOP-5GL5BOJ\SQLEXPRESS;uid=sa;pwd=sa123;database=WinJiaoJinDB";//CarTangYunDB WinJiaoJinDB
+    //public static string ConnStr = @"server=DESKTOP-5GL5BOJ\SQLEXPRESS;uid=sa;pwd=sa123;database=WinJiaoJinDB";//CarTangYunDB WinJiaoJinDB
     //public static string ConnStr  = System.Configuration.ConfigurationManager.ConnectionStrings["DBUrl"].ConnectionString;
 
     /// <summary>
@@ -52,6 +52,7 @@ public class SqlHelper
                 da.SelectCommand = cmd;
                 da.Fill(ds);
                 sError = "";
+                
             }
             catch (Exception ex)
             {
@@ -79,6 +80,7 @@ public class SqlHelper
             try
             {
                 PrepareCommand(cmd, conn, cmdType, cmdText, commandParameters);
+               
                 cmd.ExecuteNonQuery();
                 sError = "";
                 R = (int)cmd.Parameters["Return Value"].Value;

@@ -340,15 +340,6 @@ namespace WinJiaoJing
 
                             SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parametersAdd, out sError);
 
-                            //strSql = new StringBuilder();
-                            //strSql.Append(" update T_GongSi");
-                            //strSql.Append(" set randomCount=randomCount-1 where GongSiId=@GongSiID");
-                            //SqlParameter[] parametersupup33 = {
-                            //            new SqlParameter("@GongSiID", SqlDbType.Int) };
-                            //parametersupup33[0].Value = sumGS;
-
-                            //SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parametersupup33, out sError);
-
                         }
                         //随机获取 一个数据
                         strSql = new StringBuilder();

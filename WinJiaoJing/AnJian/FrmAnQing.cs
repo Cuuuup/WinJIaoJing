@@ -254,7 +254,6 @@ namespace WinJiaoJing
             strSql1.Append(" SELECT AnQingID, AnQingNo, AnQingDiDian,");
             strSql1.Append(" AnQingDesc, DeftName, OperName, AnQingTeShuXiang, AnQingDate,AnQingDieCount,AnQingBeiZhu,isOk,AnQingTwo,State,insDate");
             strSql1.Append(" FROM T_AnQing");
-
             strSql1.Append(" WHERE 1=1 and State !='未检测' " + sCon + "order by AnQingNo");
 
 
@@ -384,7 +383,7 @@ namespace WinJiaoJing
                 MessageBox.Show("只有已结算的鉴定项才能二次鉴定");
                 return;
             }
-            FrmTwo frm = new FrmTwo(this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingID"].ToString());
+            FrmTwo frm = new FrmTwo(this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingNo"].ToString());
             frm.ShowDialog();
             //this.ckrw.Checked = true;
             //this.ckrw.CheckState = CheckState.Checked;
@@ -514,7 +513,7 @@ namespace WinJiaoJing
 
 
             sql = $"select IsOk FROM T_AnQing where AnQingNo={no}";
-            SqlDataReader oldNOData= SqlHelper.ExecuteReader(CommandType.Text, sql, null, out sError);
+            SqlDataReader oldNOData = SqlHelper.ExecuteReader(CommandType.Text, sql, null, out sError);
             //获取被二次鉴定的案情流水号
             while (oldNOData.Read())
             {
@@ -734,13 +733,73 @@ namespace WinJiaoJing
             }
 
 
-
              sql = "update T_AnQing set State = '(二次)进行中' where AnQingID = '" + this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingID"].ToString() + "'";
 
             SqlHelper.ExecuteNonQuery(CommandType.Text, sql, null, out sError);
             this.btnSel_Click(null, null);
 
 
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            if (this.gv.GetDataRow(this.gv.FocusedRowHandle) == null)
+            {
+                MessageBox.Show("请选中要删除的二次鉴定项");
+                return;
+            }
+            if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() == "进行中")
+            {
+                MessageBox.Show("只能删除二次。");
+                return;
+            }
+            if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() == "作废")
+            {
+                MessageBox.Show("鉴定项已作废,无法二次鉴定。");
+                return;
+            }
+            if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() == "(二次)作废")
+            {
+                MessageBox.Show("鉴定项已作废,无法二次鉴定。");
+                return;
+            }
+            if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() == "(二次)进行中")
+            {
+                MessageBox.Show("鉴定项已提交,请勿重复操作。");
+                return;
+            }
+            if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() == "(二次)已结算")
+            {
+                MessageBox.Show("鉴定项已结算,无法再次提交。");
+                return;
+            }
+            if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() == "已结算")
+            {
+                MessageBox.Show("鉴定项已结算,无法再次提交。");
+                return;
+            }
+            DialogResult dl = MessageBox.Show($"编号:{this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingNo"].ToString()} 删除后无法恢复 确定要删除吗？", "警告", MessageBoxButtons.YesNo);
+            if (dl == DialogResult.No)
+            {
+                return;
+            }
+
+            string sError = "";
+            string sql = "";
+
+            if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["State"].ToString() == "(二次)未检测")
+            {
+                sql = "delete T_AnQingXiang where AnQingId= '" + this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingNo"].ToString() + "'";
+
+                SqlHelper.ExecuteNonQuery(CommandType.Text,sql,null,out sError);
+
+                sql = "delete T_AnQing where AnQingID = '" + this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingID"].ToString() + "'";
+
+                SqlHelper.ExecuteNonQuery(CommandType.Text, sql, null, out sError);
+               
+            }
+
+            this.btnSel_Click(null, null);
         }
     }
 }

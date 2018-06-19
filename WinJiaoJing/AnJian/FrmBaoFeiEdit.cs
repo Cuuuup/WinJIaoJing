@@ -157,8 +157,6 @@ namespace WinJiaoJing
 
         private void toolSave_Click(object sender, EventArgs e)
         {
-
-            
             string sError = "";
             string ID, NO, DanWei, OpID, DiDian, Date, AnQingDesc, teshu, beizhu, dieConut,DateSS,DiZhi;
             NO = this.txt_No.Text.Trim();
@@ -173,6 +171,7 @@ namespace WinJiaoJing
             dieConut = this.txtDieCount.Text.Trim();
             DateSS = this.txtDateSS.EditValue.ToString();
             DiZhi = this.comDidIan.Text;
+  
                
 
             StringBuilder strSql = new StringBuilder();

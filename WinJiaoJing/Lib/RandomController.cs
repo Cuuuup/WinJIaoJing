@@ -33,7 +33,7 @@ public class RandomController
             }
             //排序
             List<KeyValuePair<string, int>> listDict = SortByValue(dict);
-            //拷贝抽取权值最大的前Count项
+            //拷贝抽取权值最大的前Count项  
             foreach (KeyValuePair<string, int> kvp in listDict.GetRange(0, 1))
             {
                 result.Add(kvp.Key);

@@ -51,10 +51,32 @@ namespace WinJiaoJing
         private void FrmAnQingXiangQingList_Load(object sender, EventArgs e)
         {
 
-            //MessageBox.Show(sID);
-            //return; 
             string sError = "";
             StringBuilder strSql1 = new StringBuilder();
+
+
+
+            SqlDataReader redupupasc = SqlHelper.ExecuteReader(CommandType.Text, $"select x.*,a.GongSiA,a.GongSiB,a.GongSiD from T_AnQingXiang x join T_AnQing a on x.AnQingId=a.AnQingNo  where x.AnQingId={sID} ; ",null,out sError);
+
+            //查看详情时 从新赋值公司
+            while (redupupasc.Read())
+            {
+
+                if (Convert.ToInt32(redupupasc["BaoType_Id"]) == 1)
+                {
+                    SqlHelper.ExecuteNonQuery(CommandType.Text, $"update T_AnQingXiang set GongSiID={redupupasc["GongSiA"]} where AnQingId={sID} and AnQingXiang_ID={redupupasc["AnQingXiang_ID"]}", null,out sError);
+                }
+                if (Convert.ToInt32(redupupasc["BaoType_Id"]) == 2)
+                {
+                    SqlHelper.ExecuteNonQuery(CommandType.Text, $"update T_AnQingXiang set GongSiID={redupupasc["GongSiB"]} where AnQingId={sID} and AnQingXiang_ID={redupupasc["AnQingXiang_ID"]}", null, out sError);
+                }
+                if (Convert.ToInt32(redupupasc["BaoType_Id"]) == 3)
+                {
+                    SqlHelper.ExecuteNonQuery(CommandType.Text, $"update T_AnQingXiang set GongSiID={redupupasc["GongSiD"]} where AnQingId={sID} and AnQingXiang_ID={redupupasc["AnQingXiang_ID"]}", null, out sError);
+                }
+            }
+            redupupasc.Close();
+
             strSql1 = new StringBuilder();
             strSql1.Append(" select AnQingXiang_ID,AnQingId,XiangMuNo,Bao_Desc,XiangMuName,XiangBaoJia,GongSiName from T_AnQingXiang ax ");
             strSql1.Append(" join T_XiangMu xm on ax.XiangMuId=xm.XiangMuID");

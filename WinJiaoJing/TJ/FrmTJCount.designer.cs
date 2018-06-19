@@ -76,6 +76,8 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -108,6 +110,8 @@
             this.toolClose,
             this.toolStripSeparator2,
             this.toolJieSuan,
+            this.toolStripSeparator5,
+            this.toolStripButton1,
             this.toolStripSeparator1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -655,6 +659,20 @@
             this.gridColumn10.VisibleIndex = 0;
             this.gridColumn10.Width = 68;
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 26);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = global::WinJiaoJing.Properties.Resources.p修改;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(81, 23);
+            this.toolStripButton1.Text = "撤回结算";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
             // FrmTJCount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -743,5 +761,7 @@
         private DevExpress.XtraEditors.CheckEdit ckhdy;
         private DevExpress.XtraEditors.CheckEdit ckhdn;
         private DevExpress.XtraEditors.LabelControl labelControl7;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }

@@ -8,7 +8,7 @@ using System.Windows.Forms;
     
 namespace WinJiaoJing
 {
-    public partial class FrmMain : Form
+    public partial class FrmMain : Form 
     {
         public FrmMain()
         {
@@ -55,8 +55,7 @@ namespace WinJiaoJing
                     int cha = 0;
                     for (int i = 0; i < tbDate.Rows.Count; i++)
                     {
-                        cha = CommonInfo.DateDiff(Convert.ToDateTime(tbDate.Rows[i]["insDate"]), Da.
-                            0teTime.Now);
+                        cha = CommonInfo.DateDiff(Convert.ToDateTime(tbDate.Rows[i]["insDate"]), DateTime.Now);
 
                         if (cha >= 20)
                         {

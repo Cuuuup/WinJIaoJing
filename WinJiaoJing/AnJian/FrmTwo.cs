@@ -85,7 +85,7 @@ namespace WinJiaoJing
             {
                 //this.groupControl2.Enabled = false;
                 sError = "";
-                strSql = "SELECT * FROM T_AnQing WHERE AnQingID=" + sID;
+                strSql = "SELECT * FROM T_AnQing WHERE AnQingNo=" + sID;
 
                 DataTable dt = SqlHelper.RunQuery(CommandType.Text, strSql, null, out sError);
                 if (dt.Rows.Count > 0)

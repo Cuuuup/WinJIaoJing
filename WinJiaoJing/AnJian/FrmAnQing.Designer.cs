@@ -85,6 +85,8 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -127,6 +129,8 @@
             this.toolPint,
             this.toolStripSeparator6,
             this.toolTwo,
+            this.toolStripSeparator9,
+            this.toolStripButton1,
             this.toolStripSeparator8,
             this.toolTowT,
             this.toolStripSeparator7,
@@ -695,6 +699,20 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
             // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 26);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = global::WinJiaoJing.Properties.Resources.p删除;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(107, 23);
+            this.toolStripButton1.Text = "删除二次鉴定";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
             // FrmAnQing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -792,5 +810,7 @@
         private DevExpress.XtraEditors.CheckEdit ckrj;
         private DevExpress.XtraEditors.CheckEdit ckrz;
         private DevExpress.XtraEditors.CheckEdit ckrs;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }

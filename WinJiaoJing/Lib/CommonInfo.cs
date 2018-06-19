@@ -34,7 +34,7 @@ public static class CommonInfo
         sw.Write(data);
         sw.Flush();
         cst.FlushFinalBlock();
-        sw.Flush(); 
+        sw.Flush();
         return Convert.ToBase64String(ms.GetBuffer(), 0, (int)ms.Length);
 
     }
@@ -55,7 +55,7 @@ public static class CommonInfo
         byte[] byEnc;
         try
         {
-            byEnc = Convert.FromBase64String(data); 
+            byEnc = Convert.FromBase64String(data);
         }
         catch
         {
@@ -67,7 +67,7 @@ public static class CommonInfo
         CryptoStream cst = new CryptoStream(ms, cryptoProvider.CreateDecryptor(byKey, byIV), CryptoStreamMode.Read);
         StreamReader sr = new StreamReader(cst);
         return sr.ReadToEnd();
-    }  
+    }
 
     //加载CheckedComboBoxEdit
     public static void CheckedComboBoxEditDataBind(DevExpress.XtraEditors.CheckedComboBoxEdit checkedComboBoxEdit1, string strSql, string sValueMember, string sDisplayMember)
@@ -361,7 +361,7 @@ public static class CommonInfo
         catch { }
         return strReturn;
     }
-    //获取数据库的数据获取格式，返回
+    //获取数据库的数据获取格式，返回 
     public static string CDateToStr(string input)
     {
         string strReturn = "";
@@ -421,7 +421,7 @@ public static class CommonInfo
         DateTime now;
         if (!DateTime.TryParse(input, out now))
         {
-            now =Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
+            now = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
         }
         return now;
     }
@@ -487,7 +487,7 @@ public static class CommonInfo
     {
         if (!Convert.IsDBNull(input) && !object.Equals(input, null))
         {
-            return CDouble(input.ToString(), defaultValue);                 
+            return CDouble(input.ToString(), defaultValue);
         }
         return 0.0;
     }
@@ -1128,6 +1128,24 @@ public static class CommonInfo
         return dateDiff;
     }
 
+    #endregion
+
+    #region 获取客户端外网IP地址
+    /// <summary>
+    /// 获得客户端外网IP地址
+    /// </summary>
+    /// <returns>IP地址</returns>
+    public static string GetClientInternetIP()
+    {
+        string ip;
+        using (WebClient webClient = new WebClient())
+        {
+            var content = webClient.DownloadString(@"http://ip.chinaz.com/getip.aspx"); //站获得IP的网页
+                                                                                        //判断IP是否合法
+            ip = new Regex(@"\[((\d{1,3}\.){3}\d{1,3})\]").Match(content).Groups[1].Value;
+        }
+        return ip;
+    }
     #endregion
 
 }

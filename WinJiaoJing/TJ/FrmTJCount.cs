@@ -277,5 +277,36 @@ namespace WinJiaoJing
             }
 
         }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            string sql = "";
+            string sError = "";
+            if (Program.sRoleID != "001")
+            {
+                MessageBox.Show("只有支队管理员及以上权限才可操作此项。");
+                return;
+            }
+
+            if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["StateMo"].ToString() == "未核对")
+            {
+                MessageBox.Show("该项还未结算核对。");
+
+                return;
+            }
+            DialogResult dr = MessageBox.Show("确认核对信息是否正确，确认无误请点击确定。", "提示", MessageBoxButtons.YesNo);
+            if (dr != DialogResult.Yes)
+            {
+                return;
+            }
+            if (this.gv.GetDataRow(this.gv.FocusedRowHandle)["StateMo"].ToString() == "已核对")
+            {
+                sql = "update T_AnQing set StateMo = '未核对' where AnQingNo = '" + this.gv.GetDataRow(this.gv.FocusedRowHandle)["AnQingNo"].ToString() + "'";
+
+                SqlHelper.ExecuteNonQuery(CommandType.Text, sql, null, out sError);
+                this.btnSel_Click(null, null);
+                return;
+            }
+        }
     }
 }

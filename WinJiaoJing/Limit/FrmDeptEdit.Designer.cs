@@ -107,7 +107,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 26);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(309, 229);
+            this.groupControl1.Size = new System.Drawing.Size(309, 191);
             this.groupControl1.TabIndex = 2;
             // 
             // txtSortID
@@ -191,7 +191,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(309, 255);
+            this.ClientSize = new System.Drawing.Size(309, 217);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.toolStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
